@@ -46,6 +46,21 @@ Integrate all novel-specific extensions into the main CLAUDE.md instruction file
 - [ ] 18. Run `/wiki-ingest` on one raw file and verify it creates both generic (source, entity, concept) and novel-specific (character, location, conflict, theme) pages
 - [ ] 19. Verify the session-start protocol works end-to-end: CLAUDE.md → todo/README.md → meta/README.md → active phase
 
+### Graph-Erweiterung
+
+- [ ] 20. Erweitere `tools/build_graph.py` um `requires:`/`informs:` Kanten-Extraktion aus Frontmatter (zusätzlich zu [[wikilinks]]). Neue Edge-Types: `REQUIRES` und `INFORMS` mit eigenen Farben.
+- [ ] 21. Füge die vier Oberschichten als Cluster-Gruppierung im Graph hinzu (Knowledge=grün, Narrative=blau, ReaderState=gelb, Meta=grau)
+
+### Deterministische Lint-Integration
+
+- [ ] 22. Integriere `tools/lint_deterministic.py` (aus Phase 2) in den wiki-lint Workflow: Erst deterministische Checks (schnell, kein API), dann semantische Checks (API). Deterministische Fehler werden sofort reportet, semantische nur bei Bedarf.
+- [ ] 23. Ergänze wiki-lint um folgende Checks aus der Oberschicht-Architektur: Knowledge-Layer-Seiten dürfen keine `manuscript_status` oder `beat_number` Felder haben; Narrative-Layer-Seiten müssen `chapter_ref` haben.
+
+### Ingest-Erweiterung für Oberschichten
+
+- [ ] 24. Passe `tools/ingest.py` an: Nach dem Erstellen neuer Seiten, prüfe ob sie zur richtigen Oberschicht gehören (z.B. ein neues Konzept gehört zu Knowledge, nicht zu Narrative). Warnmeldung wenn unklar.
+- [ ] 25. Ergänze den Ingest-Workflow um die `processed/`-Verschiebung (falls nicht schon in Phase 0 erledigt — Idempotenz-Check).
+
 ---
 
 ## Completion Criteria
@@ -57,5 +72,7 @@ Integrate all novel-specific extensions into the main CLAUDE.md instruction file
 - Extended ingest, lint, and graph workflows implemented
 - At least one end-to-end test (ingest → lint → graph) passes
 - Cross-agent schema consistency verified
+- `tools/build_graph.py` shows Oberschicht clusters and REQUIRES/INFORMS edges
+- `tools/lint_deterministic.py` integrated into wiki-lint workflow
 
 When all tasks are checked, update the phase table in `todo/README.md`: set Phase 4 to `complete`. The extension is ready for production use.

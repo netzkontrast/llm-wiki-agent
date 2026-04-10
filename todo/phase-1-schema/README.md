@@ -45,6 +45,12 @@ Create realistic example pages to give Phase 2 content to test navigation agains
 - [ ] 18. Update `wiki/index.md` with entries for all seed pages created above
 - [ ] 19. Verify all cross-references: every slug in `requires:`, `informs:`, `constraint_refs:`, `characters:`, `locations:`, `conflicts:`, `themes:` resolves to an existing page
 
+### Folder READMEs (Navigations-Layer)
+
+- [ ] 20. Erstelle README.md für jedes neue wiki/-Unterverzeichnis: characters/, chapters/, locations/, conflicts/, themes/, timeline/, rules/, arcs/, dramatica/, reader-model/, foreshadowing/, beats/, outlines/, manuscripts/, archive/
+- [ ] 21. Jede README enthält: Zweck, Namenskonvention, Seitentyp, Verbindungen zu anderen Verzeichnissen, ob temporal gefiltert wird
+- [ ] 22. Verlinke jede Folder-README zur passenden Wiki-Oberschicht-README (knowledge/, narrative/, reader_state/, meta/)
+
 ---
 
 ## Completion Criteria
@@ -54,5 +60,6 @@ Create realistic example pages to give Phase 2 content to test navigation agains
 - At least 13 seed pages created with complete, cross-referenced frontmatter
 - All `requires:`/`informs:` references resolve to existing pages
 - All `valid_from`/`valid_until` references point to existing timeline-event pages with `is_boundary: true`
+- All new wiki/ subdirectories have a README.md linked to their Oberschicht
 
 When all tasks are checked, update the phase table in `todo/README.md`: set Phase 1 to `complete`, Phase 2 to `active`.

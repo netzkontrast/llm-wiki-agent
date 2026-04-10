@@ -4,10 +4,11 @@
 
 | Phase | Folder | Status | Description |
 |-------|--------|--------|-------------|
-| 1 | `phase-1-schema/` | `not-started` | Wiki schema extension: new page types, directories, frontmatter, seed templates |
-| 2 | `phase-2-navigation/` | `not-started` | Navigation & dependency system: `requires:/informs:`, temporal filtering, context-loading |
-| 3 | `phase-3-workflows/` | `not-started` | Novel-specific agent workflows & slash commands |
-| 4 | `phase-4-integration/` | `not-started` | Wire into CLAUDE.md, extend ingest, update lint/graph, migration |
+| 0 | `phase-0-cleanup/` | `not-started` | Infrastruktur: Ingest-Queue-Migration, Wiki-Oberschichten, Progressive Disclosure |
+| 1 | `phase-1-schema/` | `not-started` | Wiki schema extension: page types, directories, frontmatter, seed templates, folder READMEs |
+| 2 | `phase-2-navigation/` | `not-started` | Navigation, dependencies, temporal filtering, deterministic lint rules, staleness checks |
+| 3 | `phase-3-workflows/` | `not-started` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
+| 4 | `phase-4-integration/` | `not-started` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
 | 5 | `phase-5-writing-pipeline/` | `not-started` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
 
 ---

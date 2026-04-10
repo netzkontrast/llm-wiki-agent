@@ -37,6 +37,22 @@ Implement the dependency traversal system, temporal filtering protocol, context 
 
 - [ ] 10. Verify that `requires:`/`informs:` edges would appear in the knowledge graph. Update `tools/build_graph.py` or document how these edges should be extracted alongside `[[wikilinks]]`.
 
+### Deterministische Lint-Rules (kein LLM nötig)
+
+- [ ] 11. Lint-Rule: `constraint_refs` Validierung — jeder Slug in einem chapter's `constraint_refs:` muss auf eine existierende Datei in `wiki/rules/` zeigen
+- [ ] 12. Lint-Rule: `characters:` Validierung — jeder Slug in einem chapter's `characters:` muss eine Datei in `wiki/characters/` haben
+- [ ] 13. Lint-Rule: Foreshadowing-Vollständigkeit — jede Foreshadowing-Seite mit `status: planted` und `planted_chapter` < letztes Kapitel muss entweder `resolved_chapter` haben oder als "intentionally unresolved" markiert sein
+- [ ] 14. Lint-Rule: `valid_from`/`valid_until` Konsistenz — referenzierte Timeline-Events müssen `is_boundary: true` haben
+- [ ] 15. Sammle alle deterministischen Lint-Rules in einem eigenständigen Script `tools/lint_deterministic.py` (kein API-Key nötig, rein Dateisystem + Regex/YAML-Parsing)
+
+### Staleness-Check als Script
+
+- [ ] 16. Implementiere `tools/check_staleness.py`: Vergleiche `last_updated` Felder über `informs:`-Ketten. Output: Liste staler Seiten mit Kette (A informiert B, A neuer als B). Kein API-Key nötig.
+
+### Oberschicht-Routing-Validierung
+
+- [ ] 17. Lint-Rule: Jede Wiki-Seite muss genau einer der vier Oberschichten zuordenbar sein (basierend auf ihrem Verzeichnis). Warnung wenn eine Seite in einem Verzeichnis liegt, das keiner Oberschicht zugeordnet ist.
+
 ---
 
 ## Completion Criteria
@@ -46,5 +62,8 @@ Implement the dependency traversal system, temporal filtering protocol, context 
 - Temporal filtering works correctly with seed pages (manual test)
 - Temporal sibling resolution demonstrated with Kael / Kael-post-frag
 - All seed pages pass all lint rules
+- `tools/lint_deterministic.py` exists and covers all deterministic checks
+- `tools/check_staleness.py` exists and traverses `informs:` chains
+- Oberschicht-Routing-Validierung implementiert
 
 When all tasks are checked, update the phase table in `todo/README.md`: set Phase 2 to `complete`, Phase 3 to `active`.
