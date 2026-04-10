@@ -1,7 +1,5 @@
 # Ingestion Queue
 
-raw/AegisEmergenzAusDerLeere.md
-raw/AegisGenesisKrise20prosaAuftrag20formulieren.md
 raw/AegisPhilosophieUndManifestEntwicklung.md
 raw/AegisPhilosophieUndSystemtheorie.md
 raw/AegisPhilosophischeUndSystemtheoretischeAnalyse.md

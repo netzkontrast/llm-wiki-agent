@@ -9,3 +9,5 @@ Parse recent entries: `grep "^## \[" wiki/log.md | tail -10`
 ---
 ## [2026-04-10] ingest | 40 Chapter Plot Module
 ## [2026-04-10] ingest | Aegis Analyse Und Prompt Optimierung
+## [2026-04-10] ingest | Aegis Emergenz Aus Der Leere
+## [2026-04-10] ingest | Aegis Genesis Krise Prosa Auftrag Formulieren
