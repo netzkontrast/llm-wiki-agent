@@ -1,26 +1,6 @@
-# Meta Layer — System-Steuerung
+# Meta Layer
 
-Diese Schicht enthält alle systemischen Steuerungsdokumente: Logs, Protokolle,
-Contradiction-Log, Indexierungshilfen. Sie dient als Audit-Trail und Agent-Routing.
+**Type:** Routing Layer
+**Content:** Orchestration, Protocols, Logs, Ingest Control
 
-## Zugehörige Verzeichnisse und Dateien
-- [../meta/](../meta/) — Contradiction-Log, temporale und staleness Protokolle
-- [../archive/](../archive/) — Archivierte (nie gelöschte) veraltete Wiki-Seiten
-- [../syntheses/](../syntheses/) — Gespeicherte Query-Antworten
-
-## Schlüsseldokumente
-- `contradiction-log.md` — Alle erkannten Widersprüche (Pflichtformat)
-- `temporal-protocol.md` — Algorithmus für zeitliche Filterung
-- `context-protocol.md` — Context-Ceiling und Priority-Drop Regeln
-- `staleness-protocol.md` — Erkennung veralteter `informs:`-Targets
-- `discovery-protocol.md` — Discovery-Hook vor chapter-writing Workflows
-- `validation-protocol.md` — Validation-Hook nach Generierungen
-
-## Mutations-Regel
-Append-only für Logs. Protokolle werden aktualisiert wenn Regeln sich ändern.
-Archiv-Verzeichnis nur erweitern — niemals löschen.
-
-## Wann laden?
-- Beim session-start (contradiction-log prüfen)
-- Beim wiki-lint Workflow
-- Bei Konflikt-Eskalationen
+This layer encapsulates the orchestration and control knowledge of the agents. It includes the `ingest/` directory (for the Manus pattern: `plan.md`, `findings.md`, `progress.md`), global routing indexes, and audit logs that record every tool operation as an append-only trail.

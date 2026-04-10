@@ -1,23 +1,8 @@
-# Knowledge Layer — Statischer Canon
+# Knowledge Layer (K0)
 
-Diese Schicht enthält das unveränderliche Weltwissen. Informationen hier ändern sich nur,
-wenn der Autor neue Definitionen einführt — niemals durch den Verlauf der Handlung.
+**Type:** Routing Layer
+**Content:** Static Canon, Rules, Entities, Concepts
 
-## Zugehörige Verzeichnisse
-- [../characters/](../characters/) — Charakter-Basisprofile (nicht Plot-Zustände!)
-- [../locations/](../locations/) — Orte und Weltenbau
-- [../rules/](../rules/) — Welt- und Narrativregeln
-- [../concepts/](../concepts/) — Ideen, Frameworks, Theorien
-- [../entities/](../entities/) — Personen, Organisationen, Projekte
-- [../timeline/](../timeline/) — Chronologische Anker
-- [../sources/](../sources/) — Zusammenfassungen der Quell-Dokumente
+This layer represents the static encyclopedia canon. It contains the unchangeable world knowledge that acts as the absolute premise before the plot of the novel begins.
 
-## Mutations-Regel
-**NIEMALS** durch agentische Schreibprozesse überschreiben. Wenn der chapter-writing
-Workflow eine Charakterentwicklung erzeugt, gehört das Delta nach `wiki/narrative/`,
-nicht hierher.
-
-## Wann laden?
-- Vor jedem Schreibprozess als Read-only Kontext (Discovery Hook)
-- Bei wiki-ingest für neue Quell-Dokumente
-- Bei world-building Workflows
+Information in this layer must NEVER be autonomously overwritten by the generative progress of the story. It serves as the absolute ground truth against which all plot events must be validated.

@@ -18,6 +18,7 @@ The LLM reads the source, extracts knowledge, and updates the wiki:
 import os
 import sys
 import json
+import shutil
 import hashlib
 import re
 from pathlib import Path

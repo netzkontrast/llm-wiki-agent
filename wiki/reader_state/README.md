@@ -1,18 +1,6 @@
-# Reader State Layer — Leser-Wissen
+# Reader State Layer
 
-Diese Schicht modelliert den Wissensstand des Lesers an jedem Punkt der Erzählung.
-Sie akkumuliert monoton — Wissen wird hinzugefügt, niemals gelöscht (Terminology-Ratchet).
+**Type:** Routing Layer
+**Content:** Progressive Disclosure, Known Terms, Irony
 
-## Zugehörige Verzeichnisse
-- [../reader-model/](../reader-model/) — Per-Kapitel Leser-Wissensstände
-- [../foreshadowing/](../foreshadowing/) — Foreshadowing-Stränge: planted → reinforced → resolved
-
-## Mutations-Regel
-Akkumuliert monoton. `terminology_permitted` ist ein One-Way Ratchet — einmal
-freigeschaltete Begriffe können nicht wieder entfernt werden. Neue Einträge werden
-nach jedem Kapitel hinzugefügt; bestehende Einträge niemals gelöscht.
-
-## Wann laden?
-- Beim manuscript-drafting Workflow (als Constraint-Check)
-- Beim reader-model Workflow
-- Beim wiki-lint Workflow (Terminology-Ratchet-Validierung)
+A highly specialized layer to manage "Progressive Disclosure" regarding the simulated reader. It encapsulates directories like `known_terms/`, where monotonically growing lists of permitted terminology are stored, and `irony/`, which tracks the discrepancy between character knowledge and reader knowledge.

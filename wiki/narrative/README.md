@@ -1,24 +1,10 @@
-# Narrative Layer — Plot-Zustände
+# Narrative Layer (K1)
 
-Diese Schicht enthält alle durch den Schreibprozess mutierten Plot-Zustände.
-Jede Änderung im Erzählverlauf schlägt sich hier nieder — nicht im Knowledge Layer.
+**Type:** Routing Layer
+**Content:** Plot States, Outlines, Manuscripts
 
-## Zugehörige Verzeichnisse
-- [../chapters/](../chapters/) — Kapitel-Spezifikationen (POV, Timeline, Constraints)
-- [../outlines/](../outlines/) — Strukturelle Kapitelplanung (Beat-Sequenzen)
-- [../beats/](../beats/) — Atomare Szenenmomente mit Spannung und Foreshadowing
-- [../manuscripts/](../manuscripts/) — Ausgeschriebene Prosa-Entwürfe
-- [../conflicts/](../conflicts/) — Interne, externe und thematische Konflikte
-- [../arcs/](../arcs/) — Charakter- und Plot-Transformationsbögen
-- [../themes/](../themes/) — Thematische Fäden und Motive
-- [../dramatica/](../dramatica/) — Dramatica Theory Story-Punkte und Throughlines
+This layer manages mutating plot states, the temporal unfolding of the story, and scene composition.
 
-## Mutations-Regel
-Mutiert durch Schreibprozesse. Jeder Beat erzeugt potentiell ein Delta. Änderungen
-werden über `informs:`-Ketten in abhängige Seiten propagiert. Immer `last_updated`
-aktualisieren nach Änderungen.
+Unlike the Knowledge Layer, characters here do not exist as absolute definitions, but as dynamic state machines in `states/`, which store temporary deltas (e.g., "State of Character X after Chapter 3: injured and isolated").
 
-## Wann laden?
-- Beim chapter-writing Workflow (chapter, outline, beats, manuscript)
-- Beim conflict-resolution Workflow
-- Beim arc-tracking Workflow
+Each chapter generated merely creates a diff (delta) upon the base state of the Knowledge Layer. This prevents retroactive, destructive overwriting of historical truths.

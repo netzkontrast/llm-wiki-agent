@@ -1,6 +1,4 @@
-# Processed Sources
+# Processed Documents
 
-Files in this directory have been successfully ingested into the wiki.
-They were moved here from `raw/` after ingestion.
-
-Do not modify these files — they are the immutable source record.
+This directory contains source documents that have been successfully ingested into the wiki.
+Files are moved here from the `raw/` directory after ingestion.
