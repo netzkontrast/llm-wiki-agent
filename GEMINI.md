@@ -18,6 +18,14 @@ Or use shorthand triggers:
 
 ---
 
+## Ingestion Queue — Raw Files To Process
+
+> **Rule: ingest ONE file per session. Check `to-Ingest.md` in the root directory.**
+> 1. Read `to-Ingest.md` to pick the first unprocessed file in the list.
+> 2. Run the Ingest Workflow on that file.
+> 3. Remove the file's line entirely from `to-Ingest.md`. Do not delete the raw file itself.
+
+
 ## Directory Layout
 
 ```
