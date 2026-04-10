@@ -13,7 +13,7 @@ Every wiki page — old and new — carries these frontmatter fields:
 ```yaml
 ---
 title: ""
-type: ""                # one of the 15 types listed below
+type: ""                # one of the 18 types listed below
 tags: []
 sources: []             # source slugs that inform this page
 requires: []            # pages to load FOR context when working on this page
@@ -31,6 +31,7 @@ last_updated: YYYY-MM-DD
 source | entity | concept | synthesis
 character | chapter | location | conflict | theme
 timeline-event | rule | arc | dramatica | reader-state | foreshadowing
+beat | outline | manuscript
 ```
 
 ### The `traits:` Extension Map
@@ -153,7 +154,8 @@ pov: ""                   # character slug who narrates
 pov_reliability: high     # high | medium | low | unreliable
 timeline_start: ""        # timeline-event slug
 timeline_end: ""          # timeline-event slug
-draft_status: concept     # concept | outline | draft-1 | draft-2 | final
+outline_ref: ""           # outline page slug (e.g., "outlines/chapter-01-outline")
+manuscript_ref: ""        # manuscript page slug (e.g., "manuscripts/chapter-01-manuscript")
 characters: []            # character slugs appearing in this chapter
 locations: []             # location slugs
 conflicts: []             # conflict slugs active in this chapter
@@ -176,22 +178,14 @@ last_updated: YYYY-MM-DD
 ## Synopsis
 What happens in this chapter (2-4 sentences).
 
-## Scene Beats
-1. Beat 1 — what happens, tension direction
-2. Beat 2 — ...
-
-## Reader State
-- **Knows before:** what the reader knows entering this chapter
-- **Learns:** what the reader discovers
-- **Foreshadowing planted:** strands seeded here
-- **Foreshadowing resolved:** strands paid off here
-
 ## Constraints
 - Links to rule pages that apply, with brief notes on how they constrain this chapter
 
 ## Notes
 Open field.
 ```
+
+> **Note:** Beats and scene structure now live in the outline page (`wiki/outlines/chapter-NN-outline.md`). Reader state tracking lives in the reader-state page (`wiki/reader-model/chapter-NN-state.md`). The chapter page is a pure spec/metadata hub. See `docs/writing-pipeline.md` for the full pipeline.
 
 ### 3. `location`
 
@@ -574,7 +568,7 @@ Open field.
 - [Name](characters/Name.md) — role, brief
 
 ## Chapters
-- [Chapter N: Title](chapters/chapter-NN.md) — draft_status, pov
+- [Chapter N: Title](chapters/chapter-NN.md) — pov, outline_status/manuscript_status
 
 ## Locations
 - [Name](locations/Name.md) — world, brief
@@ -602,6 +596,15 @@ Open field.
 
 ## Foreshadowing
 - [Name](foreshadowing/slug.md) — status
+
+## Outlines
+- [Chapter N](outlines/chapter-NN-outline.md) — outline_status
+
+## Beats
+- [Chapter N, Beat M](beats/chapter-NN-beat-NN.md) — purpose
+
+## Manuscripts
+- [Chapter N](manuscripts/chapter-NN-manuscript.md) — manuscript_status
 ```
 
 ---
@@ -624,4 +627,7 @@ Open field.
 | Dramatica pages | `TitleCase.md` | `MainCharacterThroughline.md` |
 | Reader-state pages | `chapter-NN-state.md` | `chapter-01-state.md` |
 | Foreshadowing pages | `kebab-case.md` | `the-cage-motif.md` |
+| Outline pages | `chapter-NN-outline.md` | `chapter-01-outline.md` |
+| Beat pages | `chapter-NN-beat-NN.md` | `chapter-01-beat-03.md` |
+| Manuscript pages | `chapter-NN-manuscript.md` | `chapter-01-manuscript.md` |
 | Multi-word TitleCase | No spaces, no hyphens | `MnemosyneArchipelago.md` |

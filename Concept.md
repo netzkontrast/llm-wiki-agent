@@ -25,6 +25,9 @@ Pages can have `valid_from`/`valid_until` fields referencing timeline events. An
 ### Reader Progressive Disclosure
 A parallel tracking system models what the *reader* knows at each chapter: `terminology_permitted` (one-way ratchet), foreshadowing strands (planted → reinforced → resolved), dramatic irony gaps, and tension curves. This prevents the agent from using concepts the reader hasn't encountered yet.
 
+### Writing Pipeline
+A four-stage pipeline separates structural planning from prose writing: **chapter spec** (metadata hub) → **outline** (beat sequence and pacing) → **beats** (atomic scene moments with characters, tension, foreshadowing) → **manuscript** (actual written prose). Each stage has its own status lifecycle and four dedicated workflows (outline-writing, beat-detailing, manuscript-drafting, manuscript-revision). The chapter-writing workflow orchestrates by delegating to the right stage.
+
 ### Generic Extension Points
 Every page type includes a `traits:` open key-value map for project-specific metadata the generic schema can't anticipate. Recommended keys per type provide a shared vocabulary without constraining the map.
 
@@ -35,7 +38,8 @@ Concept.md          ← you are here
 docs/               ← detailed reference specifications
   wiki-schema.md       11 page types, frontmatter, templates, traits, naming
   navigation-system.md dependency system, traversal rules, temporal filtering, ceilings
-  agent-workflows.md   8 workflows with triggers, context loads, validation
+  agent-workflows.md   12 workflows with triggers, context loads, validation
+  writing-pipeline.md  beats, outlines, manuscripts — the 4-stage writing pipeline
   reader-model.md      reader progressive disclosure, terminology ratchet, foreshadowing
   dramatica-integration.md Dramatica Theory mapping
 todo/               ← implementation phases with progress tracking
@@ -45,6 +49,7 @@ todo/               ← implementation phases with progress tracking
   phase-2-navigation/  dependency system, temporal filtering, context protocols
   phase-3-workflows/   agent workflows, slash commands
   phase-4-integration/ CLAUDE.md rewrite, tool updates, migration
+  phase-5-writing-pipeline/ beats, outlines, manuscripts, 4 new workflows
 ```
 
 ## New Page Types
@@ -62,6 +67,9 @@ todo/               ← implementation phases with progress tracking
 | `dramatica` | Throughlines, signposts, story points, genre mechanics |
 | `reader-state` | Per-chapter reader knowledge, foreshadowing, tension, terminology |
 | `foreshadowing` | Cross-cutting strands: planted → reinforced → resolved |
+| `beat` | Atomic scene moments: characters, tension, foreshadowing per beat |
+| `outline` | Chapter structural plan: ordered beat sequence, pacing notes |
+| `manuscript` | Actual written prose with revision tracking |
 
 ## Getting Started
 

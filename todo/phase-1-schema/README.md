@@ -14,7 +14,7 @@ Implement the 11 new page types, create all new wiki directories, define frontma
 
 ### Directory Creation
 
-- [ ] 1. Create all new wiki directories: `wiki/characters/`, `wiki/chapters/`, `wiki/locations/`, `wiki/conflicts/`, `wiki/themes/`, `wiki/timeline/`, `wiki/rules/`, `wiki/arcs/`, `wiki/dramatica/`, `wiki/reader-model/`, `wiki/foreshadowing/`, `wiki/archive/`, `wiki/meta/`
+- [ ] 1. Create all new wiki directories: `wiki/characters/`, `wiki/chapters/`, `wiki/locations/`, `wiki/conflicts/`, `wiki/themes/`, `wiki/timeline/`, `wiki/rules/`, `wiki/arcs/`, `wiki/dramatica/`, `wiki/reader-model/`, `wiki/foreshadowing/`, `wiki/archive/`, `wiki/meta/`, `wiki/beats/`, `wiki/outlines/`, `wiki/manuscripts/`
 - [ ] 2. Add `.gitkeep` to each empty directory so git tracks them
 
 ### Index Update
@@ -49,8 +49,8 @@ Create realistic example pages to give Phase 2 content to test navigation agains
 
 ## Completion Criteria
 
-- All 13 new directories exist under `wiki/`
-- `wiki/index.md` has all 15 sections (4 original + 11 new)
+- All 16 new directories exist under `wiki/`
+- `wiki/index.md` has all 18 sections (4 original + 14 new)
 - At least 13 seed pages created with complete, cross-referenced frontmatter
 - All `requires:`/`informs:` references resolve to existing pages
 - All `valid_from`/`valid_until` references point to existing timeline-event pages with `is_boundary: true`

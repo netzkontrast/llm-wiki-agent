@@ -11,6 +11,7 @@ Detailed design documents for the novel-author wiki extension. These are **refer
 | [agent-workflows.md](agent-workflows.md) | 8 novel-specific workflows with trigger patterns, context loads, output specs, validation steps |
 | [reader-model.md](reader-model.md) | Reader progressive disclosure, knowledge-state tracking, `terminology_permitted` ratchet, foreshadowing, tension curves |
 | [dramatica-integration.md](dramatica-integration.md) | Dramatica Theory mapping: throughlines, signposts, story points as wiki pages |
+| [writing-pipeline.md](writing-pipeline.md) | Beats, outlines, manuscripts: the 4-stage writing pipeline with page types and workflows |
 
 ## How to Use
 

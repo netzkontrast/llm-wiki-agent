@@ -8,6 +8,7 @@
 | 2 | `phase-2-navigation/` | `not-started` | Navigation & dependency system: `requires:/informs:`, temporal filtering, context-loading |
 | 3 | `phase-3-workflows/` | `not-started` | Novel-specific agent workflows & slash commands |
 | 4 | `phase-4-integration/` | `not-started` | Wire into CLAUDE.md, extend ingest, update lint/graph, migration |
+| 5 | `phase-5-writing-pipeline/` | `not-started` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
 
 ---
 
@@ -57,6 +58,7 @@ Detailed specifications live in `/docs/`. Load them ONLY when the active phase R
 | `docs/agent-workflows.md` | 8 workflows with triggers, context loads, outputs, validation |
 | `docs/reader-model.md` | Reader progressive disclosure, terminology ratchet, foreshadowing |
 | `docs/dramatica-integration.md` | Dramatica Theory mapping to wiki pages |
+| `docs/writing-pipeline.md` | Beats, outlines, manuscripts — the writing pipeline |
 
 ---
 

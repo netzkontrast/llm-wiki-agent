@@ -225,3 +225,27 @@ The session-start audit is bounded by practical time constraints — if more tha
 - **From frontmatter:** concept/theme pages matching topic, source pages, entity pages
 - **Temporal filter:** none (brainstorming is atemporal)
 - **Ceiling:** 15
+
+### outline-writing
+- **Always load:** `wiki/index.md`, target chapter page, target outline page
+- **From frontmatter:** characters, conflicts, themes from chapter; arc pages; previous chapter's outline
+- **Temporal filter:** resolve from chapter target
+- **Ceiling:** 15
+
+### beat-detailing
+- **Always load:** `wiki/index.md`, outline page, target beat page(s)
+- **From frontmatter:** characters present, location, active conflicts, foreshadowing strands
+- **Temporal filter:** resolve from chapter target
+- **Ceiling:** 15
+
+### manuscript-drafting
+- **Always load:** `wiki/index.md`, outline page, all beat pages, manuscript page
+- **From frontmatter:** POV character voice profile, narrative rules from `constraint_refs`, previous reader-state
+- **Temporal filter:** resolve from chapter target
+- **Ceiling:** 20
+
+### manuscript-revision
+- **Always load:** `wiki/index.md`, manuscript page, outline page, beat pages
+- **From frontmatter:** character voice, narrative rules, editorial notes
+- **Temporal filter:** resolve from chapter target
+- **Ceiling:** 20

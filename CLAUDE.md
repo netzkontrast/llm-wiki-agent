@@ -296,7 +296,28 @@ Operations: `ingest`, `query`, `lint`, `graph`
 
 The wiki is being extended for novel-author use. Detailed specs live in `docs/`, phased implementation plan in `todo/`.
 
-See `Concept.md` for the overall vision and architecture overview.
+See `Concept.md` for the overall vision and architecture overview. See `handover.md` for open questions and ideas.
+
+### Reference Specs
+
+| Spec | Contents |
+|------|----------|
+| `docs/wiki-schema.md` | 14 page types, frontmatter, templates, traits, temporal fields |
+| `docs/navigation-system.md` | `requires:/informs:` dependency, temporal filtering, context ceilings |
+| `docs/agent-workflows.md` | 12 workflows: 8 core + 4 writing pipeline |
+| `docs/reader-model.md` | Reader progressive disclosure, terminology ratchet, foreshadowing |
+| `docs/dramatica-integration.md` | Dramatica Theory mapping to wiki pages |
+| `docs/writing-pipeline.md` | Beats, outlines, manuscripts — the 4-stage writing pipeline |
+
+### Writing Pipeline
+
+The writing pipeline separates chapter specs from structural planning and prose:
+
+```
+Chapter (spec) → Outline (structure) → Beats (atomic scenes) → Manuscript (prose)
+```
+
+Four dedicated workflows: `outline-writing`, `beat-detailing`, `manuscript-drafting`, `manuscript-revision`. The `chapter-writing` workflow orchestrates by delegating to the right stage.
 
 ### Session Start Protocol (MANDATORY)
 

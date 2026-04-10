@@ -2,28 +2,39 @@
 
 ## Overview
 
-Eight novel-specific workflows extend the base wiki workflows (ingest, query, lint, graph). Each workflow defines explicit trigger patterns, context-loading rules, output specifications, and validation steps.
+Twelve novel-specific workflows extend the base wiki workflows (ingest, query, lint, graph). Eight core workflows plus four writing-pipeline workflows. Each defines explicit trigger patterns, context-loading rules, output specifications, and validation steps.
+
+> **Writing pipeline workflows** (outline-writing, beat-detailing, manuscript-drafting, manuscript-revision) are fully specified in `docs/writing-pipeline.md`. The chapter-writing workflow below serves as an orchestrator that delegates to these sub-workflows.
 
 All workflows follow the navigation system defined in `docs/navigation-system.md` — including depth limits, temporal filtering, and context ceilings.
 
 ---
 
-## Workflow: chapter-writing
+## Workflow: chapter-writing (Orchestrator)
 
-**Triggers:** "write chapter N", "draft chapter N", "continue chapter N", "outline chapter N", "work on chapter N"
+**Triggers:** "write chapter N", "draft chapter N", "continue chapter N", "work on chapter N"
+
+This workflow now serves as an **orchestrator** that delegates to the writing pipeline sub-workflows based on current state:
+
+1. If chapter has no outline → trigger `outline-writing` (see `docs/writing-pipeline.md`)
+2. If outline exists but beats aren't detailed → trigger `beat-detailing`
+3. If beats are detailed but no manuscript → trigger `manuscript-drafting`
+4. If manuscript exists → trigger `manuscript-revision`
 
 **Temporal filter:** resolve from chapter target
 
 **Context load:**
 1. Read target chapter page (`wiki/chapters/chapter-NN.md`)
-2. Follow `requires:` chain (depth 2) — typically characters, locations, conflicts
-3. Load `constraint_refs` rule pages (narrative mandates governing this chapter)
-4. Load previous chapter's reader-state (`wiki/reader-model/chapter-(N-1)-state.md`)
-5. Apply temporal filter: skip pages outside the chapter's temporal window
-6. Apply ceiling (20 pages)
+2. Read outline page via `outline_ref` to determine pipeline state
+3. Read manuscript page via `manuscript_ref` to determine prose state
+4. Follow `requires:` chain (depth 2) — typically characters, locations, conflicts
+5. Load `constraint_refs` rule pages (narrative mandates governing this chapter)
+6. Load previous chapter's reader-state (`wiki/reader-model/chapter-(N-1)-state.md`)
+7. Apply temporal filter: skip pages outside the chapter's temporal window
+8. Apply ceiling (20 pages)
 
 **Output:**
-- Updated chapter page (synopsis, scene beats, draft_status)
+- Delegates to appropriate sub-workflow; see `docs/writing-pipeline.md` for specific outputs
 - Updated or created reader-state page (`wiki/reader-model/chapter-NN-state.md`)
 - Mark `informs:` targets as stale if chapter content changed materially
 
