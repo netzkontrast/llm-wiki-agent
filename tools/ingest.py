@@ -109,7 +109,7 @@ def ingest(source_path: str):
 
     prompt = f"""You are maintaining an LLM Wiki. Process this source document and integrate its knowledge into the wiki.
 
-Schema and conventions:
+Crucial Language Rule:\nALL output (including filenames, entity names, concept names, and content) MUST be in English. Translate concepts from the source text into English. The ONLY exception is the `slug` for the source page, which must remain a kebab-case version of the original filename so it can be mapped back to the raw file.\n\nSchema and conventions:
 {schema}
 
 Current wiki state (index + recent pages):

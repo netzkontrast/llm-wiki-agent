@@ -26,6 +26,10 @@ Or use shorthand triggers:
 > 3. Remove the file's line entirely from `to-Ingest.md`. Do not delete the raw file itself.
 
 
+## Language Constraint
+
+> **Language Rule:** All generated wiki content (summaries, concepts, entities, syntheses) MUST be written entirely in English, regardless of the language of the raw source files. Always translate concept and entity names into English (e.g. `Ursprungs-Ich` becomes `OriginEgo`). Source page slugs should remain kebab-case of the original raw filename to maintain mapping (e.g. `raw/Mein-Artikel.md` -> `wiki/sources/mein-artikel.md`).
+
 ## Directory Layout
 
 ```

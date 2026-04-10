@@ -2,13 +2,13 @@
 title: "AEGIS"
 type: concept
 tags: [system, order, logic, coherence]
-sources: [aegis-analyse-und-prompt-optimierung]
+sources: [aegis-analyse-und-prompt-optimierung, aegis-emergenz-aus-der-leere, aegis-genesis-krise-20prosa-auftrag-20formulieren]
 last_updated: "2026-04-10"
 ---
 
 # AEGIS
 
-AEGIS is a rigid, logic-based ordering principle and system operating within the psychological landscape of [[Kael]] in the [[KohärenzProtokoll]] narrative.
+AEGIS is a rigid, logic-based ordering principle and system operating within the psychological landscape of [[Kael]] in the [[CoherenceProtocol]] narrative.
 
 ## Core Principles
 - **No-Trust Mandate (ZTEM):** Every piece of incoming information is inherently suspect and must be validated.

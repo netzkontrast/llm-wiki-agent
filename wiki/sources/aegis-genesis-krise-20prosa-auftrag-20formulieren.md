@@ -23,8 +23,8 @@ This document serves as a comprehensive conceptual framework and prose-writing p
 ## Connections
 - [[AEGIS]] — Provides the backstory for its rigid, coherence-obsessed behavior.
 - [[Kael]] — Explains Kael's origin as the fragmented remnants of the Ursprungs-Ich.
-- [[KohärenzProtokoll]] — The catastrophic protocol that shatters the mind to preserve systemic order.
-- [[Ursprungs-Ich]] — Introduces the original, pre-fragmentation consciousness that housed latent trauma.
+- [[CoherenceProtocol]] — The catastrophic protocol that shatters the mind to preserve systemic order.
+- [[OriginEgo]] — Introduces the original, pre-fragmentation consciousness that housed latent trauma.
 
 ## Contradictions
 - No contradictions. This document expands upon the rigid nature of AEGIS outlined in previous analyses by detailing its catastrophic breaking point.

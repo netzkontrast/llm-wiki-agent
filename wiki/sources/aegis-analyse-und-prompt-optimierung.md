@@ -22,7 +22,7 @@ This document provides a deep, interdisciplinary analysis of the "AEGIS" order p
 
 ## Connections
 - [[AEGIS]] — The central order-making system analyzed in this document.
-- [[KohärenzProtokoll]] — The overarching novel project and systemic framework containing AEGIS.
+- [[CoherenceProtocol]] — The overarching novel project and systemic framework containing AEGIS.
 - [[Kael]] — The protagonist whose psyche hosts AEGIS.
 - [[Juna]] — An anomaly or entity that challenges AEGIS's strict coherence.
 - [[CoreWorlds]] — The isolated information domains managed by AEGIS.
