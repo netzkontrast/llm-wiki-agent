@@ -70,6 +70,34 @@ Create this file when the first contradiction is found. It lives in `wiki/meta/`
 
 ## Wiki Hygiene
 
+### Folder READMEs (MANDATORY)
+
+Every folder under `wiki/` MUST contain a `README.md` with navigational information:
+- **What this folder contains** — page type, naming convention, brief purpose
+- **How to find the right page** — listing of all pages in the folder with one-line descriptions
+- **How pages relate** — which other folders/page types connect to these pages
+- **Temporal note** (if applicable) — whether pages in this folder use `valid_from`/`valid_until`
+
+Update the folder README whenever a page is added, removed, or archived. This is a **mandatory step in every workflow that creates or modifies wiki pages**. The README serves as a local navigation index — agents can read one folder's README instead of scanning all files to find the right page.
+
+```markdown
+# [Folder Name]
+
+[1-2 sentence description of what lives here.]
+
+## Pages
+- [PageName.md](PageName.md) — one-line description
+- [PageName2.md](PageName2.md) — one-line description
+
+## Connections
+- Related to: `wiki/[other-folder]/` — how they connect
+- Referenced by: `wiki/[other-folder]/` — who links here
+
+## Conventions
+- Naming: [convention for this folder]
+- Temporal: [yes/no — whether pages use valid_from/valid_until]
+```
+
 ### When to Consolidate
 - Two pages cover the same entity with <50% distinct content → merge into one
 - After merging, update all `[[wikilinks]]` pointing to the removed page

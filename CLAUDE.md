@@ -335,3 +335,4 @@ Every session that touches wiki structure or implementation:
 - Flag contradictions — never silently resolve them (log to `wiki/meta/contradiction-log.md`)
 - Archive deprecated content to `wiki/archive/` — never delete wiki pages
 - Follow contradiction hierarchy: `rule > source > character > chapter > synthesis`
+- **Every `wiki/` subfolder MUST have a `README.md`** with navigational info — update it whenever pages are added, removed, or archived (see `todo/meta/README.md` for template)

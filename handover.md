@@ -97,6 +97,76 @@ Added Phase 5 and final session deliverables:
 
 ---
 
+## Open Ideas for Future Development
+
+Ideas that could be valuable but are not yet designed or scheduled. Each describes a problem and a potential approach.
+
+### Page Split Management
+
+**Problem:** Pages grow over time — during ingestion, novel writing, and decision-making. A character page that starts at 40 lines might reach 300 lines after 20 chapters of development. A concept page might accumulate content from dozens of source ingestions. Long pages degrade context-window efficiency and make it harder for agents to find the right information.
+
+**Potential approach — Automated split triggers:**
+- **Length-based:** When a page exceeds a configurable threshold (e.g., 200 lines), the agent should evaluate whether the page can be split by topic, by temporal period, or by section. The split produces two or more pages with clear `requires:`/`informs:` links between them. The original page becomes either a hub (linking to sub-pages) or is archived with a redirect.
+- **Temporal splits:** Characters, locations, and conflicts that evolve significantly across the novel's timeline can be split into temporal versions: `Kael.md` (early), `Kael-post-frag.md` (mid), `Kael-integrated.md` (late). Each version has `valid_from`/`valid_until` windows. The temporal filtering system already supports this — it just needs a trigger mechanism to prompt the split.
+- **Complexity-based:** When a page covers 2+ distinct topics (detected by section count, heading density, or thematic divergence), it should be flagged for topic-based splitting. Example: a concept page on "Paraconsistent Logic" that also covers its narrative application should split into a pure concept page and a synthesis page.
+- **Split protocol:** Every split should (1) create the new pages, (2) update all `[[wikilinks]]` pointing to the original, (3) update folder READMEs, (4) update `wiki/index.md`, (5) archive the original if fully replaced. The `informs:` chain handles downstream propagation.
+
+### Context-Window Budget Tracking
+
+**Problem:** Even with context ceilings and priority-drop rules, there's no feedback loop telling the agent "you're loading too much." If the wiki grows to 500+ pages with dense cross-references, the navigation system might routinely hit ceilings and drop useful pages.
+
+**Potential approach:** Track a per-session "context budget" — the total token count of all wiki pages loaded. Each workflow's ceiling could be expressed in approximate tokens rather than page count (since pages vary in length). The agent would report its budget usage ("loaded 12,000 / 20,000 tokens for this workflow") and the user could adjust ceilings. Long-term, the agent could learn which pages are most frequently dropped and suggest structural changes to reduce context pressure.
+
+### Refactoring Sessions
+
+**Problem:** Organic wiki growth creates structural debt — pages that should be merged, split, or reorganized. Currently, the lint workflow catches some issues (orphans, broken links), but there's no dedicated "refactoring" workflow.
+
+**Potential approach:** A `wiki-refactor` workflow that:
+1. Scans for pages exceeding the line threshold
+2. Identifies pages with high `informs:` fan-out (potential for split)
+3. Finds near-duplicate pages (similar titles, overlapping content)
+4. Detects concept pages that have outgrown their original scope
+5. Proposes a refactoring plan (splits, merges, renames, archive) and asks the user for approval before executing
+
+This could run as a periodic maintenance pass (e.g., every 10 ingestions, or after each phase completion).
+
+### Progressive Wiki Indexing
+
+**Problem:** `wiki/index.md` is a flat list. With 500+ pages across 18 types, scrolling through the index to find the right page is slow. Folder READMEs help, but the top-level index becomes unwieldy.
+
+**Potential approach:** Tiered indexing — the main `index.md` shows only section headers with page counts. Each section links to its folder's `README.md` for the detailed listing. Agents read the main index first (fast, small), then drill into the relevant folder README only when needed. This mirrors the progressive disclosure philosophy already used for `docs/` and `todo/`.
+
+### Ingest-Time Wiki Health Scoring
+
+**Problem:** Each ingestion adds pages but may also introduce inconsistencies, increase page lengths, or create orphan content. Currently, the user must manually run `wiki-lint` to discover issues.
+
+**Potential approach:** Add a lightweight health check at the end of every ingest workflow:
+- Count pages over line threshold (flag for split)
+- Check for new orphan pages (pages created with no inbound links)
+- Check `informs:` staleness on pages touched during ingest
+- Output a 1-line health summary: "Wiki health: 3 pages need splitting, 1 orphan, 0 stale targets"
+- If health score drops below threshold, suggest running `wiki-lint` or `wiki-refactor`
+
+### Semantic Deduplication
+
+**Problem:** Multiple source documents may describe the same concept in different terminology (especially with German/English mixing). Two concept pages might exist for what is essentially the same idea.
+
+**Potential approach:** During ingestion, before creating a new concept or entity page, the agent should search existing pages for semantic overlap — not just exact title matches. If a candidate match is found, the agent asks: "This looks related to [[ExistingPage]] — merge, link, or create separately?" This prevents the wiki from fragmenting knowledge across near-duplicate pages.
+
+### Chapter Dependency Graphs
+
+**Problem:** Chapters don't exist in isolation — chapter 15 might depend on revelations from chapters 3, 8, and 12. Currently, this is tracked via `requires:` and `informs:`, but there's no visualization of chapter-to-chapter dependencies.
+
+**Potential approach:** A specialized graph view (separate from the main knowledge graph) that shows only chapter nodes with edges representing:
+- Foreshadowing strands (planted in X, resolved in Y)
+- Character arc stage transitions
+- Timeline causality
+- Reader knowledge prerequisites
+
+This would help identify structural issues like circular dependencies, isolated chapters, or overly dependent clusters.
+
+---
+
 ## File Inventory (Created/Modified This Session)
 
 ### Created (19 files)
