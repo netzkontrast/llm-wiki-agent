@@ -21,17 +21,47 @@ Or use shorthand triggers:
 ## Directory Layout
 
 ```
-raw/          # Immutable source documents — never modify these
+raw/          # Immutable source documents — waiting for ingestion
+processed/    # Source documents that have been ingested — moved from raw/
 wiki/         # Agent owns this layer entirely
   index.md    # Catalog of all pages — update on every ingest
   log.md      # Append-only chronological record
   overview.md # Living synthesis across all sources
+  knowledge/  # Routing layer: characters, locations, rules, concepts, entities, timeline, sources
+  narrative/  # Routing layer: chapters, outlines, beats, manuscripts, conflicts, arcs, themes, dramatica
+  reader_state/ # Routing layer: reader-model, foreshadowing
+  meta/       # Routing layer: logs, contradiction-log, protocols, index
   sources/    # One summary page per source document
   entities/   # People, companies, projects, products
   concepts/   # Ideas, frameworks, methods, theories
   syntheses/  # Saved query answers
 graph/        # Auto-generated graph data
 tools/        # Optional standalone Python scripts (require ANTHROPIC_API_KEY)
+```
+
+---
+
+## Ingestion Queue
+
+The ingestion queue is managed by file location, not by checklist:
+
+- `raw/` — files waiting to be ingested (queue)
+- `processed/` — files that have been successfully ingested (done)
+
+**After every successful ingest**, move the source file:
+```bash
+mv raw/<filename> processed/<filename>
+```
+
+To see what's left to ingest:
+```bash
+ls raw/*.md | wc -l    # count remaining
+ls raw/*.md             # list remaining
+```
+
+To see what's been processed:
+```bash
+ls processed/*.md | wc -l
 ```
 
 ---
@@ -68,6 +98,7 @@ Steps (in order):
 7. Update/create concept pages for key ideas and frameworks discussed
 8. Flag any contradictions with existing wiki content
 9. Append to `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`
+10. Move the source file from `raw/` to `processed/`: `mv raw/<filename> processed/<filename>`
 
 ### Source Page Format
 

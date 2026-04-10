@@ -98,6 +98,37 @@ Update the folder README whenever a page is added, removed, or archived. This is
 - Temporal: [yes/no — whether pages use valid_from/valid_until]
 ```
 
+### Progressive Disclosure via Unterverzeichnisse
+
+Wenn eine Wiki-Seite zu komplex wird (>200 Zeilen) oder mehrere klar trennbare
+Aspekte abdeckt, kann sie in ein Unterverzeichnis aufgelöst werden:
+
+Statt:
+```
+wiki/characters/Kael.md (300 Zeilen, Profile + Psychologie + Voice + Arc)
+```
+
+Verwende:
+```
+wiki/characters/Kael/
+  README.md        — Kurzprofil + Navigation (L1: immer laden)
+  psychology.md    — Psychologisches Framework (L2: bei character-dev laden)
+  voice.md         — Stimmenprofil und Syntax-Patterns (L2: bei manuscript-drafting laden)
+  arc-states/      — Temporale Zustände (L3: nur bei spezifischem Kapitelkontext)
+    pre-fragmentation.md
+    post-fragmentation.md
+    integrated.md
+```
+
+Die README.md im Unterverzeichnis dient als L1-Discovery-Dokument:
+- Maximal 50 Zeilen
+- Enthält: Name, Rolle, aktuelle Arc-Phase, Liste der Sub-Dokumente
+- Agent lädt die README immer, Sub-Dokumente nur bei Bedarf (Progressive Disclosure)
+
+**Schwellenwerte:**
+- >200 Zeilen → Split erwägen
+- >2 distinkte Themen → Split empfohlen
+
 ### When to Consolidate
 - Two pages cover the same entity with <50% distinct content → merge into one
 - After merging, update all `[[wikilinks]]` pointing to the removed page
