@@ -1,6 +1,5 @@
 # Ingestion Queue
 
-raw/AegisAnalyseUndPromptOptimierung.md
 raw/AegisEmergenzAusDerLeere.md
 raw/AegisGenesisKrise20prosaAuftrag20formulieren.md
 raw/AegisPhilosophieUndManifestEntwicklung.md
