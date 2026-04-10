@@ -289,3 +289,28 @@ grep "^## \[" wiki/log.md | tail -10
 ```
 
 Operations: `ingest`, `query`, `lint`, `graph`
+
+---
+
+## Development Roadmap (todo/)
+
+The wiki is being extended for novel-author use. Detailed specs live in `docs/`, phased implementation plan in `todo/`.
+
+See `Concept.md` for the overall vision and architecture overview.
+
+### Session Start Protocol (MANDATORY)
+
+Every session that touches wiki structure or implementation:
+1. Read `todo/README.md` — find the active phase (first phase with status != `complete`)
+2. Read `todo/meta/README.md` — validation rules, contradiction hierarchy, wiki hygiene
+3. Read the active phase's `README.md` in `todo/phase-N-*/`
+4. Continue from the first unchecked task in that phase
+
+### Rules
+- Mark tasks `- [x]` immediately after completing them
+- Update phase status when all tasks in a phase complete
+- Load `docs/` specs ONLY when the active task references them
+- NEVER read inactive phase folders (status `not-started` or `complete`)
+- Flag contradictions — never silently resolve them (log to `wiki/meta/contradiction-log.md`)
+- Archive deprecated content to `wiki/archive/` — never delete wiki pages
+- Follow contradiction hierarchy: `rule > source > character > chapter > synthesis`
