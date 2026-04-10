@@ -39,9 +39,11 @@ informs:
 
 ## Traversal Rules
 
-### Depth Limit: Max-Depth = 2
+Reading and writing have **different traversal limits**. Loading context is bounded to protect the context window. Propagating changes is unbounded to guarantee wiki integrity.
 
-When loading a page's `requires:` chain:
+### `requires:` — Bounded (Max-Depth = 2)
+
+When loading a page's `requires:` chain for **reading context**:
 
 1. **Depth 0:** The target page itself
 2. **Depth 1:** Pages listed in the target's `requires:`
@@ -50,17 +52,42 @@ When loading a page's `requires:` chain:
 
 If a workflow needs deeper context, it must explicitly list pages in the workflow spec — no recursive crawling beyond depth 2.
 
+### `informs:` — Unbounded (Full Propagation)
+
+When a page is **modified**, the agent MUST follow the full `informs:` chain until no more targets remain. This is non-negotiable — bounded propagation would leave stale content and undetected contradictions in the wiki.
+
+**Protocol:**
+1. After modifying page A, read A's `informs:` list
+2. For each target page B: check if A's changes affect B's content
+3. If yes: update B, then recursively follow B's `informs:` list (repeat from step 1 with B as the modified page)
+4. If no: mark B as "checked, no update needed" — do NOT follow B's `informs:` further (changes don't propagate through unchanged pages)
+5. Continue until all reachable targets are checked or updated
+
+**Cycle protection:** Track all visited pages in a set. If a page appears again during traversal, skip it. Log the cycle in `wiki/meta/contradiction-log.md` — circular `informs:` chains may indicate a structural issue that needs human review.
+
+**Context window management:** Unbounded propagation can touch many pages. To stay within context limits:
+- Read only the frontmatter + relevant section of each `informs:` target (not the full page) when checking for staleness
+- Batch updates: collect all needed changes, then apply them in sequence
+- If the propagation chain exceeds 20 pages in a single edit, pause and report to the user before continuing
+
 ### Deduplication
 
-If the same page appears at multiple depths, load it once. Track loaded pages to avoid cycles.
+If the same page appears at multiple depths (in either direction), process it once. Track visited pages in a set to avoid cycles.
 
-### Load Order
+### Load Order (requires: — reading)
 
 1. Target page (read frontmatter first to discover dependencies)
 2. Depth-1 requires (in frontmatter order)
 3. Depth-2 requires (in frontmatter order)
 4. Apply temporal filter (see below)
 5. Apply context ceiling (see below)
+
+### Propagation Order (informs: — writing)
+
+1. Modify the target page
+2. Follow `informs:` breadth-first (all direct targets first, then their targets)
+3. For each target: check relevance → update if needed → recurse if updated
+4. Log all updates to `wiki/log.md`
 
 ---
 
@@ -125,22 +152,31 @@ Each workflow has a **hard page-count ceiling** — the maximum number of wiki p
 
 ## Staleness Detection
 
-After modifying a page, check its `informs:` targets:
+Staleness detection serves two roles: **real-time** (during edits) and **session-start** (catching drift from prior sessions).
 
-1. Read the target page's `last_updated` date
-2. If the target's `last_updated` is older than the modified page's `last_updated`, the target is **stale**
-3. Stale targets should either be updated immediately or flagged in `wiki/meta/contradiction-log.md`
+### Real-Time: Unbounded Propagation
 
-### Quick Staleness Grep
+When a page is modified, the agent follows the full `informs:` chain (see "Traversal Rules → `informs:` — Unbounded" above). Every target in the chain is either updated or confirmed current. This means **no stale content is left behind** after any edit — the wiki is always consistent after every operation.
 
-At session start (per meta/README.md protocol), agents can run a quick check:
+### Session-Start: Quick Staleness Audit
+
+Between sessions, external edits or incomplete prior sessions may leave stale pages. At session start (per `todo/meta/README.md` protocol), run a quick audit:
+
 1. Grep all `informs:` fields across the wiki
-2. For each target, compare `last_updated` dates
-3. Flag any target that is older than its informing page
+2. For each informing→target pair, compare `last_updated` dates
+3. If a target's `last_updated` is older than its informing page's `last_updated`, the target is **stale**
+4. Follow the `informs:` chain from each stale target to find **transitive staleness** — if A→B→C and B is stale, C may also be stale
+5. Report all stale pages, then either update them or flag them in `wiki/meta/contradiction-log.md`
+
+The session-start audit is bounded by practical time constraints — if more than 20 stale pages are found, report the list to the user and prioritize updates for pages in the active workflow.
 
 ---
 
 ## Workflow Context-Loading Specifications
+
+> **Reading** uses `requires:` (bounded, depth 2, subject to ceiling).
+> **Writing** uses `informs:` (unbounded, full propagation, no ceiling).
+> Every workflow below specifies context-loading for reads. After any modification, the agent MUST follow the full `informs:` chain regardless of workflow.
 
 ### chapter-writing
 - **Always load:** `wiki/index.md`, target chapter page

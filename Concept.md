@@ -17,7 +17,7 @@ The original 4 types remain unchanged and serve as the **generic knowledge layer
 ## How It Works
 
 ### Dependency-Driven Navigation
-Every wiki page declares `requires:` (what to load for context) and `informs:` (what to update after changes). Agents traverse these chains with a max-depth of 2 and workflow-specific context ceilings, loading exactly what's needed and nothing more.
+Every wiki page declares `requires:` (what to load for context) and `informs:` (what to update after changes). Reading uses bounded traversal (max-depth 2, workflow-specific context ceilings) to protect the context window. Writing uses **unbounded propagation** — when a page changes, the agent follows the full `informs:` chain until every downstream page is updated or confirmed current. This asymmetry guarantees the wiki is always consistent after every operation while keeping context loads manageable.
 
 ### Temporal Filtering
 Pages can have `valid_from`/`valid_until` fields referencing timeline events. An agent writing chapter 15 automatically loads only the character states, conflicts, and world-rules that are true at that point in the story — not the entire novel's worth of evolution.
