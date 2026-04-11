@@ -29,15 +29,11 @@ Three interlocking ideas drive this phase:
 > completed with a flat `wiki/` structure. These migration tasks move existing
 > content into the 4-layer nested layout before any new tooling is built.
 
-- [ ] A0. Migrate flat wiki structure → 4-layer nested layout
+- [x] A0. Migrate flat wiki structure → 4-layer nested layout
   ```sh
-  # Knowledge layer
-  git mv wiki/sources/      wiki/knowledge/sources/
-  git mv wiki/entities/     wiki/knowledge/entities/
-  git mv wiki/concepts/     wiki/knowledge/concepts/
+  # Knowledge layer (rules, timeline content moved here)
   git mv wiki/rules/        wiki/knowledge/rules/
-  git mv wiki/timeline/     wiki/knowledge/timeline/   # becomes research provenance
-  git mv wiki/syntheses/    wiki/knowledge/syntheses/  # if exists
+  # wiki/timeline/ held story-world events → moved to narrative/timeline/ instead
 
   # Narrative layer
   git mv wiki/characters/   wiki/narrative/characters/
@@ -50,6 +46,7 @@ Three interlocking ideas drive this phase:
   git mv wiki/beats/        wiki/narrative/beats/
   git mv wiki/outlines/     wiki/narrative/outlines/
   git mv wiki/manuscripts/  wiki/narrative/manuscripts/
+  git mv wiki/timeline/     wiki/narrative/timeline/   # story-world boundary events
 
   # Reader state layer
   git mv wiki/reader-model/   wiki/reader_state/reader-model/
@@ -58,12 +55,12 @@ Three interlocking ideas drive this phase:
   # Meta layer
   git mv wiki/archive/      wiki/meta/archive/
   ```
-  - Create `wiki/narrative/timeline/` (empty + .gitkeep) for story-world chronology
-  - Create `wiki/knowledge/syntheses/` if not already present
-  - Create `wiki/meta/ingest/` for session logs
-  - After moves: update ALL internal wikilinks and frontmatter slug references in moved files
-  - Update `wiki/index.md` to use nested paths
-  - Update layer routing READMEs (already done in this branch)
+  - Created `wiki/knowledge/timeline/` (empty, new README for research provenance)
+  - Created `wiki/knowledge/sources/`, `entities/`, `concepts/`, `syntheses/` (empty + .gitkeep)
+  - Created `wiki/meta/ingest/` for session logs
+  - Updated all page-type README paths and layer attributions
+  - Updated `wiki/index.md` to use nested paths
+  - Layer routing READMEs already correct from prior work
 
 - [ ] A1. Split CLAUDE.md / GEMINI.md
   - Move all autonomous ingest instructions, Gemini-specific workflows, and the
