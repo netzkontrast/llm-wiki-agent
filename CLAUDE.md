@@ -363,3 +363,5 @@ Every session that touches wiki structure or implementation:
 
 ## Developer Enhancements
 See `docs/jules/dev-process.md` for future proposals on splitting Wiki Operations from System Development to improve token efficiency.
+## Developer Enhancements
+See `docs/jules/dev-process.md` for future proposals on splitting Wiki Operations from System Development to improve token efficiency.

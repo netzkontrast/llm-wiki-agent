@@ -1,50 +1,26 @@
-# Decoupling Operational Workflows from System Development
+# Split System Development from Operational Workflows
 
-## Problem: Context Dilution & Token Bloat
+## The Problem
+Currently, the main entry files (`CLAUDE.md` and `GEMINI.md`) serve a dual purpose. They hold:
+1. **Operational Workflows:** Directives on how an agent should use the wiki (ingesting, querying, writing chapters, reading constraints).
+2. **System Development:** Instructions on how the *developer* agent should build the repository (phases, todo tasks, hygiene rules).
 
-During the development of the wiki's extension for novel-author workflows, it became clear that the agent instruction files (`CLAUDE.md` and `GEMINI.md`) serve two fundamentally conflicting purposes:
+This mixed context balloons the core system prompt, causing context dilution. During an active writing session (e.g., generating manuscript prose), the agent does not need to know about "Phase 6 Token-efficient ingest" or the rules for updating `todo/README.md`.
 
-1. **The Operational Persona (The Writer/Researcher):** An agent acting as the wiki's operator only needs to know how to ingest files, query the graph, draft chapters, and manage reader state.
-2. **The Developer Persona (The System Builder):** An agent acting as the wiki's maintainer needs to know the schema specs, the `docs/` architecture, the phase roadmaps in `todo/`, and the meta-maintenance rules.
+## Proposed Solution
+Separate these concerns into two distinct modes or entry points.
 
-Currently, these two roles are compressed into single, monolithic instruction files (`CLAUDE.md`, `GEMINI.md`). When a user asks the agent to "ingest this source file", the agent is burdened with parsing instructions about the Phase 5 Writing Pipeline, Dramatica integration, and rules for marking `todo` checklists.
+### 1. The Operational Agent (Author/Editor)
+*   **Entry Point:** `CLAUDE.md` / `GEMINI.md`
+*   **Scope:** Contains only the rules for writing, reading the schema, running `tools/ingest.py` or `/wiki-chapter`, progressive disclosure principles, and the contradiction hierarchy.
+*   **Benefits:** Faster response times, less token consumption, and zero hallucination of "development tasks" when it should be focusing on narrative generation.
 
-**This causes three major problems:**
-1. **Token Inefficiency:** We are wasting the context window on irrelevant system architecture when the agent just needs to perform a simple operational task.
-2. **Instruction Confusion:** The agent might hallucinate development workflows while trying to execute operational workflows (or vice versa).
-3. **Scaling Bottleneck:** As the system grows, the single `.md` file becomes unwieldy, violating the core principle of progressive disclosure.
+### 2. The Systems Architect (Developer)
+*   **Entry Point:** A new file, e.g., `CLAUDE_DEV.md` or a specific section within the `docs/jules/` directory that is invoked manually.
+*   **Scope:** Contains the `todo/` tracker, Phase status, meta-maintenance rules, and architectural design decisions.
+*   **Benefits:** Can be activated only when expanding the repository's toolset or schema, preventing contamination of story logic with python scripting tasks.
 
-## Proposed Solution: The Two-Agent Model
-
-We must separate the instructions into two explicit personas: **WikiOps** and **SysDev**.
-
-### 1. WikiOps (Operational Context)
-
-**Purpose:** Daily usage of the wiki (ingesting, writing, querying).
-**Context Load:** Minimal. Fast.
-**Structure:**
-- Keep `CLAUDE.md` and `GEMINI.md` extremely lean.
-- They should *only* define the operational slash commands (`/wiki-ingest`, `/wiki-chapter`, etc.) and the basic directory layout (`raw/`, `processed/`, `wiki/`).
-- They should rely heavily on the Discovery Hooks (`wiki/meta/discovery-protocol.md`) to pull in only the necessary pages at runtime.
-- **Remove all references to the `todo/` directory and development roadmaps.**
-
-### 2. SysDev (Development Context)
-
-**Purpose:** Extending the wiki architecture, implementing new phases, modifying schemas.
-**Context Load:** Deep, structural.
-**Structure:**
-- Create a dedicated trigger or persona initialization, e.g., `/sysdev` or *"Activate Developer Mode"*.
-- When activated, the agent reads a new root file: `DEVELOPER.md`.
-- `DEVELOPER.md` contains the rules for modifying the system: reading the `todo/` roadmaps, understanding the `docs/` schemas, and following the session start protocols.
-
-## Implementation Steps (Future Work)
-
-1. **Refactor CLAUDE.md / GEMINI.md:** Strip out the "Development Roadmap" section and the "Session Start Protocol". Keep only the "Slash Commands", "Directory Layout", and "Ingest/Query/Lint/Graph" basic operations.
-2. **Create DEVELOPER.md:** Move the stripped-out development instructions here.
-3. **Establish Context Boundaries:** Explicitly instruct the agent in `CLAUDE.md` that if the user asks to modify the system structure (e.g., "add a new page type", "implement Phase 4"), it must *first* read `DEVELOPER.md` to load the development context.
-
-## Benefits
-
-- **Massive Token Savings:** The vast majority of daily interactions (WikiOps) will run with a fraction of the context overhead.
-- **Improved Accuracy:** The agent will focus solely on the immediate operational task, guided by the specific `SKILL.md` for that workflow, without being distracted by system architecture rules.
-- **Cleaner Progressive Disclosure:** The system achieves true progressive disclosure at the persona level, not just the file level.
+## Implementation Path
+- Refactor `CLAUDE.md` to strictly outline the 15 page types, 4 layers, and 13 slash commands.
+- Move the "Development Roadmap (todo/)" and "Universal Rules" sections into a dedicated developer file.
+- Implement an explicit "switch" where an agent is told "You are in Dev Mode" vs "You are in Writing Mode".
