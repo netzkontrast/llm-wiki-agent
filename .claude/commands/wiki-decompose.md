@@ -14,7 +14,7 @@ Use the following clustering rules to identify entities accurately:
 You MUST extract a FULL and EXHAUSTIVE inventory. It is strictly forbidden to cap the entity list (e.g., no "top 5" or "representative sample"). All entity counts must be honored during ingest.
 
 Generate the approved plan and save it to `log/{branch}/{session}/plan.md` in the following structure:
-1. A clear, bulleted inventory of all extracted entities, grouped by type (e.g., `### Locations`, `### Characters`, `### Concepts`). Each bullet should specify the target page (e.g., `- [Entity Name] -> wiki/narrative/locations/[Entity Name].md`).
+1. A clear, bulleted inventory of all extracted entities, grouped by type (e.g., `### Locations`, `### Characters`, `### Concepts`). Each bullet should specify the target page (e.g., `- [Entity Name] -> wiki/narrative/locations/[Entity Name].md`). The entities should not contain markdown styling like bold (`**`).
 2. Layers touched (knowledge, narrative, reader_state).
 3. Known vs. new entities and qmd search commands to run.
 4. A `## Summary` block with counts for each category and a TOTAL entities count.

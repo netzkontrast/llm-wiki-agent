@@ -55,9 +55,9 @@ def extract_entities_from_plan(filepath):
                  current_section = None
             continue
 
-        # Extract entity from list item format "- [Entity Name] -> wiki/..."
-        # or simple bullet lists "- Entity Name"
-        match = re.search(r'^\s*-\s*(?:\[(.*?)\]|(.*?))(?:\s*->|$)', line)
+        # Extract entity from list item format "- [Entity Name] -> wiki/...", "- Entity Name -> wiki/..."
+        # or "- Entity Name → wiki/..." or simple bullet lists "- Entity Name"
+        match = re.search(r'^\s*-\s*(?:\[(.*?)\]|(.*?))(?:\s*(?:->|→)|$)', line)
         if match and current_section:
             entity = match.group(1) or match.group(2)
             if entity:
