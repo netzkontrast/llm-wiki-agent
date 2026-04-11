@@ -10,6 +10,10 @@
 | 3 | `phase-3-workflows/` | `not-started` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
 | 4 | `phase-4-integration/` | `not-started` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
 | 5 | `phase-5-writing-pipeline/` | `not-started` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
+| 6 | `phase-6-adaptive-ingest/` | `not-started` | Token-efficient ingest: qmd, decompose script, session logging, CLAUDE/GEMINI split, novel page types |
+
+> **Phase 6 note:** Group A tasks (Foundation) can start immediately in parallel with Phase 1.
+> Groups B–D depend on Phase 1 wiki directories existing.
 
 ---
 
@@ -60,6 +64,7 @@ Detailed specifications live in `/docs/`. Load them ONLY when the active phase R
 | `docs/reader-model.md` | Reader progressive disclosure, terminology ratchet, foreshadowing |
 | `docs/dramatica-integration.md` | Dramatica Theory mapping to wiki pages |
 | `docs/writing-pipeline.md` | Beats, outlines, manuscripts — the writing pipeline |
+| `docs/adaptive-ingest.md` | qmd setup, decompose workflow, session logging, agent personas, CLAUDE/GEMINI split |
 
 ---
 

@@ -1,18 +1,22 @@
-# Reader State Layer — Leser-Wissen
+# Reader State Layer — Monotonically Accumulating Reader Knowledge
 
-Diese Schicht modelliert den Wissensstand des Lesers an jedem Punkt der Erzählung.
-Sie akkumuliert monoton — Wissen wird hinzugefügt, niemals gelöscht (Terminology-Ratchet).
+This layer models what the reader knows at each point in the narrative. It accumulates
+monotonically — knowledge is added, never removed (Terminology Ratchet).
 
-## Zugehörige Verzeichnisse
-- [../reader-model/](../reader-model/) — Per-Kapitel Leser-Wissensstände
-- [../foreshadowing/](../foreshadowing/) — Foreshadowing-Stränge: planted → reinforced → resolved
+**All page content lives as subdirectories here (not at wiki root):**
 
-## Mutations-Regel
-Akkumuliert monoton. `terminology_permitted` ist ein One-Way Ratchet — einmal
-freigeschaltete Begriffe können nicht wieder entfernt werden. Neue Einträge werden
-nach jedem Kapitel hinzugefügt; bestehende Einträge niemals gelöscht.
+| Dir | Type | What it contains |
+|---|---|---|
+| `reader-model/` | reader-state | Per-chapter reader knowledge states |
+| `foreshadowing/` | foreshadowing | Strands: `planted` → `reinforced` → `resolved` |
 
-## Wann laden?
-- Beim manuscript-drafting Workflow (als Constraint-Check)
-- Beim reader-model Workflow
-- Beim wiki-lint Workflow (Terminology-Ratchet-Validierung)
+## Mutation rule
+Accumulates monotonically. `terminology_permitted` is a one-way ratchet — once a
+term is unlocked it cannot be removed. New entries are added after each chapter;
+existing entries are never deleted.
+
+## When to load
+- During `wiki-ingest-reader` sub-skill (usually manual, after chapter writing)
+- During manuscript-drafting workflow (constraint check)
+- During wiki-lint workflow (terminology-ratchet validation)
+- qmd collection: `reader-state` — `qmd search "term" -c reader-state`

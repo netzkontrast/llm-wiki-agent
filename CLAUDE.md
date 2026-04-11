@@ -27,19 +27,39 @@ Claude Code reads this file automatically and follows the workflows below.
 raw/          # Immutable source documents — waiting for ingestion
 processed/    # Source documents that have been ingested — moved from raw/
 wiki/         # Claude owns this layer entirely
-  index.md    # Catalog of all pages — update on every ingest
+  index.md    # Global catalog — all page types, all layers
   log.md      # Append-only chronological record
   overview.md # Living synthesis across all sources
-  knowledge/  # Routing layer: characters, locations, rules, concepts, entities, timeline, sources
-  narrative/  # Routing layer: chapters, outlines, beats, manuscripts, conflicts, arcs, themes, dramatica
-  reader_state/ # Routing layer: reader-model, foreshadowing
-  meta/       # Routing layer: logs, contradiction-log, protocols, index
-  sources/    # One summary page per source document
-  entities/   # People, companies, projects, products
-  concepts/   # Ideas, frameworks, methods, theories
-  syntheses/  # Saved query answers
+  knowledge/  # Layer 1: static facts (source-derived, author-defined)
+    sources/      # One summary page per source document
+    entities/     # Real-world people, companies, projects
+    concepts/     # Ideas, frameworks, methods, theories
+    rules/        # World-rules and narrative-rules (authorial canon)
+    timeline/     # Research provenance — source dates, real-world chronology
+    syntheses/    # Saved query answers
+  narrative/  # Layer 2: mutable story structure
+    characters/   # Fictional character profiles
+    chapters/     # Chapter specs (POV, timeline, constraints)
+    locations/    # World-building settings
+    conflicts/    # Conflict tracking
+    themes/       # Thematic threads and motifs
+    arcs/         # Character and plot transformation arcs
+    dramatica/    # Dramatica Theory story points
+    timeline/     # Story-world chronology (boundary events, sequence numbers)
+    beats/        # Atomic scene moments
+    outlines/     # Chapter structural planning
+    manuscripts/  # Written prose drafts
+  reader_state/ # Layer 3: monotonically accumulating reader knowledge
+    reader-model/   # Per-chapter reader knowledge states
+    foreshadowing/  # Foreshadowing strands (planted → resolved)
+  meta/       # Layer 4: system administration
+    archive/    # Deprecated pages (never delete)
+    ingest/     # Session plans and logs (adaptive ingest)
+    contradiction-log.md
+    <protocol docs>
+log/          # Agent session logs (branch-scoped, Phase 6)
 graph/        # Auto-generated graph data
-tools/        # Optional standalone Python scripts (require ANTHROPIC_API_KEY)
+tools/        # Python scripts (require qmd + ANTHROPIC_API_KEY)
 ```
 
 ---

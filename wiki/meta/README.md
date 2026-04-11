@@ -1,26 +1,31 @@
-# Meta Layer — System-Steuerung
+# Meta Layer — System Administration
 
-Diese Schicht enthält alle systemischen Steuerungsdokumente: Logs, Protokolle,
-Contradiction-Log, Indexierungshilfen. Sie dient als Audit-Trail und Agent-Routing.
+This layer contains all system control documents: session logs, protocols,
+contradiction log, and session management infrastructure for adaptive ingest.
+Serves as audit trail and agent routing.
 
-## Zugehörige Verzeichnisse und Dateien
-- [../meta/](../meta/) — Contradiction-Log, temporale und staleness Protokolle
-- [../archive/](../archive/) — Archivierte (nie gelöschte) veraltete Wiki-Seiten
-- [../syntheses/](../syntheses/) — Gespeicherte Query-Antworten
+**Subdirectories and key files (all live here, not at wiki root):**
 
-## Schlüsseldokumente
-- `contradiction-log.md` — Alle erkannten Widersprüche (Pflichtformat)
-- `temporal-protocol.md` — Algorithmus für zeitliche Filterung
-- `context-protocol.md` — Context-Ceiling und Priority-Drop Regeln
-- `staleness-protocol.md` — Erkennung veralteter `informs:`-Targets
-- `discovery-protocol.md` — Discovery-Hook vor chapter-writing Workflows
-- `validation-protocol.md` — Validation-Hook nach Generierungen
+| Path | What it contains |
+|---|---|
+| `archive/` | Deprecated pages — never delete, only archive |
+| `ingest/` | Session plans, findings, decisions (Phase 6 session logging) |
+| `contradiction-log.md` | All detected contradictions (mandatory format) |
+| `temporal-protocol.md` | Algorithm for temporal filtering |
+| `context-protocol.md` | Context-ceiling and priority-drop rules |
+| `staleness-protocol.md` | Detection of stale `informs:` targets |
+| `discovery-protocol.md` | Discovery hook before chapter-writing workflows |
+| `validation-protocol.md` | Validation hook after generation steps |
 
-## Mutations-Regel
-Append-only für Logs. Protokolle werden aktualisiert wenn Regeln sich ändern.
-Archiv-Verzeichnis nur erweitern — niemals löschen.
+> `syntheses/` (saved query answers) lives in `wiki/knowledge/syntheses/` — not here.
 
-## Wann laden?
-- Beim session-start (contradiction-log prüfen)
-- Beim wiki-lint Workflow
-- Bei Konflikt-Eskalationen
+## Mutation rule
+Append-only for logs. Protocols are updated when rules change. `archive/` only
+grows — never delete. `ingest/` session folders created by `tools/session_init.py`.
+
+## When to load
+- At session start (check contradiction-log)
+- During wiki-lint workflow
+- During conflict escalations
+- qmd collection: `meta` — `qmd search "term" -c meta`
+- For adaptive pipeline learning, see `docs/meta-learning.md`

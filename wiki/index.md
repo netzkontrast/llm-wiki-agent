@@ -5,52 +5,60 @@ This file is maintained by the LLM. Updated on every ingest.
 ## Overview
 - [Overview](overview.md) — living synthesis across all sources
 
-## Sources
+## Knowledge Layer
 
-## Entities
+### Sources
 
-## Concepts
+### Entities
 
-## Syntheses
+### Concepts
 
-## Characters
-- [Kael](characters/Kael.md) — protagonist, ANP host, pre-fragmentation
-- [AEGIS](characters/AEGIS.md) — antagonist, coherence-enforcement system
+### Syntheses
 
-## Chapters
-- [Chapter 1: The Sterile Beginning](chapters/chapter-01.md) — pov: Kael, setup
+### Rules (knowledge)
+- [CoherenceTheoryOfTruth](knowledge/rules/CoherenceTheoryOfTruth.md) — world, logic
+- [MaxOneNewConceptPerScene](knowledge/rules/MaxOneNewConceptPerScene.md) — narrative, psychology
 
-## Locations
-- [LogosPrime](locations/LogosPrime.md) — KW1, rigid control / suppressed chaos
+### Timeline (research provenance)
+- [001 Story Begins](knowledge/timeline/001-story-begins.md) — Day 1, morning
+- [010 Fragmentation Revealed](knowledge/timeline/010-fragmentation-revealed.md) — Day 10, crisis point
+- [028 Goedel Gambit](knowledge/timeline/028-goedel-gambit.md) — Day 28, structural climax
 
-## Conflicts
-- [KaelVsAegis](conflicts/KaelVsAegis.md) — external, self-referential, open
+## Narrative Layer
 
-## Themes
-- [IntegrationVsFragmentation](themes/IntegrationVsFragmentation.md) — central dialectical theme
+### Characters
+- [Kael](narrative/characters/Kael.md) — protagonist, ANP host, pre-fragmentation
+- [AEGIS](narrative/characters/AEGIS.md) — antagonist, coherence-enforcement system
 
-## Timeline
-- [001 Story Begins](timeline/001-story-begins.md) — Day 1, morning
-- [010 Fragmentation Revealed](timeline/010-fragmentation-revealed.md) — Day 10, crisis point
-- [028 Goedel Gambit](timeline/028-goedel-gambit.md) — Day 28, structural climax
+### Chapters
+- [Chapter 1: The Sterile Beginning](narrative/chapters/chapter-01.md) — pov: Kael, setup
 
-## Rules
-- [CoherenceTheoryOfTruth](rules/CoherenceTheoryOfTruth.md) — world, logic
-- [MaxOneNewConceptPerScene](rules/MaxOneNewConceptPerScene.md) — narrative, psychology
+### Locations
+- [LogosPrime](narrative/locations/LogosPrime.md) — KW1, rigid control / suppressed chaos
 
-## Arcs
-- [kael-integration-arc](arcs/kael-integration-arc.md) — character, subject: Kael
+### Conflicts
+- [KaelVsAegis](narrative/conflicts/KaelVsAegis.md) — external, self-referential, open
 
-## Dramatica
+### Themes
+- [IntegrationVsFragmentation](narrative/themes/IntegrationVsFragmentation.md) — central dialectical theme
 
-## Reader Model
-- [Chapter 1 State](reader-model/chapter-01-state.md) — tension_level: 3
+### Arcs
+- [kael-integration-arc](narrative/arcs/kael-integration-arc.md) — character, subject: Kael
 
-## Foreshadowing
-- [the-cage-motif](foreshadowing/the-cage-motif.md) — planted
+### Dramatica
 
-## Outlines
+### Timeline (story-world chronology)
 
-## Beats
+### Beats
 
-## Manuscripts
+### Outlines
+
+### Manuscripts
+
+## Reader State Layer
+
+### Reader Model
+- [Chapter 1 State](reader_state/reader-model/chapter-01-state.md) — tension_level: 3
+
+### Foreshadowing
+- [the-cage-motif](reader_state/foreshadowing/the-cage-motif.md) — planted
