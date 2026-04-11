@@ -113,6 +113,118 @@
       "group": "narrative"
     },
     {
+      "id": "narrative/locations/Kw4JunasAnkerpunkt",
+      "label": "Junas Ankerpunkt (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4JunasAnkerpunkt.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw3Ubergangsschleuse",
+      "label": "\u00dcbergangsschleuse/Kontrollpunkt (KW3)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw3Ubergangsschleuse.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1SterilerPausenbereich",
+      "label": "Steriler Pausenbereich (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1SterilerPausenbereich.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2OrtSpezifischerJunaErinnerung",
+      "label": "Ort spezifischer Juna-Erinnerung (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2OrtSpezifischerJunaErinnerung.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1RegelExekutorUberwachungsposten",
+      "label": "Regel-Exekutor \u00dcberwachungsposten (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1RegelExekutorUberwachungsposten.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1StandardisierterTransitkorridor",
+      "label": "Standardisierter Transitkorridor (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1StandardisierterTransitkorridor.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw3OrtDerKonfrontationFalle",
+      "label": "Ort der Konfrontation/Falle (KW3)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw3OrtDerKonfrontationFalle.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/SchnittstelleZuDenKernWelten",
+      "label": "Schnittstelle zu den Kern-Welten (Overworld)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/SchnittstelleZuDenKernWelten.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw4OrtDerFinalenPrufung",
+      "label": "Ort der Finalen Pr\u00fcfung (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4OrtDerFinalenPrufung.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw3ZerfallendeMauer",
+      "label": "Zerfallende Mauer / Riss-Zone (KW3)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw3ZerfallendeMauer.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2ZoneEmotionalerSturme",
+      "label": "Zone Emotionaler St\u00fcrme (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2ZoneEmotionalerSturme.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2Echowald",
+      "label": "Der Echowald (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2Echowald.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw3InnererBunker",
+      "label": "Innerer Bunker (KW3)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw3InnererBunker.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw3GrenzwerterAussenposten",
+      "label": "Grenzw\u00e4rter Au\u00dfenposten (KW3)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw3GrenzwerterAussenposten.md",
+      "group": "narrative"
+    },
+    {
       "id": "narrative/locations/LogosPrime",
       "label": "LogosPrime",
       "type": "location",
@@ -121,11 +233,147 @@
       "group": "narrative"
     },
     {
+      "id": "narrative/locations/Kw4OrtDerMosaikMetapher",
+      "label": "Ort der Mosaik-Metapher (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4OrtDerMosaikMetapher.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1OffentlicherPlatzForum",
+      "label": "\u00d6ffentlicher Platz/Forum (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1OffentlicherPlatzForum.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw4NexusKnoten",
+      "label": "Nexus-Knoten (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4NexusKnoten.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1DatenknotenpunktGamma7",
+      "label": "Datenknotenpunkt Gamma-7 (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1DatenknotenpunktGamma7.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2DieNarbeDerVergangenheit",
+      "label": "Die Narbe der Vergangenheit (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2DieNarbeDerVergangenheit.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/AegisAnalyseHub",
+      "label": "AEGIS Analyse-Hub (Overworld)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/AegisAnalyseHub.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw4Ankunftszone",
+      "label": "Ankunftszone (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4Ankunftszone.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2VergessenerSchrein",
+      "label": "Vergessener Schrein (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2VergessenerSchrein.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2Ankunftszone",
+      "label": "Ankunftszone (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2Ankunftszone.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1InterfaceSpiegelndeWand",
+      "label": "Interface / Spiegelnde Wand (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1InterfaceSpiegelndeWand.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw2MnemosynesArchivSchnittstelle",
+      "label": "Mnemosynes Archiv-Schnittstelle (KW2)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw2MnemosynesArchivSchnittstelle.md",
+      "group": "narrative"
+    },
+    {
       "id": "narrative/locations/README",
       "label": "README",
       "type": "unknown",
       "color": "#2196F3",
       "path": "wiki/narrative/locations/README.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1KaelsInitialeWohneinheit",
+      "label": "Kaels Initiale Wohneinheit (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1KaelsInitialeWohneinheit.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1DesignierteSchlafnische",
+      "label": "Designierte Schlafnische (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1DesignierteSchlafnische.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw3VersteckteNische",
+      "label": "Versteckte Nische / Auge des Sturms (KW3)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw3VersteckteNische.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw4OrtDerAnyaBegegnung",
+      "label": "Ort der Anya/Muse-Begegnung (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4OrtDerAnyaBegegnung.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw1SchnittstelleFurMentaleGesundheit",
+      "label": "Schnittstelle f\u00fcr Mentale Gesundheit (KW1)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw1SchnittstelleFurMentaleGesundheit.md",
+      "group": "narrative"
+    },
+    {
+      "id": "narrative/locations/Kw4OrakelSchnittstelle",
+      "label": "Orakel-Schnittstelle (KW4)",
+      "type": "location",
+      "color": "#2196F3",
+      "path": "wiki/narrative/locations/Kw4OrakelSchnittstelle.md",
       "group": "narrative"
     },
     {
@@ -361,6 +609,14 @@
       "group": "knowledge"
     },
     {
+      "id": "knowledge/concepts/PsychologicalLandscapes",
+      "label": "Psychological Landscapes",
+      "type": "concept",
+      "color": "#4CAF50",
+      "path": "wiki/knowledge/concepts/PsychologicalLandscapes.md",
+      "group": "knowledge"
+    },
+    {
       "id": "knowledge/concepts/README",
       "label": "README",
       "type": "unknown",
@@ -435,14 +691,14 @@
     },
     {
       "from": "overview",
-      "to": "narrative/characters/AEGIS",
+      "to": "narrative/characters/Kael",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
     },
     {
       "from": "overview",
-      "to": "narrative/characters/Kael",
+      "to": "narrative/characters/AEGIS",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
@@ -515,6 +771,20 @@
       "to": "narrative/chapters/chapter-01",
       "type": "INFORMS",
       "color": "#2196F3",
+      "confidence": 1.0
+    },
+    {
+      "from": "narrative/locations/LogosPrime",
+      "to": "knowledge/rules/MaxOneNewConceptPerScene",
+      "type": "WIKILINK",
+      "color": "#555555",
+      "confidence": 1.0
+    },
+    {
+      "from": "narrative/locations/LogosPrime",
+      "to": "narrative/characters/Kael",
+      "type": "WIKILINK",
+      "color": "#555555",
       "confidence": 1.0
     },
     {
@@ -526,21 +796,7 @@
     },
     {
       "from": "narrative/locations/LogosPrime",
-      "to": "knowledge/rules/MaxOneNewConceptPerScene",
-      "type": "WIKILINK",
-      "color": "#555555",
-      "confidence": 1.0
-    },
-    {
-      "from": "narrative/locations/LogosPrime",
       "to": "narrative/characters/AEGIS",
-      "type": "WIKILINK",
-      "color": "#555555",
-      "confidence": 1.0
-    },
-    {
-      "from": "narrative/locations/LogosPrime",
-      "to": "narrative/characters/Kael",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
@@ -638,7 +894,7 @@
     },
     {
       "from": "narrative/timeline/028-goedel-gambit",
-      "to": "knowledge/rules/CoherenceTheoryOfTruth",
+      "to": "narrative/conflicts/KaelVsAegis",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
@@ -652,6 +908,13 @@
     },
     {
       "from": "narrative/timeline/028-goedel-gambit",
+      "to": "knowledge/rules/CoherenceTheoryOfTruth",
+      "type": "WIKILINK",
+      "color": "#555555",
+      "confidence": 1.0
+    },
+    {
+      "from": "narrative/characters/AEGIS",
       "to": "narrative/conflicts/KaelVsAegis",
       "type": "WIKILINK",
       "color": "#555555",
@@ -660,13 +923,6 @@
     {
       "from": "narrative/characters/AEGIS",
       "to": "narrative/characters/Kael",
-      "type": "WIKILINK",
-      "color": "#555555",
-      "confidence": 1.0
-    },
-    {
-      "from": "narrative/characters/AEGIS",
-      "to": "narrative/conflicts/KaelVsAegis",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
@@ -715,14 +971,14 @@
     },
     {
       "from": "narrative/characters/Kael",
-      "to": "narrative/characters/AEGIS",
+      "to": "narrative/arcs/kael-integration-arc",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
     },
     {
       "from": "narrative/characters/Kael",
-      "to": "narrative/arcs/kael-integration-arc",
+      "to": "narrative/characters/AEGIS",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
@@ -792,14 +1048,14 @@
     },
     {
       "from": "narrative/outlines/chapter-01-outline",
-      "to": "narrative/beats/chapter-01-beat-03",
+      "to": "narrative/beats/chapter-01-beat-02",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0
     },
     {
       "from": "narrative/outlines/chapter-01-outline",
-      "to": "narrative/beats/chapter-01-beat-02",
+      "to": "narrative/beats/chapter-01-beat-03",
       "type": "WIKILINK",
       "color": "#555555",
       "confidence": 1.0

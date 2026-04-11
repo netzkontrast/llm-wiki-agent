@@ -1,0 +1,157 @@
+[
+  {
+    "name": "Kw1KaelsInitialeWohneinheit",
+    "title": "Kaels Initiale Wohneinheit (KW1)",
+    "desc": "Kaels sterile, funktionale Wohnung in LogOS."
+  },
+  {
+    "name": "Kw1StandardisierterTransitkorridor",
+    "title": "Standardisierter Transitkorridor (KW1)",
+    "desc": "Funktionale Verbindungswege zwischen Bereichen in KW1."
+  },
+  {
+    "name": "Kw1DatenknotenpunktGamma7",
+    "title": "Datenknotenpunkt Gamma-7 (KW1)",
+    "desc": "Kaels Arbeitsplatz, Ort der Datenverarbeitung und Routine."
+  },
+  {
+    "name": "Kw1SterilerPausenbereich",
+    "title": "Steriler Pausenbereich (KW1)",
+    "desc": "Ein durch LogOS kontrollierter Ort minimaler Erholung."
+  },
+  {
+    "name": "Kw1InterfaceSpiegelndeWand",
+    "title": "Interface / Spiegelnde Wand (KW1)",
+    "desc": "Glatte Oberflächen, die gleichzeitig als Schnittstellen und Spiegel dienen."
+  },
+  {
+    "name": "Kw1DesignierteSchlafnische",
+    "title": "Designierte Schlafnische (KW1)",
+    "desc": "Optimierter, aber restriktiver Ort der Ruhe."
+  },
+  {
+    "name": "Kw1SchnittstelleFurMentaleGesundheit",
+    "title": "Schnittstelle für Mentale Gesundheit (KW1)",
+    "desc": "Therapie-Ort unter Aufsicht des Systems."
+  },
+  {
+    "name": "Kw1RegelExekutorUberwachungsposten",
+    "title": "Regel-Exekutor Überwachungsposten (KW1)",
+    "desc": "Ort, von dem aus LogOS die Einhaltung der Regeln überwacht."
+  },
+  {
+    "name": "Kw1OffentlicherPlatzForum",
+    "title": "Öffentlicher Platz/Forum (KW1)",
+    "desc": "Ort formaler, überwachter Interaktion."
+  },
+  {
+    "name": "Kw2Ankunftszone",
+    "title": "Ankunftszone (KW2)",
+    "desc": "Nebliger, instabiler Eintrittsort in Mnemosynes Reich."
+  },
+  {
+    "name": "Kw2VergessenerSchrein",
+    "title": "Vergessener Schrein (KW2)",
+    "desc": "Kern-Trauma-Lokus, der verdrängte Erinnerungen birgt."
+  },
+  {
+    "name": "Kw2OrtSpezifischerJunaErinnerung",
+    "title": "Ort spezifischer Juna-Erinnerung (KW2)",
+    "desc": "Warmer, aber schmerzhafter Ort, der mit Juna verknüpft ist."
+  },
+  {
+    "name": "Kw2ZoneEmotionalerSturme",
+    "title": "Zone Emotionaler Stürme (KW2)",
+    "desc": "Bereiche mit pathetischer Fallacy, die intensive Emotionen spiegeln."
+  },
+  {
+    "name": "Kw2DieNarbeDerVergangenheit",
+    "title": "Die Narbe der Vergangenheit (KW2)",
+    "desc": "Ein Ort, der durch ein vergangenes Trauma gezeichnet ist."
+  },
+  {
+    "name": "Kw2MnemosynesArchivSchnittstelle",
+    "title": "Mnemosynes Archiv-Schnittstelle (KW2)",
+    "desc": "Zugangspunkt zu systematisierten Erinnerungen."
+  },
+  {
+    "name": "Kw2Echowald",
+    "title": "Der Echowald (KW2)",
+    "desc": "Aufenthaltsort des 'Verlorenen Kindes' (Echo)."
+  },
+  {
+    "name": "Kw3Ubergangsschleuse",
+    "title": "Übergangsschleuse/Kontrollpunkt (KW3)",
+    "desc": "Streng bewachter Zugang zu Cerberus' Reich."
+  },
+  {
+    "name": "Kw3VersteckteNische",
+    "title": "Versteckte Nische / Auge des Sturms (KW3)",
+    "desc": "Seltener, sicherer Rückzugsort innerhalb der Verteidigungsanlagen."
+  },
+  {
+    "name": "Kw3OrtDerKonfrontationFalle",
+    "title": "Ort der Konfrontation/Falle (KW3)",
+    "desc": "Ein Bereich, der darauf ausgelegt ist, Eindringlinge (oder Kael) festzusetzen."
+  },
+  {
+    "name": "Kw3InnererBunker",
+    "title": "Innerer Bunker (KW3)",
+    "desc": "Cerberus' ultimatives Kontroll- und Verteidigungszentrum."
+  },
+  {
+    "name": "Kw3ZerfallendeMauer",
+    "title": "Zerfallende Mauer / Riss-Zone (KW3)",
+    "desc": "Bereiche, in denen die Abwehrmechanismen bröckeln."
+  },
+  {
+    "name": "Kw3GrenzwerterAussenposten",
+    "title": "Grenzwärter Außenposten (KW3)",
+    "desc": "Vorgeschobene Wachstationen von Cerberus."
+  },
+  {
+    "name": "Kw4Ankunftszone",
+    "title": "Ankunftszone (KW4)",
+    "desc": "Chaotischer, generativer Eintrittsort in den Möglichkeits-Garten."
+  },
+  {
+    "name": "Kw4OrtDerAnyaBegegnung",
+    "title": "Ort der Anya/Muse-Begegnung (KW4)",
+    "desc": "Inspirierender Ort, an dem Kael auf sein kreatives Potenzial trifft."
+  },
+  {
+    "name": "Kw4NexusKnoten",
+    "title": "Nexus-Knoten (KW4)",
+    "desc": "Interface zum puren Potenzial und zur Möglichkeit."
+  },
+  {
+    "name": "Kw4OrtDerMosaikMetapher",
+    "title": "Ort der Mosaik-Metapher (KW4)",
+    "desc": "Ort, der die Integration der fragmentierten Identität symbolisiert."
+  },
+  {
+    "name": "Kw4OrtDerFinalenPrufung",
+    "title": "Ort der Finalen Prüfung (KW4)",
+    "desc": "Ein instabiler Bereich, in dem Kaels Zusammenhalt getestet wird."
+  },
+  {
+    "name": "Kw4JunasAnkerpunkt",
+    "title": "Junas Ankerpunkt (KW4)",
+    "desc": "Ein Symbolort, der Kael Halt und Orientierung gibt."
+  },
+  {
+    "name": "Kw4OrakelSchnittstelle",
+    "title": "Orakel-Schnittstelle (KW4)",
+    "desc": "Zugang zu intuitiver Weisheit oder Vorahnungen."
+  },
+  {
+    "name": "AegisAnalyseHub",
+    "title": "AEGIS Analyse-Hub (Overworld)",
+    "desc": "Guardian Koordinationszentrum und Schnittstelle zur Systemlogik."
+  },
+  {
+    "name": "SchnittstelleZuDenKernWelten",
+    "title": "Schnittstelle zu den Kern-Welten (Overworld)",
+    "desc": "Ort, von dem aus AEGIS die Kernwelten visualisiert und manipuliert."
+  }
+]
