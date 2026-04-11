@@ -6,8 +6,8 @@
 |-------|--------|--------|-------------|
 | 0 | `phase-0-cleanup/` | `complete` | Infrastruktur: Ingest-Queue-Migration, Wiki-Oberschichten, Progressive Disclosure |
 | 1 | `phase-1-schema/` | `active` | Wiki schema extension: page types, directories, frontmatter, seed templates, folder READMEs |
-| 2 | `phase-2-navigation/` | `not-started` | Navigation, dependencies, temporal filtering, deterministic lint rules, staleness checks |
-| 3 | `phase-3-workflows/` | `not-started` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
+| 2 | `phase-2-navigation/` | `complete` | Navigation, dependencies, temporal filtering, deterministic lint rules, staleness checks |
+| 3 | `phase-3-workflows/` | `active` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
 | 4 | `phase-4-integration/` | `not-started` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
 | 5 | `phase-5-writing-pipeline/` | `not-started` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
 | 6 | `phase-6-adaptive-ingest/` | `not-started` | Token-efficient ingest: qmd, decompose script, session logging, CLAUDE/GEMINI split, novel page types |
