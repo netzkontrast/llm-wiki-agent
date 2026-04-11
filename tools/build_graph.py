@@ -77,6 +77,13 @@ def extract_wikilinks(content: str) -> list[str]:
     return list(set(re.findall(r'\[\[([^\]]+)\]\]', content)))
 
 
+def extract_yaml_frontmatter_list(content: str, field: str) -> list[str]:
+    match = re.search(rf'^{field}:\s*\[(.*?)\]', content, re.MULTILINE)
+    if not match: return []
+    inner = match.group(1).strip()
+    if not inner: return []
+    return [item.strip().strip('"\'').split('/')[-1] for item in inner.split(',')]
+
 def extract_frontmatter_type(content: str) -> str:
     match = re.search(r'^type:\s*(\S+)', content, re.MULTILINE)
     return match.group(1).strip('"\'') if match else "unknown"
@@ -137,6 +144,35 @@ def build_extracted_edges(pages: list[Path]) -> list[dict]:
                         "to": target,
                         "type": "EXTRACTED",
                         "color": EDGE_COLORS["EXTRACTED"],
+                        "confidence": 1.0,
+                    })
+        # Extract requires edges
+        for req in extract_yaml_frontmatter_list(content, 'requires'):
+            target = stem_map.get(req.lower())
+            if target:
+                key = f"{src}->{target}"
+                if key not in seen:
+                    seen.add(key)
+                    edges.append({
+                        "from": src,
+                        "to": target,
+                        "type": "REQUIRES",
+                        "color": "#4CAF50",
+                        "confidence": 1.0,
+                    })
+
+        # Extract informs edges
+        for inf in extract_yaml_frontmatter_list(content, 'informs'):
+            target = stem_map.get(inf.lower())
+            if target:
+                key = f"{src}->{target}"
+                if key not in seen:
+                    seen.add(key)
+                    edges.append({
+                        "from": src,
+                        "to": target,
+                        "type": "INFORMS",
+                        "color": "#2196F3",
                         "confidence": 1.0,
                     })
     return edges
