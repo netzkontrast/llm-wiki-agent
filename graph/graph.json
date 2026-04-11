@@ -339,14 +339,14 @@
     },
     {
       "from": "narrative/locations/LogosPrime",
-      "to": "narrative/characters/Kael",
+      "to": "knowledge/rules/MaxOneNewConceptPerScene",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
     },
     {
       "from": "narrative/locations/LogosPrime",
-      "to": "knowledge/rules/MaxOneNewConceptPerScene",
+      "to": "narrative/characters/Kael",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
@@ -381,6 +381,13 @@
     },
     {
       "from": "narrative/timeline/028-goedel-gambit",
+      "to": "narrative/arcs/kael-integration-arc",
+      "type": "EXTRACTED",
+      "color": "#555555",
+      "confidence": 1.0
+    },
+    {
+      "from": "narrative/timeline/028-goedel-gambit",
       "to": "knowledge/rules/CoherenceTheoryOfTruth",
       "type": "EXTRACTED",
       "color": "#555555",
@@ -389,13 +396,6 @@
     {
       "from": "narrative/timeline/028-goedel-gambit",
       "to": "narrative/conflicts/KaelVsAegis",
-      "type": "EXTRACTED",
-      "color": "#555555",
-      "confidence": 1.0
-    },
-    {
-      "from": "narrative/timeline/028-goedel-gambit",
-      "to": "narrative/arcs/kael-integration-arc",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
