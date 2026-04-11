@@ -7,8 +7,8 @@ pov: "Kael"
 pov_reliability: high
 timeline_start: "001-story-begins"
 timeline_end: ""
-outline_ref: ""
-manuscript_ref: ""
+outline_ref: "outlines/chapter-01-outline"
+manuscript_ref: "manuscripts/chapter-01-manuscript"
 characters: ["Kael"]
 locations: ["LogosPrime"]
 conflicts: ["KaelVsAegis"]

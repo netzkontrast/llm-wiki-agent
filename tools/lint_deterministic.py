@@ -142,6 +142,17 @@ def main():
         errs = check_refs(fm, p, all_slugs, "informs")
         for e in errs: errors.append(f"{p}: {e}")
 
+        errs = check_refs(fm, p, all_slugs, "beats")
+        for e in errs: errors.append(f"{p}: {e}")
+
+        # Check outline_ref and manuscript_ref
+        for ref_field in ("outline_ref", "manuscript_ref", "pov_voice_ref"):
+            ref_val = fm.get(ref_field)
+            if ref_val:
+                clean_ref = ref_val.split('/')[-1]
+                if clean_ref not in all_slugs:
+                    errors.append(f"{p}: {ref_field} '{ref_val}' (slug: {clean_ref}) not found in wiki")
+
         # Check valid_from / valid_until
         v_from = fm.get("valid_from")
         if v_from and v_from not in boundary_events:

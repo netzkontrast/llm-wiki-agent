@@ -12,9 +12,9 @@ See `docs/agent-workflows.md` and `docs/writing-pipeline.md` for detailed specif
 1.  **Determine Target:** Identify the target chapter page (`wiki/chapters/chapter-NN.md`).
 2.  **State Assessment:**
     *   Read the target chapter page.
-    *   If the chapter has no outline, trigger the `outline-writing` sub-workflow.
-    *   If an outline exists but beats are not detailed, trigger the `beat-detailing` sub-workflow.
-    *   If beats are detailed but no manuscript exists, trigger the `manuscript-drafting` sub-workflow.
+    *   If the chapter has no outline, trigger the `outline-writing` sub-workflow (see `.claude/commands/wiki-outline.md`).
+    *   If an outline exists but beats are not detailed, trigger the `beat-detailing` sub-workflow (see `.claude/commands/wiki-beats.md`).
+    *   If beats are detailed but no manuscript exists, trigger the `manuscript-drafting` sub-workflow (see `.claude/commands/wiki-manuscript.md`).
     *   If a manuscript exists, trigger the `manuscript-revision` sub-workflow.
 3.  **Discovery Hook (`wiki/meta/discovery-protocol.md`):**
     *   Extract `characters:`, `locations:`, `conflicts:`, and `constraint_refs:` from the chapter frontmatter.

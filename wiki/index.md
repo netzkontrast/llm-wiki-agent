@@ -50,10 +50,15 @@ This file is maintained by the LLM. Updated on every ingest.
 ### Timeline (story-world chronology)
 
 ### Beats
+- [Chapter 1: Beat 1](narrative/beats/chapter-01-beat-01.md) — opening
+- [Chapter 1: Beat 2](narrative/beats/chapter-01-beat-02.md) — escalation
+- [Chapter 1: Beat 3](narrative/beats/chapter-01-beat-03.md) — chapter-end
 
 ### Outlines
+- [Chapter 1 Outline](narrative/outlines/chapter-01-outline.md) — outline_status: detailed
 
 ### Manuscripts
+- [Chapter 1 Manuscript](narrative/manuscripts/chapter-01-manuscript.md) — manuscript_status: not-started
 
 ## Reader State Layer
 

@@ -49,6 +49,14 @@ const nodes = new vis.DataSet([
     "group": "other"
   },
   {
+    "id": "README",
+    "label": "README",
+    "type": "unknown",
+    "color": "#9E9E9E",
+    "path": "wiki/README.md",
+    "group": "other"
+  },
+  {
     "id": "narrative/README",
     "label": "README",
     "type": "unknown",
@@ -78,6 +86,14 @@ const nodes = new vis.DataSet([
     "type": "unknown",
     "color": "#9E9E9E",
     "path": "wiki/meta/context-protocol.md",
+    "group": "meta"
+  },
+  {
+    "id": "meta/contradiction-log",
+    "label": "contradiction-log",
+    "type": "unknown",
+    "color": "#9E9E9E",
+    "path": "wiki/meta/contradiction-log.md",
     "group": "meta"
   },
   {
@@ -121,6 +137,14 @@ const nodes = new vis.DataSet([
     "group": "reader_state"
   },
   {
+    "id": "narrative/manuscripts/chapter-01-manuscript",
+    "label": "Manuscript: Chapter 1",
+    "type": "manuscript",
+    "color": "#2196F3",
+    "path": "wiki/narrative/manuscripts/chapter-01-manuscript.md",
+    "group": "narrative"
+  },
+  {
     "id": "narrative/manuscripts/README",
     "label": "README",
     "type": "unknown",
@@ -161,11 +185,35 @@ const nodes = new vis.DataSet([
     "group": "narrative"
   },
   {
+    "id": "narrative/beats/chapter-01-beat-02",
+    "label": "Beat 2: Escalation",
+    "type": "beat",
+    "color": "#2196F3",
+    "path": "wiki/narrative/beats/chapter-01-beat-02.md",
+    "group": "narrative"
+  },
+  {
+    "id": "narrative/beats/chapter-01-beat-01",
+    "label": "Beat 1: Opening",
+    "type": "beat",
+    "color": "#2196F3",
+    "path": "wiki/narrative/beats/chapter-01-beat-01.md",
+    "group": "narrative"
+  },
+  {
     "id": "narrative/beats/README",
     "label": "README",
     "type": "unknown",
     "color": "#2196F3",
     "path": "wiki/narrative/beats/README.md",
+    "group": "narrative"
+  },
+  {
+    "id": "narrative/beats/chapter-01-beat-03",
+    "label": "Beat 3: Chapter End",
+    "type": "beat",
+    "color": "#2196F3",
+    "path": "wiki/narrative/beats/chapter-01-beat-03.md",
     "group": "narrative"
   },
   {
@@ -273,6 +321,14 @@ const nodes = new vis.DataSet([
     "group": "narrative"
   },
   {
+    "id": "narrative/outlines/chapter-01-outline",
+    "label": "Outline: Chapter 1",
+    "type": "outline",
+    "color": "#2196F3",
+    "path": "wiki/narrative/outlines/chapter-01-outline.md",
+    "group": "narrative"
+  },
+  {
     "id": "narrative/outlines/README",
     "label": "README",
     "type": "unknown",
@@ -305,6 +361,22 @@ const nodes = new vis.DataSet([
     "group": "meta"
   },
   {
+    "id": "meta/ingest/README",
+    "label": "README",
+    "type": "unknown",
+    "color": "#9E9E9E",
+    "path": "wiki/meta/ingest/README.md",
+    "group": "meta"
+  },
+  {
+    "id": "knowledge/entities/README",
+    "label": "README",
+    "type": "unknown",
+    "color": "#4CAF50",
+    "path": "wiki/knowledge/entities/README.md",
+    "group": "knowledge"
+  },
+  {
     "id": "knowledge/rules/MaxOneNewConceptPerScene",
     "label": "MaxOneNewConceptPerScene",
     "type": "rule",
@@ -329,11 +401,35 @@ const nodes = new vis.DataSet([
     "group": "knowledge"
   },
   {
+    "id": "knowledge/concepts/README",
+    "label": "README",
+    "type": "unknown",
+    "color": "#4CAF50",
+    "path": "wiki/knowledge/concepts/README.md",
+    "group": "knowledge"
+  },
+  {
     "id": "knowledge/timeline/README",
     "label": "README",
     "type": "unknown",
     "color": "#4CAF50",
     "path": "wiki/knowledge/timeline/README.md",
+    "group": "knowledge"
+  },
+  {
+    "id": "knowledge/sources/README",
+    "label": "README",
+    "type": "unknown",
+    "color": "#4CAF50",
+    "path": "wiki/knowledge/sources/README.md",
+    "group": "knowledge"
+  },
+  {
+    "id": "knowledge/syntheses/README",
+    "label": "README",
+    "type": "unknown",
+    "color": "#4CAF50",
+    "path": "wiki/knowledge/syntheses/README.md",
     "group": "knowledge"
   },
   {
@@ -371,6 +467,97 @@ const nodes = new vis.DataSet([
 ]);
 const edges = new vis.DataSet([
   {
+    "from": "overview",
+    "to": "narrative/locations/LogosPrime",
+    "type": "WIKILINK",
+    "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "overview",
+    "to": "narrative/characters/AEGIS",
+    "type": "WIKILINK",
+    "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "overview",
+    "to": "narrative/characters/Kael",
+    "type": "WIKILINK",
+    "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "narrative/outlines/chapter-01-outline",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "narrative/characters/Kael",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "knowledge/rules/MaxOneNewConceptPerScene",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "reader_state/reader-model/chapter-01-state",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "narrative/chapters/chapter-01",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "narrative/outlines/chapter-01-outline",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "narrative/characters/Kael",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "knowledge/rules/MaxOneNewConceptPerScene",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "reader_state/reader-model/chapter-01-state",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/manuscripts/chapter-01-manuscript",
+    "to": "narrative/chapters/chapter-01",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
     "from": "narrative/locations/LogosPrime",
     "to": "knowledge/rules/CoherenceTheoryOfTruth",
     "type": "WIKILINK",
@@ -379,7 +566,7 @@ const edges = new vis.DataSet([
   },
   {
     "from": "narrative/locations/LogosPrime",
-    "to": "narrative/characters/Kael",
+    "to": "knowledge/rules/MaxOneNewConceptPerScene",
     "type": "WIKILINK",
     "color": "#555555",
     "confidence": 1.0
@@ -393,7 +580,7 @@ const edges = new vis.DataSet([
   },
   {
     "from": "narrative/locations/LogosPrime",
-    "to": "knowledge/rules/MaxOneNewConceptPerScene",
+    "to": "narrative/characters/Kael",
     "type": "WIKILINK",
     "color": "#555555",
     "confidence": 1.0
@@ -410,6 +597,76 @@ const edges = new vis.DataSet([
     "to": "knowledge/rules/MaxOneNewConceptPerScene",
     "type": "WIKILINK",
     "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/chapters/chapter-01",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/characters/Kael",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/locations/LogosPrime",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/outlines/chapter-01-outline",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/manuscripts/chapter-01-manuscript",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/chapters/chapter-01",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/characters/Kael",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/locations/LogosPrime",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/outlines/chapter-01-outline",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/beats/chapter-01-beat-01",
+    "to": "narrative/manuscripts/chapter-01-manuscript",
+    "type": "INFORMS",
+    "color": "#2196F3",
     "confidence": 1.0
   },
   {
@@ -442,14 +699,14 @@ const edges = new vis.DataSet([
   },
   {
     "from": "narrative/characters/AEGIS",
-    "to": "narrative/conflicts/KaelVsAegis",
+    "to": "narrative/characters/Kael",
     "type": "WIKILINK",
     "color": "#555555",
     "confidence": 1.0
   },
   {
     "from": "narrative/characters/AEGIS",
-    "to": "narrative/characters/Kael",
+    "to": "narrative/conflicts/KaelVsAegis",
     "type": "WIKILINK",
     "color": "#555555",
     "confidence": 1.0
@@ -498,14 +755,14 @@ const edges = new vis.DataSet([
   },
   {
     "from": "narrative/characters/Kael",
-    "to": "narrative/arcs/kael-integration-arc",
+    "to": "narrative/characters/AEGIS",
     "type": "WIKILINK",
     "color": "#555555",
     "confidence": 1.0
   },
   {
     "from": "narrative/characters/Kael",
-    "to": "narrative/characters/AEGIS",
+    "to": "narrative/arcs/kael-integration-arc",
     "type": "WIKILINK",
     "color": "#555555",
     "confidence": 1.0
@@ -564,6 +821,125 @@ const edges = new vis.DataSet([
     "to": "reader_state/foreshadowing/the-cage-motif",
     "type": "WIKILINK",
     "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-01",
+    "type": "WIKILINK",
+    "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-03",
+    "type": "WIKILINK",
+    "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-02",
+    "type": "WIKILINK",
+    "color": "#555555",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/chapters/chapter-01",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/characters/Kael",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/conflicts/KaelVsAegis",
+    "type": "REQUIRES",
+    "color": "#FF9800",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-01",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-02",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-03",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/manuscripts/chapter-01-manuscript",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/chapters/chapter-01",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/characters/Kael",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/conflicts/KaelVsAegis",
+    "type": "REQUIRES",
+    "color": "#4CAF50",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-01",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-02",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/beats/chapter-01-beat-03",
+    "type": "INFORMS",
+    "color": "#2196F3",
+    "confidence": 1.0
+  },
+  {
+    "from": "narrative/outlines/chapter-01-outline",
+    "to": "narrative/manuscripts/chapter-01-manuscript",
+    "type": "INFORMS",
+    "color": "#2196F3",
     "confidence": 1.0
   }
 ]);
