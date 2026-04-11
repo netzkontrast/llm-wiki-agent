@@ -82,7 +82,7 @@ def extract_yaml_frontmatter_list(content: str, field: str) -> list[str]:
     if not match: return []
     inner = match.group(1).strip()
     if not inner: return []
-    return [item.strip().strip('"\'').split('/')[-1] for item in inner.split(',')]
+    return [item.strip().strip('"'').split('/')[-1] for item in inner.split(',')]
 
 def extract_frontmatter_type(content: str) -> str:
     match = re.search(r'^type:\s*(\S+)', content, re.MULTILINE)
@@ -150,7 +150,7 @@ def build_extracted_edges(pages: list[Path]) -> list[dict]:
         for req in extract_yaml_frontmatter_list(content, 'requires'):
             target = stem_map.get(req.lower())
             if target:
-                key = f"{src}->{target}"
+                key = (src, target)
                 if key not in seen:
                     seen.add(key)
                     edges.append({
@@ -165,7 +165,7 @@ def build_extracted_edges(pages: list[Path]) -> list[dict]:
         for inf in extract_yaml_frontmatter_list(content, 'informs'):
             target = stem_map.get(inf.lower())
             if target:
-                key = f"{src}->{target}"
+                key = (src, target)
                 if key not in seen:
                     seen.add(key)
                     edges.append({
