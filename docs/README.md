@@ -18,3 +18,6 @@ Detailed design documents for the novel-author wiki extension. These are **refer
 - Do NOT read these files at session start
 - Read a specific doc ONLY when a `todo/phase-*/README.md` task says to
 - These are the "what" — implementation instructions (the "how") live in `todo/`
+
+## Developer Enhancements
+- `jules/` - Contains specs and conceptual proposals developed during implementation, such as decoupling agent operational instructions from system development context.

@@ -25,22 +25,35 @@ Added Phase 5 and final session deliverables:
 - Updated **`CLAUDE.md`** with writing pipeline references
 - Rewrote **`README.md`** with full project description
 
+### Commit 4: Implement Phase 3 (this session)
+Implemented Phase 3: Agent Workflows & Slash Commands:
+- Created 9 slash commands in `.claude/commands/`: `wiki-chapter`, `wiki-character`, `wiki-worldbuild`, `wiki-timeline`, `wiki-conflict`, `wiki-reader-model`, `wiki-revise`, `wiki-lector`, `wiki-brainstorm`.
+- Updated `wiki-ingest.md` with extended ingest steps (10-17).
+- Formalized `discovery-protocol.md` and `validation-protocol.md` hooks in `wiki/meta/`.
+- Established the `SKILL.md` standard with an example in `.claude/commands/wiki-ingest/`.
+- Updated tracking files in `todo/`.
+
 ---
 
-## Architecture Decisions Made
+## Reflections & Learnings (Meta-Analysis)
 
-| Decision | Rationale |
-|----------|-----------|
-| 14 page types (4 generic + 10 novel + 3 pipeline) coexisting with original 4 | No breaking changes; original wiki works as before |
-| `requires:` bounded (depth 2), `informs:` unbounded | Protect context window on reads, guarantee consistency on writes |
-| Temporal filtering via `valid_from`/`valid_until` → timeline-event slugs | Semantic anchors survive chapter reordering |
-| `traits:` open map instead of fixed fields | Future-proof without schema changes; recommended keys provide vocabulary |
-| `terminology_permitted` as one-way ratchet | Prevents accidental regression of reader knowledge |
-| Chapter as spec hub, separate outline/beats/manuscript | Clean separation of concerns; each stage has its own lifecycle |
-| Beat as standalone page type (not inline in outline) | Enables querying, cross-referencing, beat-level tension tracking |
-| Contradiction hierarchy: `rule > source > character > chapter > synthesis` | Rules are authoritative; syntheses are derived |
-| Phase-based todo with session-start protocol | Prevents agents from loading irrelevant specs; progressive disclosure |
-| Unbounded `informs:` with cycle protection + 20-page pause | Balances consistency guarantee with practical context limits |
+During this session, I navigated the workflow implementations and realized several key insights about the architecture, token efficiency, and how the repository could be optimized for LLM use:
+
+### Token Efficiency and Workflow Context Load
+- **The Context Dilution Problem:** While working on Phase 3, I had to load `docs/agent-workflows.md` and `todo/phase-3-workflows/README.md`. These files are comprehensive, but reading them fully to extract specific, isolated details (like the exact trigger words for one command) is token-inefficient.
+- **Progressive Disclosure in Practice:** The principle of progressive disclosure is excellent in theory but needs stricter enforcement in the agent instruction files (`CLAUDE.md` and `GEMINI.md`). Currently, both files contain a mix of system overview, standard workflows, and development roadmap tasks. When I am just trying to ingest a file, I don't need to know about the Phase 5 writing pipeline tasks.
+
+### Structuring Agent Instructions
+- **Splitting Responsibilities:** The current instructions mix "How to use the wiki" (the core product) with "How to develop the wiki system itself" (the meta-product).
+- **Proposal:** We should separate these into distinct instruction contexts. An agent acting as a "Writer/Researcher" should only load the operational instructions (ingest, query, chapter writing). An agent acting as a "System Developer" should load the schema, protocols, and todo tasks.
+
+---
+
+## Future Enhancements: Agent Orchestration & Process Separation
+
+I have documented a formal proposal for improving the agent operational guidelines and separating the writing vs. development contexts.
+
+See the new specification: **`docs/jules/dev-process.md`** (linked in `CLAUDE.md` and `GEMINI.md`).
 
 ---
 
@@ -169,40 +182,41 @@ This would help identify structural issues like circular dependencies, isolated 
 
 ## File Inventory (Created/Modified This Session)
 
-### Created (19 files)
+### Created (12 files)
 ```
-Concept.md
-handover.md
-docs/README.md
-docs/wiki-schema.md
-docs/navigation-system.md
-docs/agent-workflows.md
-docs/reader-model.md
-docs/dramatica-integration.md
-docs/writing-pipeline.md
-todo/README.md
-todo/meta/README.md
-todo/phase-1-schema/README.md
-todo/phase-2-navigation/README.md
-todo/phase-3-workflows/README.md
-todo/phase-4-integration/README.md
-todo/phase-5-writing-pipeline/README.md
+.claude/commands/wiki-chapter.md
+.claude/commands/wiki-character.md
+.claude/commands/wiki-worldbuild.md
+.claude/commands/wiki-timeline.md
+.claude/commands/wiki-conflict.md
+.claude/commands/wiki-reader-model.md
+.claude/commands/wiki-revise.md
+.claude/commands/wiki-lector.md
+.claude/commands/wiki-brainstorm.md
+.claude/commands/wiki-ingest/SKILL.md
+wiki/meta/discovery-protocol.md
+wiki/meta/validation-protocol.md
+docs/jules/dev-process.md
+docs/jules/README.md
 ```
 
-### Modified (2 files)
+### Modified (6 files)
 ```
-CLAUDE.md    — development roadmap + writing pipeline references
-README.md    — full project rewrite
+CLAUDE.md    — appended reference to dev-process.md
+GEMINI.md    — appended reference to dev-process.md
+todo/phase-3-workflows/README.md — marked complete
+todo/README.md — updated phase statuses
+todo/meta/README.md — added SKILL.md standard
+.claude/commands/wiki-ingest.md — added extended steps
+handover.md — added Commit 4 and meta-reflections
 ```
 
 ---
 
 ## Next Session Entry Point
 
-1. Read `todo/README.md` → Phase 1 is the first `not-started` phase
+1. Read `todo/README.md` → Phase 4 is the active phase.
 2. Read `todo/meta/README.md` → validation rules, session protocol
-3. Read `todo/phase-1-schema/README.md` → 19 tasks starting with directory creation
-4. Load `docs/wiki-schema.md` only when tasks reference it
-5. Begin with task 1: create wiki directories
-
-The framework is complete. Implementation begins with Phase 1.
+3. Read `todo/phase-4-integration/README.md`
+4. Load `docs/` specs ONLY when tasks reference it
+5. Begin with task 1 in Phase 4.

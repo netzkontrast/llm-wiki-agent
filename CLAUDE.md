@@ -284,3 +284,6 @@ Every session that touches wiki structure or implementation:
 - Archive deprecated content to `wiki/archive/` — never delete wiki pages
 - Follow contradiction hierarchy: `rule > source > character > chapter > synthesis`
 - **Every `wiki/` subfolder MUST have a `README.md`** with navigational info — update it whenever pages are added, removed, or archived (see `todo/meta/README.md` for template)
+
+## Developer Enhancements
+See `docs/jules/dev-process.md` for future proposals on splitting Wiki Operations from System Development to improve token efficiency.

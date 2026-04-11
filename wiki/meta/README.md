@@ -29,3 +29,8 @@ grows — never delete. `ingest/` session folders created by `tools/session_init
 - During conflict escalations
 - qmd collection: `meta` — `qmd search "term" -c meta`
 - For adaptive pipeline learning, see `docs/meta-learning.md`
+
+## Meta Protocols
+
+- `validation-protocol.md` - Validation rules enforced after generation steps.
+- `discovery-protocol.md` - Discovery rules for loading context efficiently based on page frontmatter.

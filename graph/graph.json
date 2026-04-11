@@ -25,298 +25,314 @@
       "group": 2
     },
     {
+      "id": "meta/validation-protocol",
+      "label": "validation-protocol",
+      "type": "unknown",
+      "color": "#FF5722",
+      "path": "wiki/meta/validation-protocol.md",
+      "group": 3
+    },
+    {
       "id": "meta/context-protocol",
       "label": "context-protocol",
       "type": "unknown",
-      "color": "#FF5722",
+      "color": "#673AB7",
       "path": "wiki/meta/context-protocol.md",
-      "group": 3
+      "group": 4
     },
     {
       "id": "meta/temporal-protocol",
       "label": "temporal-protocol",
       "type": "unknown",
-      "color": "#673AB7",
+      "color": "#FFC107",
       "path": "wiki/meta/temporal-protocol.md",
-      "group": 4
+      "group": 5
+    },
+    {
+      "id": "meta/discovery-protocol",
+      "label": "discovery-protocol",
+      "type": "unknown",
+      "color": "#009688",
+      "path": "wiki/meta/discovery-protocol.md",
+      "group": 6
     },
     {
       "id": "meta/README",
       "label": "README",
       "type": "unknown",
-      "color": "#FFC107",
+      "color": "#F44336",
       "path": "wiki/meta/README.md",
-      "group": 5
+      "group": 7
     },
     {
       "id": "knowledge/README",
       "label": "README",
       "type": "unknown",
-      "color": "#009688",
+      "color": "#3F51B5",
       "path": "wiki/knowledge/README.md",
-      "group": 6
+      "group": 8
     },
     {
       "id": "reader_state/README",
       "label": "README",
       "type": "unknown",
-      "color": "#F44336",
+      "color": "#CDDC39",
       "path": "wiki/reader_state/README.md",
-      "group": 7
+      "group": 9
     },
     {
       "id": "narrative/manuscripts/README",
       "label": "README",
       "type": "unknown",
-      "color": "#3F51B5",
+      "color": "#E91E63",
       "path": "wiki/narrative/manuscripts/README.md",
-      "group": 8
+      "group": 10
     },
     {
       "id": "narrative/locations/LogosPrime",
       "label": "LogosPrime",
       "type": "location",
-      "color": "#F44336",
+      "color": "#CDDC39",
       "path": "wiki/narrative/locations/LogosPrime.md",
-      "group": 17
+      "group": 19
     },
     {
       "id": "narrative/locations/README",
       "label": "README",
       "type": "unknown",
-      "color": "#CDDC39",
+      "color": "#00BCD4",
       "path": "wiki/narrative/locations/README.md",
-      "group": 9
+      "group": 11
     },
     {
       "id": "narrative/chapters/chapter-01",
       "label": "Chapter 1: The Sterile Beginning",
       "type": "chapter",
-      "color": "#E91E63",
+      "color": "#8BC34A",
       "path": "wiki/narrative/chapters/chapter-01.md",
-      "group": 20
+      "group": 22
     },
     {
       "id": "narrative/chapters/README",
       "label": "README",
       "type": "unknown",
-      "color": "#E91E63",
+      "color": "#8BC34A",
       "path": "wiki/narrative/chapters/README.md",
-      "group": 10
+      "group": 12
     },
     {
       "id": "narrative/beats/README",
       "label": "README",
       "type": "unknown",
-      "color": "#00BCD4",
+      "color": "#FF5722",
       "path": "wiki/narrative/beats/README.md",
-      "group": 11
+      "group": 13
     },
     {
       "id": "narrative/timeline/010-fragmentation-revealed",
       "label": "Fragmentation Revealed",
       "type": "timeline-event",
-      "color": "#8BC34A",
+      "color": "#673AB7",
       "path": "wiki/narrative/timeline/010-fragmentation-revealed.md",
-      "group": 12
+      "group": 14
     },
     {
       "id": "narrative/timeline/028-goedel-gambit",
       "label": "Goedel Gambit",
       "type": "timeline-event",
-      "color": "#FF5722",
+      "color": "#FFC107",
       "path": "wiki/narrative/timeline/028-goedel-gambit.md",
-      "group": 13
+      "group": 15
     },
     {
       "id": "narrative/timeline/001-story-begins",
       "label": "Story Begins",
       "type": "timeline-event",
-      "color": "#673AB7",
+      "color": "#009688",
       "path": "wiki/narrative/timeline/001-story-begins.md",
-      "group": 14
+      "group": 16
     },
     {
       "id": "narrative/timeline/README",
       "label": "README",
       "type": "unknown",
-      "color": "#FFC107",
+      "color": "#F44336",
       "path": "wiki/narrative/timeline/README.md",
-      "group": 15
+      "group": 17
     },
     {
       "id": "narrative/dramatica/README",
       "label": "README",
       "type": "unknown",
-      "color": "#009688",
+      "color": "#3F51B5",
       "path": "wiki/narrative/dramatica/README.md",
-      "group": 16
+      "group": 18
     },
     {
       "id": "narrative/characters/AEGIS",
       "label": "AEGIS",
       "type": "character",
-      "color": "#F44336",
+      "color": "#CDDC39",
       "path": "wiki/narrative/characters/AEGIS.md",
-      "group": 17
+      "group": 19
     },
     {
       "id": "narrative/characters/Kael-post-frag",
       "label": "Kael (Post-Fragmentation)",
       "type": "character",
-      "color": "#8BC34A",
+      "color": "#673AB7",
       "path": "wiki/narrative/characters/Kael-post-frag.md",
-      "group": 12
+      "group": 14
     },
     {
       "id": "narrative/characters/Kael",
       "label": "Kael",
       "type": "character",
-      "color": "#F44336",
+      "color": "#CDDC39",
       "path": "wiki/narrative/characters/Kael.md",
-      "group": 17
+      "group": 19
     },
     {
       "id": "narrative/characters/README",
       "label": "README",
       "type": "unknown",
-      "color": "#3F51B5",
+      "color": "#E91E63",
       "path": "wiki/narrative/characters/README.md",
-      "group": 18
+      "group": 20
     },
     {
       "id": "narrative/conflicts/KaelVsAegis",
       "label": "KaelVsAegis",
       "type": "conflict",
-      "color": "#8BC34A",
+      "color": "#673AB7",
       "path": "wiki/narrative/conflicts/KaelVsAegis.md",
-      "group": 12
+      "group": 14
     },
     {
       "id": "narrative/conflicts/README",
       "label": "README",
       "type": "unknown",
-      "color": "#CDDC39",
+      "color": "#00BCD4",
       "path": "wiki/narrative/conflicts/README.md",
-      "group": 19
+      "group": 21
     },
     {
       "id": "narrative/themes/IntegrationVsFragmentation",
       "label": "IntegrationVsFragmentation",
       "type": "theme",
-      "color": "#E91E63",
+      "color": "#8BC34A",
       "path": "wiki/narrative/themes/IntegrationVsFragmentation.md",
-      "group": 20
+      "group": 22
     },
     {
       "id": "narrative/themes/README",
       "label": "README",
       "type": "unknown",
-      "color": "#00BCD4",
+      "color": "#FF5722",
       "path": "wiki/narrative/themes/README.md",
-      "group": 21
+      "group": 23
     },
     {
       "id": "narrative/outlines/README",
       "label": "README",
       "type": "unknown",
-      "color": "#8BC34A",
+      "color": "#673AB7",
       "path": "wiki/narrative/outlines/README.md",
-      "group": 22
+      "group": 24
     },
     {
       "id": "narrative/arcs/kael-integration-arc",
       "label": "Kael Integration Arc",
       "type": "arc",
-      "color": "#FF5722",
+      "color": "#FFC107",
       "path": "wiki/narrative/arcs/kael-integration-arc.md",
-      "group": 13
+      "group": 15
     },
     {
       "id": "narrative/arcs/README",
       "label": "README",
       "type": "unknown",
-      "color": "#FF5722",
+      "color": "#FFC107",
       "path": "wiki/narrative/arcs/README.md",
-      "group": 23
+      "group": 25
     },
     {
       "id": "meta/archive/README",
       "label": "README",
       "type": "unknown",
-      "color": "#673AB7",
+      "color": "#009688",
       "path": "wiki/meta/archive/README.md",
-      "group": 24
+      "group": 26
     },
     {
       "id": "knowledge/rules/MaxOneNewConceptPerScene",
       "label": "MaxOneNewConceptPerScene",
       "type": "rule",
-      "color": "#E91E63",
+      "color": "#8BC34A",
       "path": "wiki/knowledge/rules/MaxOneNewConceptPerScene.md",
-      "group": 20
+      "group": 22
     },
     {
       "id": "knowledge/rules/CoherenceTheoryOfTruth",
       "label": "CoherenceTheoryOfTruth",
       "type": "rule",
-      "color": "#FF5722",
+      "color": "#FFC107",
       "path": "wiki/knowledge/rules/CoherenceTheoryOfTruth.md",
-      "group": 13
+      "group": 15
     },
     {
       "id": "knowledge/rules/README",
       "label": "README",
       "type": "unknown",
-      "color": "#FFC107",
+      "color": "#F44336",
       "path": "wiki/knowledge/rules/README.md",
-      "group": 25
+      "group": 27
     },
     {
       "id": "knowledge/timeline/README",
       "label": "README",
       "type": "unknown",
-      "color": "#009688",
+      "color": "#3F51B5",
       "path": "wiki/knowledge/timeline/README.md",
-      "group": 26
+      "group": 28
     },
     {
       "id": "reader_state/foreshadowing/the-cage-motif",
       "label": "The Cage Motif",
       "type": "foreshadowing",
-      "color": "#E91E63",
+      "color": "#8BC34A",
       "path": "wiki/reader_state/foreshadowing/the-cage-motif.md",
-      "group": 20
+      "group": 22
     },
     {
       "id": "reader_state/foreshadowing/README",
       "label": "README",
       "type": "unknown",
-      "color": "#F44336",
+      "color": "#CDDC39",
       "path": "wiki/reader_state/foreshadowing/README.md",
-      "group": 27
+      "group": 29
     },
     {
       "id": "reader_state/reader-model/chapter-01-state",
       "label": "Reader State \u2014 Chapter 1",
       "type": "reader-state",
-      "color": "#3F51B5",
+      "color": "#E91E63",
       "path": "wiki/reader_state/reader-model/chapter-01-state.md",
-      "group": 28
+      "group": 30
     },
     {
       "id": "reader_state/reader-model/README",
       "label": "README",
       "type": "unknown",
-      "color": "#CDDC39",
+      "color": "#00BCD4",
       "path": "wiki/reader_state/reader-model/README.md",
-      "group": 29
+      "group": 31
     }
   ],
   "edges": [
     {
       "from": "narrative/locations/LogosPrime",
-      "to": "narrative/characters/Kael",
+      "to": "knowledge/rules/CoherenceTheoryOfTruth",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
@@ -330,7 +346,7 @@
     },
     {
       "from": "narrative/locations/LogosPrime",
-      "to": "knowledge/rules/CoherenceTheoryOfTruth",
+      "to": "narrative/characters/Kael",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
@@ -344,14 +360,14 @@
     },
     {
       "from": "narrative/chapters/chapter-01",
-      "to": "knowledge/rules/MaxOneNewConceptPerScene",
+      "to": "reader_state/foreshadowing/the-cage-motif",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
     },
     {
       "from": "narrative/chapters/chapter-01",
-      "to": "reader_state/foreshadowing/the-cage-motif",
+      "to": "knowledge/rules/MaxOneNewConceptPerScene",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
@@ -386,14 +402,14 @@
     },
     {
       "from": "narrative/characters/AEGIS",
-      "to": "narrative/characters/Kael",
+      "to": "narrative/conflicts/KaelVsAegis",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0
     },
     {
       "from": "narrative/characters/AEGIS",
-      "to": "narrative/conflicts/KaelVsAegis",
+      "to": "narrative/characters/Kael",
       "type": "EXTRACTED",
       "color": "#555555",
       "confidence": 1.0

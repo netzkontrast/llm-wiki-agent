@@ -162,3 +162,6 @@ Try `python tools/build_graph.py --open` first. If unavailable, build graph.json
 ## Log Format
 
 `## [YYYY-MM-DD] <operation> | <title>`
+
+## Developer Enhancements
+See `docs/jules/dev-process.md` for future proposals on splitting Wiki Operations from System Development to improve token efficiency.
