@@ -8,10 +8,12 @@ This file is maintained by the LLM. Updated on every ingest.
 ## Knowledge Layer
 
 ### Sources
+- [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md)
 
 ### Entities
 
 ### Concepts
+- [PsychologicalLandscapes](knowledge/concepts/PsychologicalLandscapes.md)
 
 ### Syntheses
 
@@ -34,6 +36,9 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Chapter 1: The Sterile Beginning](narrative/chapters/chapter-01.md) — pov: Kael, setup
 
 ### Locations
+- [Kw1KaelsInitialeWohneinheit](narrative/locations/Kw1KaelsInitialeWohneinheit.md)
+- [Kw2VergessenerSchrein](narrative/locations/Kw2VergessenerSchrein.md)
+- [AegisAnalyseHub](narrative/locations/AegisAnalyseHub.md)
 - [LogosPrime](narrative/locations/LogosPrime.md) — KW1, rigid control / suppressed chaos
 
 ### Conflicts
