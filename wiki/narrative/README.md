@@ -1,24 +1,33 @@
-# Narrative Layer — Plot-Zustände
+# Narrative Layer — Mutable Story Structure
 
-Diese Schicht enthält alle durch den Schreibprozess mutierten Plot-Zustände.
-Jede Änderung im Erzählverlauf schlägt sich hier nieder — nicht im Knowledge Layer.
+This layer contains all plot states mutated by the writing process. Every change
+in the narrative arc is recorded here — not in the Knowledge layer.
 
-## Zugehörige Verzeichnisse
-- [../chapters/](../chapters/) — Kapitel-Spezifikationen (POV, Timeline, Constraints)
-- [../outlines/](../outlines/) — Strukturelle Kapitelplanung (Beat-Sequenzen)
-- [../beats/](../beats/) — Atomare Szenenmomente mit Spannung und Foreshadowing
-- [../manuscripts/](../manuscripts/) — Ausgeschriebene Prosa-Entwürfe
-- [../conflicts/](../conflicts/) — Interne, externe und thematische Konflikte
-- [../arcs/](../arcs/) — Charakter- und Plot-Transformationsbögen
-- [../themes/](../themes/) — Thematische Fäden und Motive
-- [../dramatica/](../dramatica/) — Dramatica Theory Story-Punkte und Throughlines
+**All page content lives as subdirectories here (not at wiki root):**
 
-## Mutations-Regel
-Mutiert durch Schreibprozesse. Jeder Beat erzeugt potentiell ein Delta. Änderungen
-werden über `informs:`-Ketten in abhängige Seiten propagiert. Immer `last_updated`
-aktualisieren nach Änderungen.
+| Dir | Type | What it contains |
+|---|---|---|
+| `characters/` | character | Fictional character profiles, psychology, voice |
+| `chapters/` | chapter | Chapter specs (POV, timeline, constraints, refs) |
+| `locations/` | location | World-building settings and psychological mappings |
+| `conflicts/` | conflict | Internal, external and thematic conflicts |
+| `themes/` | theme | Thematic threads and motifs |
+| `arcs/` | arc | Character and plot transformation arcs |
+| `dramatica/` | dramatica | Dramatica Theory story points and throughlines |
+| `timeline/` | timeline-event | Story-world chronology — boundary events, sequence numbers |
+| `beats/` | beat | Atomic scene moments with tension and foreshadowing actions |
+| `outlines/` | outline | Chapter structural planning (beat sequences) |
+| `manuscripts/` | manuscript | Written prose drafts |
 
-## Wann laden?
-- Beim chapter-writing Workflow (chapter, outline, beats, manuscript)
-- Beim conflict-resolution Workflow
-- Beim arc-tracking Workflow
+> **Two timelines:** This `timeline/` tracks *story-world* events (`is_boundary`,
+> `sequence_number`). Real-world source provenance lives in `wiki/knowledge/timeline/`.
+
+## Mutation rule
+Mutates through writing processes. Each beat potentially creates a delta. Changes
+propagate via `informs:` chains to dependent pages. Always update `last_updated`
+after changes.
+
+## When to load
+- During `wiki-ingest-narrative` sub-skill
+- During chapter-writing, conflict-resolution, arc-tracking workflows
+- qmd collection: `narrative` — `qmd search "term" -c narrative`

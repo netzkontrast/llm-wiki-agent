@@ -43,12 +43,21 @@ These tasks have no dependencies on Phase 1 wiki content.
 
 - [ ] A3. Add `tools/install-qmd.sh`
   - Install via `npm install -g @tobilu/qmd` (fallback: `bun install -g @tobilu/qmd`)
-  - Initialize wiki collection: `qmd collection add wiki/ --name wiki`
-  - Initialize raw collection: `qmd collection add raw/ --name raw`
-  - Add context hints:
+  - Initialize **per-layer** collections (not one monolithic wiki collection):
+    ```sh
+    qmd collection add wiki/knowledge/   --name knowledge
+    qmd collection add wiki/narrative/   --name narrative
+    qmd collection add wiki/reader_state/ --name reader-state
+    qmd collection add wiki/meta/        --name meta
+    qmd collection add raw/              --name raw
     ```
-    qmd context add qmd://wiki "LLM Wiki: characters, locations, concepts, sources, rules, themes"
-    qmd context add qmd://raw  "Source documents waiting for ingestion"
+  - Add context hints per layer:
+    ```sh
+    qmd context add qmd://knowledge   "Static facts: sources, entities, concepts, rules, timelines, syntheses"
+    qmd context add qmd://narrative   "Story structure: characters, locations, chapters, conflicts, themes, arcs, beats"
+    qmd context add qmd://reader-state "Reader knowledge: foreshadowing, per-chapter terminology ratchet"
+    qmd context add qmd://meta        "System: session logs, protocols, contradiction log, archive"
+    qmd context add qmd://raw         "Source documents waiting for ingestion"
     ```
   - Run initial embed: `qmd embed`
   - Document in `tools/README.md` which tool requires qmd
@@ -75,17 +84,19 @@ These tasks have no dependencies on Phase 1 wiki content.
     ```markdown
     ## Ingest Plan: {filename}
     ### Known entities (merge, do not overwrite)
-    - Kael → wiki/characters/Kael.md
+    - Kael → wiki/narrative/characters/Kael.md  [layer: narrative]
     ### New entities (create)
-    - LogosPrime-Station → wiki/locations/LogosPrime-Station.md (new)
-    ### Likely page types needed
-    - [x] source, character, location
-    - [ ] conflict, theme, rule, timeline, foreshadowing
+    - LogosPrime-Station → wiki/narrative/locations/LogosPrime-Station.md  [layer: narrative]
+    - CoherenceField → wiki/knowledge/concepts/CoherenceField.md  [layer: knowledge]
+    ### Layers touched
+    - [x] knowledge (source, concept)
+    - [x] narrative (character, location)
+    - [ ] reader_state
     ### Potential contradictions to check
-    - "AEGIS destroyed in chapter 3" — check wiki/characters/AEGIS.md
-    ### Suggested context to load before writing
-    - wiki/characters/Kael.md (known, will be updated)
-    - wiki/characters/AEGIS.md (contradiction risk)
+    - "AEGIS destroyed in chapter 3" — check wiki/narrative/characters/AEGIS.md
+    ### Suggested minimal context (qmd per layer)
+    - qmd search "Kael" -c narrative
+    - qmd search "AEGIS" -c narrative
     ```
   - This plan is reviewed (interactive) or logged and executed (autonomous)
 
@@ -116,31 +127,53 @@ These tasks have no dependencies on Phase 1 wiki content.
 
 ### Group C — Skills and Commands (after Group B tooling)
 
-- [ ] C1. Rewrite `.claude/commands/wiki-ingest.md` — 20-step extended ingest
-  - Steps 1–4: context loading (uses qmd for targeted page lookup, not bulk read)
-  - Steps 5–19: writes (source, entities, concepts, novel types, index, log, move)
-  - Merge Rule block (mandatory: update sources: field, append only, log contradictions)
-  - Token budget note: context ceiling 20 pages; use qmd for additional lookups
+- [ ] C1. Rewrite `.claude/commands/wiki-ingest.md` — orchestrator only
+  - The main skill now orchestrates layer sub-skills; it does NOT write pages directly
+  - Steps: run decompose → determine layers touched → call sub-skills in order →
+    update `wiki/index.md` (all sections) → append `wiki/log.md` → move file
+  - Token budget note: orchestrator context ceiling 5 pages; sub-skills own their context
 
-- [ ] C2. Create `.claude/commands/wiki-decompose.md` — per-file planning skill
+- [ ] C2. Create `.claude/commands/wiki-ingest-knowledge.md` — knowledge layer ingest
+  - Writes: `knowledge/sources/`, `knowledge/entities/`, `knowledge/concepts/`,
+    `knowledge/rules/`, `knowledge/timeline/`, `knowledge/syntheses/`
+  - Context: qmd `-c knowledge` only; ceiling 10 pages
+  - Model target: Haiku (factual extraction, structured schema, predictable)
+  - Used by Gemini Jules for autonomous batch ingest
+  - Merge rule: always update `sources:` field; append new facts only
+
+- [ ] C3. Create `.claude/commands/wiki-ingest-narrative.md` — narrative layer ingest
+  - Writes: `narrative/characters/`, `narrative/locations/`, `narrative/conflicts/`,
+    `narrative/themes/`, `narrative/arcs/`, `narrative/dramatica/`, `narrative/timeline/`
+  - Context: qmd `-c narrative` + any known entity pages from decompose plan; ceiling 15 pages
+  - Model target: Sonnet (relationship complexity, merge logic)
+  - Interactive preferred; autonomous only for well-structured sources
+  - Merge rule: merge character profiles; never overwrite established traits without contradiction log entry
+
+- [ ] C4. Create `.claude/commands/wiki-ingest-reader.md` — reader state ingest
+  - Writes: `reader_state/reader-model/`, `reader_state/foreshadowing/`
+  - Context: qmd `-c reader-state` + current chapter page; ceiling 5 pages
+  - Triggered manually after chapter writing, not during document ingest
+  - Monotonic-only: only add to `terminology_permitted`, never remove
+
+- [ ] C5. Create `.claude/commands/wiki-decompose.md` — per-file planning skill
   - Trigger: "decompose raw/foo.md" or before any interactive ingest session
   - Runs `tools/decompose.py {file}` and presents the plan to the user
+  - Plan shows: layers touched, known vs. new entities, qmd search commands to run
   - User reviews/edits the plan interactively
-  - Approved plan is saved to `log/{branch}/{session}/plan.md`
-  - SPARK-influenced: explicitly asks "what could be wrong in this source file's framing?"
+  - Approved plan saved to `log/{branch}/{session}/plan.md`
+  - SPARK-influenced: asks "what in this file's framing could be wrong or misleading?"
   - Output: a validated per-file ingest plan, ready for `/wiki-ingest` execution
 
-- [ ] C3. Create `.claude/commands/wiki-consolidate.md` — continuous improvement skill
+- [ ] C6. Create `.claude/commands/wiki-consolidate.md` — continuous improvement skill
   - Trigger: "consolidate session findings" or run periodically
   - Reads all `log/{branch}/*/findings.md` files since last consolidation
-  - Identifies recurring issues, missed entity types, contradictions left unresolved
+  - Uses `qmd search -c meta` to find related past decisions and protocols
   - Proposes concrete improvements to: `docs/`, `CLAUDE.md`/`GEMINI.md`, wiki READMEs
   - Outputs a diff-style proposal; user approves before any file is written
   - Never writes wiki content — only improves instructions and navigation
 
-- [ ] C4. Update `CLAUDE.md` ingest workflow section to match 20-step spec
-  - Reference `GEMINI.md` for autonomous variant
-  - Add note: "For novel-specific page types, see `docs/wiki-schema.md`"
+- [ ] C7. Update `CLAUDE.md` ingest workflow section to match orchestrator + sub-skill pattern
+  - Reference `GEMINI.md` for autonomous variant (knowledge layer only via C2)
   - Add note: "Run `/wiki-decompose` before `/wiki-ingest` for any file > 2000 words"
 
 ---
