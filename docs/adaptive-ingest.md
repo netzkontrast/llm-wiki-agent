@@ -1,0 +1,238 @@
+# Adaptive Ingest Architecture
+
+**Status:** Draft — spec under development  
+**Phase reference:** `todo/phase-6-adaptive-ingest/`
+
+This document specifies the architecture for token-efficient, self-improving ingest
+across two agent personas (Claude Code for development, Gemini Jules for autonomous
+batch ingest). Read this when the active task in Phase 6 references it.
+
+---
+
+## Core Principle: Plan Before You Write
+
+Every ingest — interactive or autonomous — follows this sequence:
+
+```
+1. DECOMPOSE  →  identify known vs. new entities (cheap, uses qmd)
+2. PLAN       →  generate per-file ingest TODO (SPARK-influenced)
+3. WRITE      →  execute plan (all page types, merge not overwrite)
+4. LOG        →  record findings in session log
+5. EMBED      →  refresh qmd index
+```
+
+Step 1–2 happen before any wiki file is touched. This prevents the most common failure
+mode: writing a new `Kael.md` instead of updating the existing one.
+
+---
+
+## Agent Personas
+
+### Claude Code (interactive + development)
+
+**Role:** Build and improve the system. Run interactive ingests with human review.
+
+Governed by: `CLAUDE.md`
+
+Responsibilities:
+- Develop Python tools, skills, and spec documents
+- Run `/wiki-decompose` → review plan → approve → run `/wiki-ingest`
+- Run `/wiki-consolidate` periodically to improve instructions
+- Never run bulk unattended ingests
+
+Token posture: **lean orchestrator** — spawns subagents and Python scripts, reads
+minimal context itself.
+
+### Gemini Jules (autonomous batch)
+
+**Role:** Process the ingestion queue unattended. Capture main facts, not exhaustive detail.
+
+Governed by: `GEMINI.md`
+
+Responsibilities:
+- Process `raw/` queue in order
+- Run `tools/decompose.py` before each file
+- Execute the simplified autonomous ingest (capture main aspects only)
+- Move processed files to `processed/`
+- Log session findings; never modify specs or instructions
+
+Token posture: **minimal and predictable** — fixed context ceiling, no adaptive behavior,
+no self-modification.
+
+**Key difference:** Interactive ingest can be deep and exhaustive. Autonomous ingest
+should be shallow and reliable. Accuracy over coverage for autonomous; depth on demand
+for interactive.
+
+---
+
+## qmd: Context Layer
+
+qmd replaces bulk wiki-loading with targeted search. Instead of reading 20+ pages,
+an agent runs one command and gets only what it needs.
+
+### Setup (see `tools/install-qmd.sh`)
+
+```sh
+npm install -g @tobilu/qmd
+qmd collection add wiki/ --name wiki
+qmd collection add raw/ --name raw
+qmd context add qmd://wiki "LLM Wiki: characters, locations, concepts, sources, rules, themes"
+qmd context add qmd://raw  "Source documents waiting for ingestion"
+qmd embed
+```
+
+### Usage patterns
+
+```sh
+# Before ingest: find relevant known pages
+qmd query "character Kael" --files --min-score 0.4
+
+# Before writing: check if a page already exists
+qmd search "LogosPrime" --files -n 3
+
+# During synthesis: find conceptually related pages
+qmd query "time paradox coherence" --files --min-score 0.3
+
+# After ingest: refresh the index
+qmd embed
+```
+
+### Context ceiling rules
+
+| Workflow | Max pages in context | Additional lookups |
+|---|---|---|
+| Decompose | 5 (source + 4 relevant known entities) | qmd search as needed |
+| Interactive ingest | 20 | qmd query for each unknown entity |
+| Autonomous ingest | 10 | qmd search only (no reranking) |
+| Consolidate | 0 (log files only) | none |
+
+Claude Code can also use qmd via MCP (`claude plugin marketplace add tobi/qmd`), which
+avoids shell calls and integrates directly into tool use.
+
+---
+
+## Per-File Ingest Plan (Decompose Step)
+
+`tools/decompose.py {source-file}` produces a structured plan:
+
+```markdown
+## Ingest Plan: {filename}
+
+### Known entities (update — do NOT overwrite)
+- Kael → wiki/characters/Kael.md
+- AEGIS → wiki/characters/AEGIS.md
+
+### New entities (create with full frontmatter)
+- LogosPrime-Station → wiki/locations/ (new)
+- CoherenceField → wiki/concepts/ (new)
+
+### Likely page types needed
+- [x] source, character, location, concept
+- [ ] conflict, theme, rule, timeline, foreshadowing
+
+### Potential contradictions to check before writing
+- "AEGIS destroyed in chapter 3" — verify against wiki/characters/AEGIS.md
+- Timeline marker "year 12" — check wiki/timeline/ boundary events
+
+### Suggested minimal context load
+- wiki/characters/Kael.md
+- wiki/characters/AEGIS.md
+- wiki/timeline/010-fragmentation-revealed.md
+```
+
+This plan is:
+- **Reviewed and approved by the user** in interactive sessions
+- **Logged to `log/{branch}/{session}/plan.md`** and executed directly in autonomous runs
+
+SPARK-influenced questions embedded in `/wiki-decompose`:
+- "What assumption in this source file could be false or a narrative misdirection?"
+- "Which known entity might be wrongly identified here due to name similarity?"
+- "Does the timeline in this file contradict any existing boundary events?"
+
+---
+
+## Session Logging
+
+Every session writes to `log/{git-branch}/{YYYY-MM-DD-HH-MM}/`:
+
+### `plan.md`
+Generated by `/wiki-decompose` or written manually. Contains:
+- What files will be ingested this session
+- Per-file decompose plans (output of `tools/decompose.py`)
+- Any pre-session context notes
+
+### `findings.md`
+Written during/after the session. Contains:
+- What was actually created vs. updated vs. skipped
+- Contradictions found and how they were handled
+- Entities that were harder than expected to classify
+- Context loading efficiency (did qmd return useful results?)
+
+### `decisions.md`
+Architectural decisions made during the session:
+- "Decided to create a new page type X because..."
+- "Decided to skip foreshadowing pages for now because..."
+- "qmd score threshold raised to 0.5 because too many false positives"
+
+The `/wiki-consolidate` skill reads all `findings.md` and `decisions.md` files since
+the last consolidation and proposes concrete improvements.
+
+---
+
+## Subagent Orchestration
+
+When to delegate and to what:
+
+| Task | Model | Context |
+|---|---|---|
+| Entity name extraction from raw file | Haiku | File header only (500 tokens) |
+| Known/new classification | qmd CLI | No LLM needed |
+| Per-file plan generation | Sonnet | Decompose output + qmd results |
+| Writing source + entity + concept pages | Sonnet | Plan + 10 pages max |
+| Writing novel page types (character, location, etc.) | Sonnet | Plan + known entity pages |
+| Contradiction resolution | Claude (main) | Conflicting pages + rule pages |
+| Session consolidation | Claude (main) | Log files only |
+
+The main orchestrator session stays lean: it reads the plan, calls subagents for
+writing tasks, and logs findings. It does NOT load all wiki pages into its own context.
+
+---
+
+## Open Question: Single-Pass vs. Two-Pass Ingest (D4)
+
+**Single-pass (Option X):** One LLM call produces all page types. Simpler, but
+context gets large for rich source files.
+
+**Two-pass (Option Y):**
+- Pass 1 (Haiku, cheap): Extract facts → source, entity, concept pages only
+- Pass 2 (Sonnet, expensive, optional): Map facts to novel layer → character, location, etc.
+
+**Separated pipelines (Option Z):**
+- Gemini Jules: ingest to basic wiki layer only (source/entity/concept)
+- `wiki-synthesize` skill (Claude interactive): build novel layer on demand from basic layer
+
+Recommendation: start with Option X. Migrate if context > 8K tokens per ingest becomes
+routine. Measure with `log/` data before deciding.
+
+---
+
+## CLAUDE.md / GEMINI.md Split Boundary
+
+| Content | CLAUDE.md | GEMINI.md |
+|---|---|---|
+| Session start protocol (dev sessions) | ✓ | |
+| Session start protocol (ingest sessions) | | ✓ |
+| Python tool usage (all tools) | ✓ | ✓ |
+| Interactive ingest workflow | ✓ | |
+| Autonomous ingest workflow | | ✓ |
+| `/wiki-decompose` skill | ✓ | |
+| `/wiki-ingest` skill (reference) | ✓ | ✓ |
+| `/wiki-consolidate` skill | ✓ | |
+| qmd usage | ✓ | ✓ |
+| Codebase development rules | ✓ | |
+| Wiki schema reference | ✓ | ✓ |
+| Page format and frontmatter | ✓ | ✓ |
+| Session logging | ✓ | ✓ (write-only) |
+
+Rule: if an instruction is about **building the system**, it lives in `CLAUDE.md`. If
+it's about **using the system to ingest content**, it lives in both or `GEMINI.md` only.
