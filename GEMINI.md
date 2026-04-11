@@ -170,3 +170,5 @@ Try `python tools/build_graph.py --open` first. If unavailable, build graph.json
 
 ## Developer Enhancements
 See `docs/jules/dev-process.md` for future proposals on splitting Wiki Operations from System Development to improve token efficiency.
+## Developer Enhancements
+See `docs/jules/dev-process.md` for future proposals on splitting Wiki Operations from System Development to improve token efficiency.
