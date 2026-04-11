@@ -18,6 +18,7 @@ The LLM reads the source, extracts knowledge, and updates the wiki:
 import os
 import sys
 import json
+import shutil
 import hashlib
 import re
 from pathlib import Path
@@ -31,6 +32,7 @@ LOG_FILE = WIKI_DIR / "log.md"
 INDEX_FILE = WIKI_DIR / "index.md"
 OVERVIEW_FILE = WIKI_DIR / "overview.md"
 SCHEMA_FILE = REPO_ROOT / "CLAUDE.md"
+PROCESSED_DIR = REPO_ROOT / "processed"
 
 
 def sha256(text: str) -> str:
@@ -156,27 +158,34 @@ Return ONLY a valid JSON object with these fields (no markdown fences, no prose 
         Path("/tmp/ingest_debug.txt").write_text(raw)
         sys.exit(1)
 
-    # Write source page
-    slug = data["slug"]
-    write_file(WIKI_DIR / "sources" / f"{slug}.md", data["source_page"])
+    # Write all wiki pages — only move source to processed/ if ALL writes succeed
+    try:
+        # Write source page
+        slug = data["slug"]
+        write_file(WIKI_DIR / "sources" / f"{slug}.md", data["source_page"])
 
-    # Write entity pages
-    for page in data.get("entity_pages", []):
-        write_file(WIKI_DIR / page["path"], page["content"])
+        # Write entity pages
+        for page in data.get("entity_pages", []):
+            write_file(WIKI_DIR / page["path"], page["content"])
 
-    # Write concept pages
-    for page in data.get("concept_pages", []):
-        write_file(WIKI_DIR / page["path"], page["content"])
+        # Write concept pages
+        for page in data.get("concept_pages", []):
+            write_file(WIKI_DIR / page["path"], page["content"])
 
-    # Update overview
-    if data.get("overview_update"):
-        write_file(OVERVIEW_FILE, data["overview_update"])
+        # Update overview
+        if data.get("overview_update"):
+            write_file(OVERVIEW_FILE, data["overview_update"])
 
-    # Update index
-    update_index(data["index_entry"], section="Sources")
+        # Update index
+        update_index(data["index_entry"], section="Sources")
 
-    # Append log
-    append_log(data["log_entry"])
+        # Append log
+        append_log(data["log_entry"])
+
+    except Exception as e:
+        print(f"\nError during wiki write operations: {e}")
+        print("Source file was NOT moved to processed/ — manual cleanup may be needed.")
+        sys.exit(1)
 
     # Report contradictions
     contradictions = data.get("contradictions", [])
@@ -184,6 +193,19 @@ Return ONLY a valid JSON object with these fields (no markdown fences, no prose 
         print("\n  ⚠️  Contradictions detected:")
         for c in contradictions:
             print(f"     - {c}")
+
+    # Move source from raw/ to processed/ (only if source is inside raw/)
+    source_abs = source.resolve()
+    raw_dir = (REPO_ROOT / "raw").resolve()
+    if source_abs.is_relative_to(raw_dir):
+        dest = PROCESSED_DIR / source_abs.relative_to(raw_dir)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        if dest.exists():
+            dest = dest.with_stem(f"{dest.stem}_{source_hash}")
+        shutil.move(str(source_abs), str(dest))
+        print(f"  moved: {source_abs.relative_to(REPO_ROOT)} → {dest.relative_to(REPO_ROOT)}")
+    else:
+        print(f"  note: source is not in raw/ — skipping move to processed/")
 
     print(f"\nDone. Ingested: {data['title']}")
 
