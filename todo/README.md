@@ -10,7 +10,7 @@
 | 3 | `phase-3-workflows/` | `complete` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
 | 4 | `phase-4-integration/` | `complete` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
 | 5 | `phase-5-writing-pipeline/` | `complete` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
-| 6 | `phase-6-adaptive-ingest/` | `active` | Token-efficient ingest: qmd, decompose script, session logging, CLAUDE/GEMINI split, novel page types |
+| 6 | `phase-6-adaptive-ingest/` | `complete` | Token-efficient ingest: qmd, decompose script, session logging, CLAUDE/GEMINI split, novel page types |
 | 7 | `phase-7-meta-consolidation/` | `not-started` | Meta-Consolidation: Agent Instruction Decoupling, Multi-stage Ingestion |
 
 > **Phase 6 note:** Group A tasks (Foundation) can start immediately in parallel with Phase 1.

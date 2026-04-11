@@ -21,6 +21,7 @@ import json
 import shutil
 import hashlib
 import re
+import subprocess
 from pathlib import Path
 from datetime import date
 
@@ -62,6 +63,10 @@ def build_wiki_context() -> str:
         recent = sorted(sources_dir.glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)[:5]
         for p in recent:
             parts.append(f"## {p.relative_to(REPO_ROOT)}\n{p.read_text()}")
+
+    # Include qmd context if available. For the script logic, we leave this stubbed or manual search.
+    # In a full run, the caller should have populated context, or we can run qmd search here for file contents
+
     return "\n\n---\n\n".join(parts)
 
 
@@ -76,15 +81,19 @@ def parse_json_from_response(text: str) -> dict:
     return json.loads(match.group())
 
 
-def update_index(new_entry: str, section: str = "Sources"):
+def update_index_multi(index_entries: dict):
     content = read_file(INDEX_FILE)
     if not content:
         content = "# Wiki Index\n\n## Overview\n- [Overview](overview.md) — living synthesis\n\n## Sources\n\n## Entities\n\n## Concepts\n\n## Syntheses\n"
-    section_header = f"## {section}"
-    if section_header in content:
-        content = content.replace(section_header + "\n", section_header + "\n" + new_entry + "\n")
-    else:
-        content += f"\n{section_header}\n{new_entry}\n"
+
+    for section, entries in index_entries.items():
+        section_header = f"## {section}"
+        entries_str = "\n".join(entries)
+        if section_header in content:
+            content = content.replace(section_header + "\n", section_header + "\n" + entries_str + "\n")
+        else:
+            content += f"\n{section_header}\n{entries_str}\n"
+
     write_file(INDEX_FILE, content)
 
 
@@ -107,6 +116,8 @@ def ingest(source_path: str):
 
     wiki_context = build_wiki_context()
     schema = read_file(SCHEMA_FILE)
+    wiki_schema = read_file(REPO_ROOT / "docs" / "wiki-schema.md")
+    schema += "\n\n" + wiki_schema
 
     client = anthropic.Anthropic()
 
@@ -130,14 +141,23 @@ Return ONLY a valid JSON object with these fields (no markdown fences, no prose 
   "title": "Human-readable title for this source",
   "slug": "kebab-case-slug-for-filename",
   "source_page": "full markdown content for wiki/sources/<slug>.md — use the source page format from the schema",
-  "index_entry": "- [Title](sources/slug.md) — one-line summary",
+  "index_entries": {{
+    "Sources": ["- [Title](sources/slug.md) — one-line summary"]
+  }},
   "overview_update": "full updated content for wiki/overview.md, or null if no update needed",
   "entity_pages": [
-    {{"path": "entities/EntityName.md", "content": "full markdown content"}}
+    {{"action": "create", "path": "entities/EntityName.md", "content": "full markdown content"}}
   ],
   "concept_pages": [
-    {{"path": "concepts/ConceptName.md", "content": "full markdown content"}}
+    {{"action": "create", "path": "concepts/ConceptName.md", "content": "full markdown content"}}
   ],
+  "character_pages": [],
+  "location_pages": [],
+  "conflict_pages": [],
+  "theme_pages": [],
+  "rule_pages": [],
+  "timeline_events": [],
+  "foreshadowing_pages": [],
   "contradictions": ["describe any contradiction with existing wiki content, or empty list"],
   "log_entry": "## [{today}] ingest | <title>\\n\\nAdded source. Key claims: ..."
 }}
@@ -196,8 +216,20 @@ Return ONLY a valid JSON object with these fields (no markdown fences, no prose 
         if data.get("overview_update"):
             write_file(OVERVIEW_FILE, data["overview_update"])
 
-        update_index(data["index_entry"], section="Sources")
+        if "index_entries" in data:
+            update_index_multi(data["index_entries"])
+        elif "index_entry" in data:
+            # Fallback
+            update_index_multi({"Sources": [data["index_entry"]]})
+
         append_log(data["log_entry"])
+
+        # Run qmd embed after all writes succeed
+        if shutil.which("qmd"):
+            try:
+                subprocess.run(["qmd", "embed"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except Exception as e:
+                pass
 
     except Exception as e:
         print(f"\nError during wiki write operations: {e}")
