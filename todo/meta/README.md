@@ -196,3 +196,12 @@ Die README.md im Unterverzeichnis dient als L1-Discovery-Dokument:
 | Maintenance | `todo/README.md` → `todo/meta/README.md` (this file) |
 | Reference | `docs/README.md` → specific doc |
 | Normal wiki work | `CLAUDE.md` (existing workflows) |
+
+## SKILL.md Standard
+For agent workflows, it's recommended to place them in a subdirectory named after the workflow and create a `SKILL.md` inside it. The `SKILL.md` file should contain YAML frontmatter with the following keys:
+- `name`: The name of the workflow.
+- `description`: An imperative, third-person description of the workflow, and intent-focused description of when it should be used.
+- `version`: The version of the workflow.
+- `triggers`: A list of trigger phrases that should activate the workflow.
+
+The body of the `SKILL.md` should be concise, ideally under 100 lines. See `.claude/commands/wiki-ingest/SKILL.md` for an example.
