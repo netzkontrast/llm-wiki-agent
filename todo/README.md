@@ -5,7 +5,7 @@
 | Phase | Folder | Status | Description |
 |-------|--------|--------|-------------|
 | 0 | `phase-0-cleanup/` | `not-started` | Infrastruktur: Ingest-Queue-Migration, Wiki-Oberschichten, Progressive Disclosure |
-| 1 | `phase-1-schema/` | `not-started` | Wiki schema extension: page types, directories, frontmatter, seed templates, folder READMEs |
+| 1 | `phase-1-schema/` | `active` | Wiki schema extension: page types, directories, frontmatter, seed templates, folder READMEs |
 | 2 | `phase-2-navigation/` | `not-started` | Navigation, dependencies, temporal filtering, deterministic lint rules, staleness checks |
 | 3 | `phase-3-workflows/` | `not-started` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
 | 4 | `phase-4-integration/` | `not-started` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
