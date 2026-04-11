@@ -10,5 +10,4 @@ Optional standalone Python scripts for maintaining the wiki. These tools require
 - `check_staleness.py` — Utility script.
 - `query.py` — Legacy query script.
 - `install-qmd.sh` — Installs qmd and sets up the wiki collections and contexts.
-- `decompose.py` — Evaluates a raw file and generates an ingest plan.
 - `session_init.py` — Initializes a logging session folder for adaptive ingest.

@@ -11,10 +11,9 @@ The words "representative sample", "test run", "defer", "skip for now" are FORBI
 
 ## Steps
 
-1. **Decompose**: Run `python3 tools/decompose.py {file}` — read the FULL output including all counts.
-   Save to `log/{branch}/{session}/plan.md`. If TOTAL entities > 10, note batch mode required.
+1. **Decompose**: Run `/wiki-decompose {file}`. Read the FULL output including all counts from `log/{branch}/{session}/plan.md`. If TOTAL entities > 10, note batch mode required.
 
-2. **Determine layers** from decompose output.
+2. **Determine layers** from the generated plan.
 
 3. **Knowledge layer** (if touched): Call `/wiki-ingest-knowledge` with FULL entity list from plan.
    - For entity types with N > 10: call in batches of 6, iterating until all extracted.
@@ -25,7 +24,7 @@ The words "representative sample", "test run", "defer", "skip for now" are FORBI
 
 5. **Reader state layer** (if touched): Call `/wiki-ingest-reader`.
 
-6. **Audit**: Run `python3 tools/audit_completeness.py {file}` (after moving to processed/).
+6. **Audit**: Run `python3 tools/audit_completeness.py log/{branch}/{session}/plan.md`.
    - If `total_missing > 0`: run cleanup passes for each missing type, then re-audit.
    - Do NOT move file to `processed/` until audit passes with `total_missing == 0`.
 
