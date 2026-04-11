@@ -15,6 +15,15 @@ Or use shorthand triggers:
 - `query: <question>` → runs the Query Workflow
 - `lint` → runs the Lint Workflow
 - `build graph` → runs the Graph Workflow
+- `wiki-chapter` → runs the Chapter Writing Workflow
+- `wiki-character` → runs the Character Dev Workflow
+- `wiki-worldbuild` → runs the Worldbuilding Workflow
+- `wiki-timeline` → runs the Timeline Workflow
+- `wiki-conflict` → runs the Conflict Resolution Workflow
+- `wiki-reader-model` → runs the Reader Model Workflow
+- `wiki-revise` → runs the Revision Workflow
+- `wiki-lector` → runs the Lectoring Workflow
+- `wiki-brainstorm` → runs the Brainstorming Workflow
 
 ---
 
@@ -27,14 +36,10 @@ wiki/         # Agent owns this layer entirely
   index.md    # Catalog of all pages — update on every ingest
   log.md      # Append-only chronological record
   overview.md # Living synthesis across all sources
-  knowledge/  # Routing layer: characters, locations, rules, concepts, entities, timeline, sources
-  narrative/  # Routing layer: chapters, outlines, beats, manuscripts, conflicts, arcs, themes, dramatica
+  knowledge/  # Routing layer: concepts, entities, sources, rules, timeline
+  narrative/  # Routing layer: characters, chapters, locations, conflicts, themes, arcs, dramatica, beats, outlines, manuscripts
   reader_state/ # Routing layer: reader-model, foreshadowing
-  meta/       # Routing layer: logs, contradiction-log, protocols, index
-  sources/    # One summary page per source document
-  entities/   # People, companies, projects, products
-  concepts/   # Ideas, frameworks, methods, theories
-  syntheses/  # Saved query answers
+  meta/       # Routing layer: archive, ingest, logs, contradiction-log, protocols
 graph/        # Auto-generated graph data
 tools/        # Optional standalone Python scripts (require ANTHROPIC_API_KEY)
 ```
@@ -73,7 +78,7 @@ Every wiki page uses this frontmatter:
 ```yaml
 ---
 title: "Page Title"
-type: source | entity | concept | synthesis
+type: source | entity | concept | synthesis | character | chapter | location | conflict | theme | timeline-event | rule | arc | dramatica | reader-state | foreshadowing
 tags: []
 sources: []       # list of source slugs that inform this page
 last_updated: YYYY-MM-DD

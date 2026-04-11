@@ -10,6 +10,15 @@ This wiki is maintained entirely by Claude Code. No API key or Python scripts ne
 | `/wiki-query` | `query: what are the main themes?` |
 | `/wiki-lint` | `lint the wiki` |
 | `/wiki-graph` | `build the knowledge graph` |
+| `/wiki-chapter` | `write chapter 5` |
+| `/wiki-character` | `develop character Kael` |
+| `/wiki-worldbuild` | `build world element LogosPrime` |
+| `/wiki-timeline` | `timeline of fragmentation` |
+| `/wiki-conflict` | `resolve conflict KaelVsAegis` |
+| `/wiki-reader-model` | `reader state for chapter 1` |
+| `/wiki-revise` | `revise chapter 1` |
+| `/wiki-lector` | `lector chapter 1` |
+| `/wiki-brainstorm` | `brainstorm about The Cage Motif` |
 
 Or just describe what you want in plain English:
 - *"Ingest this file: raw/papers/attention-is-all-you-need.md"*
@@ -64,6 +73,8 @@ tools/        # Python scripts (require qmd + ANTHROPIC_API_KEY)
 
 ---
 
+## When Using the Wiki
+
 ## Ingestion Queue
 
 The ingestion queue is managed by file location, not by checklist:
@@ -96,9 +107,14 @@ Every wiki page uses this frontmatter:
 ```yaml
 ---
 title: "Page Title"
-type: source | entity | concept | synthesis
+type: source | entity | concept | synthesis | character | chapter | location | conflict | theme | timeline-event | rule | arc | dramatica | reader-state | foreshadowing
 tags: []
 sources: []       # list of source slugs that inform this page
+requires: []      # list of page slugs this page depends on (depth 2)
+informs: []       # list of page slugs this page informs (unbounded)
+valid_from: ""    # timeline-event slug
+valid_until: ""   # timeline-event slug
+traits: {}        # specialized key-value pairs (e.g. voice_profile)
 last_updated: YYYY-MM-DD
 ---
 ```
@@ -121,7 +137,15 @@ Steps (in order):
 7. Update/create concept pages for key ideas and frameworks discussed
 8. Flag any contradictions with existing wiki content
 9. Append to `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`
-10. Move the source file from `raw/` to `processed/`: `mv raw/<filename> processed/<filename>`
+10. Create/update **character pages** for fictional characters mentioned in the source
+11. Create/update **location pages** for settings described
+12. Create/update **conflict pages** for conflicts identified
+13. Create/update **theme pages** for thematic elements discussed
+14. Create/update **rule pages** if the source defines world rules or narrative mandates
+15. Link source page to relevant **chapter pages** if chapter-specific content
+16. Update **timeline events** if the source establishes chronological facts
+17. Create/update **foreshadowing pages** if the source discusses foreshadowing strands
+18. Move the source file from `raw/` to `processed/`: `mv raw/<filename> processed/<filename>`
 
 ### Source Page Format
 
@@ -177,6 +201,7 @@ Use Grep and Read tools to check for:
 - **Stale summaries** — pages not updated after newer sources
 - **Missing entity pages** — entities mentioned in 3+ pages but lacking their own page
 - **Data gaps** — questions the wiki can't answer; suggest new sources
+- **Novel-specific checks** — orphan characters, timeline gaps, foreshadowing with no resolution, `constraint_refs` to non-existent rules, `terminology_permitted` ratchet violations.
 
 Output a lint report and ask if the user wants it saved to `wiki/lint-report.md`.
 
@@ -187,7 +212,7 @@ Output a lint report and ask if the user wants it saved to `wiki/lint-report.md`
 Triggered by: *"build the knowledge graph"* or `/wiki-graph`
 
 When the user asks to build the graph, run `tools/build_graph.py` which:
-- Pass 1: Parses all `[[wikilinks]]` → deterministic `EXTRACTED` edges
+- Pass 1: Parses all `[[wikilinks]]` and `requires:`/`informs:` relationships → deterministic `EXTRACTED` edges
 - Pass 2: Infers implicit relationships → `INFERRED` edges with confidence scores
 - Runs Louvain community detection
 - Outputs `graph/graph.json` + `graph/graph.html`
@@ -205,7 +230,20 @@ If the user doesn't have Python/dependencies set up, instead generate the graph 
 - Source slugs: `kebab-case` matching source filename
 - Entity pages: `TitleCase.md` (e.g. `OpenAI.md`, `SamAltman.md`)
 - Concept pages: `TitleCase.md` (e.g. `ReinforcementLearning.md`, `RAG.md`)
-- Source pages: `kebab-case.md`
+- Character pages: `TitleCase.md`
+- Chapter pages: `chapter-NN.md`
+- Location pages: `TitleCase.md`
+- Conflict pages: `TitleCase.md`
+- Theme pages: `TitleCase.md`
+- Timeline events: `NNN-slug.md`
+- Rule pages: `TitleCase.md`
+- Arc pages: `kebab-case.md`
+- Dramatica pages: `TitleCase.md`
+- Reader-state pages: `chapter-NN-state.md`
+- Foreshadowing pages: `kebab-case.md`
+- Outline pages: `chapter-NN-outline.md`
+- Beat pages: `chapter-NN-beat-NN.md`
+- Manuscript pages: `chapter-NN-manuscript.md`
 
 ## Index Format
 
@@ -226,6 +264,48 @@ If the user doesn't have Python/dependencies set up, instead generate the graph 
 
 ## Syntheses
 - [Analysis Title](syntheses/slug.md) — what question it answers
+
+## Characters
+- [Name](characters/Name.md) — role, brief
+
+## Chapters
+- [Chapter N: Title](chapters/chapter-NN.md) — pov, outline_status/manuscript_status
+
+## Locations
+- [Name](locations/Name.md) — world, brief
+
+## Conflicts
+- [Name](conflicts/Name.md) — type, status
+
+## Themes
+- [Name](themes/Name.md) — brief statement
+
+## Timeline
+- [NNN Event](timeline/NNN-slug.md) — timepoint
+
+## Rules
+- [Name](rules/Name.md) — class, brief
+
+## Arcs
+- [Name](arcs/slug.md) — type, subject
+
+## Dramatica
+- [Name](dramatica/Name.md) — element_type
+
+## Reader Model
+- [Chapter N](reader-model/chapter-NN-state.md) — tension_level
+
+## Foreshadowing
+- [Name](foreshadowing/slug.md) — status
+
+## Outlines
+- [Chapter N](outlines/chapter-NN-outline.md) — outline_status
+
+## Beats
+- [Chapter N, Beat M](beats/chapter-NN-beat-NN.md) — purpose
+
+## Manuscripts
+- [Chapter N](manuscripts/chapter-NN-manuscript.md) — manuscript_status
 ```
 
 ## Log Format
@@ -239,6 +319,8 @@ grep "^## \[" wiki/log.md | tail -10
 Operations: `ingest`, `query`, `lint`, `graph`
 
 ---
+
+## When Developing the Wiki System
 
 ## Development Roadmap (todo/)
 

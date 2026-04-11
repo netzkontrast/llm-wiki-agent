@@ -164,9 +164,34 @@ Return ONLY a valid JSON object with these fields (no markdown fences, no prose 
         slug = data["slug"]
         write_file(WIKI_DIR / "sources" / f"{slug}.md", data["source_page"])
 
-        for key in ("entity_pages", "concept_pages"):
+        # Validate layer mapping for standard types
+        layer_mapping = {
+            "entities": "knowledge",
+            "concepts": "knowledge",
+            "sources": "knowledge",
+            "rules": "knowledge",
+            "characters": "narrative",
+            "chapters": "narrative",
+            "locations": "narrative",
+            "conflicts": "narrative",
+            "themes": "narrative",
+            "arcs": "narrative",
+            "reader-model": "reader_state",
+            "foreshadowing": "reader_state",
+            "timeline": "narrative" # or knowledge based on the file but standard timeline events typically narrative here
+        }
+
+        for key in ("entity_pages", "concept_pages", "character_pages", "location_pages", "conflict_pages", "theme_pages", "rule_pages", "timeline_events", "foreshadowing_pages"):
             for page in data.get(key, []):
-                write_file(WIKI_DIR / page["path"], page["content"])
+                path_str = page.get("path", "")
+                parts = path_str.split("/")
+                if len(parts) >= 2:
+                    page_type_dir = parts[-2]
+                    expected_layer = layer_mapping.get(page_type_dir)
+                    if expected_layer and parts[0] != expected_layer:
+                        print(f"  ⚠️  Warning: Page {path_str} is assigned to layer '{parts[0]}' but expected '{expected_layer}'")
+
+                write_file(WIKI_DIR / path_str, page["content"])
 
         if data.get("overview_update"):
             write_file(OVERVIEW_FILE, data["overview_update"])
@@ -186,13 +211,15 @@ Return ONLY a valid JSON object with these fields (no markdown fences, no prose 
             print(f"     - {c}")
 
     source_abs = source.resolve()
-    if source_abs.is_relative_to(RAW_DIR):
+    if source_abs.is_relative_to(RAW_DIR) and source_abs.exists():
         dest = PROCESSED_DIR / source_abs.relative_to(RAW_DIR)
         dest.parent.mkdir(parents=True, exist_ok=True)
         if dest.exists():
             dest = dest.with_stem(f"{dest.stem}_{source_hash}")
         shutil.move(source_abs, dest)
         print(f"  moved: {source_abs.relative_to(REPO_ROOT)} → {dest.relative_to(REPO_ROOT)}")
+    elif source_abs.is_relative_to(PROCESSED_DIR) and source_abs.exists():
+        print(f"  Note: Source is already in processed directory: {source_abs.relative_to(REPO_ROOT)}")
 
     print(f"\nDone. Ingested: {data['title']}")
 

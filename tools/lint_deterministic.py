@@ -161,6 +161,24 @@ def main():
              errs = check_refs(fm, p, character_pages, "characters")
              for e in errs: errors.append(f"{p}: characters error - {e}")
 
+        # Check Oberschicht-Architektur constraints
+        layer = check_layer(p)
+        if not layer:
+            parts = p.relative_to(WIKI_DIR).parts
+            if len(parts) > 0:
+                current_layer = parts[0]
+                if current_layer == "knowledge":
+                    if "manuscript_status" in fm:
+                        errors.append(f"{p}: Knowledge-Layer pages must not have 'manuscript_status' field")
+                    if "beat_number" in fm:
+                        errors.append(f"{p}: Knowledge-Layer pages must not have 'beat_number' field")
+                elif current_layer == "narrative":
+                    # For chapters, outlines, beats, manuscripts - they must have chapter_ref
+                    ptype = fm.get("type", "")
+                    if ptype in ("chapter", "outline", "beat", "manuscript") or (len(parts) > 1 and parts[1] in ("chapters", "outlines", "beats", "manuscripts")):
+                        if "chapter_ref" not in fm:
+                            errors.append(f"{p}: Narrative-Layer pages of this type must have 'chapter_ref' field")
+
         # Check foreshadowing
         if fm.get("type") == "foreshadowing":
             status = fm.get("status")

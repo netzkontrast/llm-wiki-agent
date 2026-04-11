@@ -27,6 +27,7 @@ valid_until: ""
 traits:
   somatic_layer: "chest-pressure"
   polyphony_mode: "single-voice"
+chapter_ref: 1
 last_updated: 2026-04-11
 ---
 

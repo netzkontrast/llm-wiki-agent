@@ -1,5 +1,21 @@
 ## [2026-04-11] graph | Knowledge graph rebuilt
 
+41 nodes, 28 edges (0 extracted, 0 inferred).
+
+## [2026-04-11] graph | Knowledge graph rebuilt
+
+41 nodes, 28 edges (0 extracted, 0 inferred).
+
+## [2026-04-11] lint | Wiki health check
+
+Ran lint. See lint-report.md for details.
+
+## [2026-04-11] graph | Knowledge graph rebuilt
+
+41 nodes, 28 edges (0 extracted, 0 inferred).
+
+## [2026-04-11] graph | Knowledge graph rebuilt
+
 41 nodes, 22 edges (16 extracted, 0 inferred).
 
 ## [2026-04-11] graph | Knowledge graph rebuilt

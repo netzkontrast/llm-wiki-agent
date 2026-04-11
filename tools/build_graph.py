@@ -83,6 +83,28 @@ def extract_yaml_frontmatter_list(content: str, field: str) -> list[str]:
     inner = match.group(1).strip()
     if not inner: return []
     return [item.strip().strip('"\'').split('/')[-1] for item in inner.split(',')]
+def extract_frontmatter(content: str) -> dict:
+    match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+    if not match:
+        return {}
+    yaml_str = match.group(1)
+    data = {}
+    for line in yaml_str.split('\n'):
+        if ':' not in line:
+            continue
+        key, val = line.split(':', 1)
+        key = key.strip()
+        val = val.strip()
+        if val.startswith('[') and val.endswith(']'):
+            inner = val[1:-1].strip()
+            if not inner:
+                data[key] = []
+            else:
+                data[key] = [item.strip().strip('"\'') for item in inner.split(',')]
+        else:
+            data[key] = val
+    return data
+
 
 def extract_frontmatter_type(content: str) -> str:
     match = re.search(r'^type:\s*(\S+)', content, re.MULTILINE)
@@ -142,10 +164,41 @@ def build_extracted_edges(pages: list[Path]) -> list[dict]:
                     edges.append({
                         "from": src,
                         "to": target,
-                        "type": "EXTRACTED",
+                        "type": "WIKILINK",
                         "color": EDGE_COLORS["EXTRACTED"],
                         "confidence": 1.0,
                     })
+
+        fm = extract_frontmatter(content)
+        if fm:
+            for req in fm.get("requires", []):
+                clean_req = req.split('/')[-1]
+                target = stem_map.get(clean_req.lower())
+                if target and target != src:
+                    key = f"REQUIRES_{src}_{target}"
+                    if key not in seen:
+                        seen.add(key)
+                        edges.append({
+                            "from": src,
+                            "to": target,
+                            "type": "REQUIRES",
+                            "color": "#FF9800",
+                            "confidence": 1.0,
+                        })
+            for inf in fm.get("informs", []):
+                clean_inf = inf.split('/')[-1]
+                target = stem_map.get(clean_inf.lower())
+                if target and target != src:
+                    key = f"INFORMS_{src}_{target}"
+                    if key not in seen:
+                        seen.add(key)
+                        edges.append({
+                            "from": src,
+                            "to": target,
+                            "type": "INFORMS",
+                            "color": "#2196F3",
+                            "confidence": 1.0,
+                        })
         # Extract requires edges
         for req in extract_yaml_frontmatter_list(content, 'requires'):
             target = stem_map.get(req.lower())
@@ -425,14 +478,23 @@ def build_graph(infer: bool = True, open_browser: bool = False):
         print(f"  → {len(inferred)} inferred edges")
         save_cache(cache)
 
-    # Community detection
-    print("  Running Louvain community detection...")
-    communities = detect_communities(nodes, edges)
+    # Layer clustering
+    print("  Assigning nodes to layer clusters...")
+    LAYER_COLORS = {
+        "knowledge": "#4CAF50",    # green
+        "narrative": "#2196F3",    # blue
+        "reader_state": "#FFEB3B", # yellow
+        "meta": "#9E9E9E",         # gray
+    }
+
     for node in nodes:
-        comm_id = communities.get(node["id"], -1)
-        if comm_id >= 0:
-            node["color"] = COMMUNITY_COLORS[comm_id % len(COMMUNITY_COLORS)]
-        node["group"] = comm_id
+        path_str = node["path"]
+        layer = path_str.split("/")[1] if path_str.startswith("wiki/") and len(path_str.split("/")) > 1 else None
+        if layer in LAYER_COLORS:
+            node["color"] = LAYER_COLORS[layer]
+            node["group"] = layer
+        else:
+            node["group"] = "other"
 
     # Save graph.json
     graph_data = {"nodes": nodes, "edges": edges, "built": today}
