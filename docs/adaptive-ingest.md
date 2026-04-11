@@ -252,20 +252,19 @@ The orchestrator session stays at ≤5 pages. Sub-skills own their context entir
 
 ---
 
-## Open Question: Single-Pass vs. Two-Pass Ingest (D4)
+## Decision: Single-Pass vs. Two-Pass Ingest (D4)
 
-**Single-pass (Option X):** One LLM call produces all page types. Simpler, but
-context gets large for rich source files.
+**Decision:** Option X: Single-pass ingest.
 
-**Two-pass (Option Y):**
-- Pass 1 (Haiku, cheap): Extract facts → source, entity, concept pages only
-- Pass 2 (Sonnet, expensive, optional): Map facts to novel layer → character, location, etc.
+One LLM call produces all page types. This is simpler to implement for Phase 6.
 
-**Separated pipelines (Option Z):**
-- Gemini Jules: ingest to basic wiki layer only (source/entity/concept)
-- `wiki-synthesize` skill (Claude interactive): build novel layer on demand from basic layer
+*Alternative options considered:*
+- Option Y: Two-pass ingest — pass 1 captures facts (Haiku, cheap), pass 2 maps to
+  novel structure (Sonnet, expensive, optional)
+- Option Z: Gemini Jules only ingests to basic layer; a separate `wiki-synthesize`
+  skill maps to novel layer on demand
 
-Recommendation: start with Option X. Migrate if context > 8K tokens per ingest becomes
+Recommendation followed: start with Option X. Migrate if context > 8K tokens per ingest becomes
 routine. Measure with `log/` data before deciding.
 
 ---

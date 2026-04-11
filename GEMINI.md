@@ -93,15 +93,25 @@ Use `[[PageName]]` wikilinks to link to other wiki pages.
 
 Triggered by: *"ingest <file>"*
 
-1. Read the source document fully
+Steps (in order):
+1. Read the source document fully using the Read tool
 2. Read `wiki/index.md` and `wiki/overview.md` for current wiki context
-3. Write `wiki/sources/<slug>.md` (source page format below)
-4. Update `wiki/index.md` — add entry under Sources
+3. Write `wiki/sources/<slug>.md` — use the source page format below
+4. Update `wiki/index.md` — add entry under Sources section
 5. Update `wiki/overview.md` — revise synthesis if warranted
-6. Update/create entity and concept pages
-7. Flag contradictions with existing wiki content
-8. Append to `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`
-9. Move the source file from `raw/` to `processed/`: `mv raw/<filename> processed/<filename>`
+6. Update/create entity pages for key people, companies, projects mentioned
+7. Update/create concept pages for key ideas and frameworks discussed
+8. Flag any contradictions with existing wiki content
+9. Append to `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`
+10. Create/update **character pages** for fictional characters mentioned in the source
+11. Create/update **location pages** for settings described
+12. Create/update **conflict pages** for conflicts identified
+13. Create/update **theme pages** for thematic elements discussed
+14. Create/update **rule pages** if the source defines world rules or narrative mandates
+15. Link source page to relevant **chapter pages** if chapter-specific content
+16. Update **timeline events** if the source establishes chronological facts
+17. Create/update **foreshadowing pages** if the source discusses foreshadowing strands
+18. Move the source file from `raw/` to `processed/`: `mv raw/<filename> processed/<filename>`
 
 ### Source Page Format
 

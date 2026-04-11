@@ -62,7 +62,7 @@ Three interlocking ideas drive this phase:
   - Updated `wiki/index.md` to use nested paths
   - Layer routing READMEs already correct from prior work
 
-- [ ] A1. Split CLAUDE.md / GEMINI.md
+- [x] A1. Split CLAUDE.md / GEMINI.md
   - Move all autonomous ingest instructions, Gemini-specific workflows, and the
     "Ingest Workflow" section into `GEMINI.md`
   - Keep `CLAUDE.md` focused on: codebase development, interactive workflows,
@@ -70,13 +70,13 @@ Three interlocking ideas drive this phase:
   - Both files reference the same Python tools — no duplication of tool logic
   - See `docs/adaptive-ingest.md § Agent Personas` for the split boundary
 
-- [ ] A2. Create `log/` directory structure
+- [x] A2. Create `log/` directory structure
   - `log/.gitkeep` + `log/README.md` (schema reference: what goes in each log file)
   - Session subfolders are created at runtime by `tools/session_init.py` (Group B)
   - Naming convention: `log/{git-branch-name}/YYYY-MM-DD-HH-MM/`
   - Each session folder contains: `plan.md`, `findings.md`, `decisions.md`
 
-- [ ] A3. Add `tools/install-qmd.sh`
+- [x] A3. Add `tools/install-qmd.sh`
   - Install via `npm install -g @tobilu/qmd` (fallback: `bun install -g @tobilu/qmd`)
   - Initialize **per-layer** collections (not one monolithic wiki collection):
     ```sh
@@ -97,7 +97,7 @@ Three interlocking ideas drive this phase:
   - Run initial embed: `qmd embed`
   - Document in `tools/README.md` which tool requires qmd
 
-- [ ] A4. Register qmd as Claude Code MCP plugin
+- [x] A4. Register qmd as Claude Code MCP plugin
   - Add to `~/.claude/settings.json` (MCP server block) or via
     `claude plugin marketplace add tobi/qmd`
   - Document in `CLAUDE.md` under Tools section
@@ -107,7 +107,7 @@ Three interlocking ideas drive this phase:
 
 ### Group B — Python Tooling (after Phase 1 wiki dirs exist)
 
-- [ ] B1. `tools/decompose.py` — per-file entity analysis → ingest plan
+- [x] B1. `tools/decompose.py` — per-file entity analysis → ingest plan
   - Input: path to a raw source file
   - Step 1: Extract candidate entity names (regex over capitalized terms, Markdown
     headers, quoted strings, bold text)
@@ -135,13 +135,13 @@ Three interlocking ideas drive this phase:
     ```
   - This plan is reviewed (interactive) or logged and executed (autonomous)
 
-- [ ] B2. `tools/session_init.py` — initialize a session log folder
+- [x] B2. `tools/session_init.py` — initialize a session log folder
   - Reads current git branch name
   - Creates `log/{branch}/{timestamp}/plan.md` with empty template
   - Outputs the session log path to stdout so the calling agent can reference it
   - Called at the start of any ingest session
 
-- [ ] B3. Extend `tools/ingest.py` for novel page types
+- [x] B3. Extend `tools/ingest.py` for novel page types
   - Add novel page type arrays to JSON response schema:
     `character_pages`, `location_pages`, `conflict_pages`, `theme_pages`,
     `rule_pages`, `timeline_pages`, `foreshadowing_pages`
@@ -154,7 +154,7 @@ Three interlocking ideas drive this phase:
   - `action` field per page: `"create"` or `"update"` (merge vs. new)
   - Run `qmd embed` after all writes succeed (keep index fresh)
 
-- [ ] B4. Add `qmd embed` call to ingest post-write hook
+- [x] B4. Add `qmd embed` call to ingest post-write hook
   - Append to the successful ingest path in `tools/ingest.py`
   - Only if qmd is installed (`shutil.which("qmd") is not None`), else skip silently
 
@@ -162,13 +162,13 @@ Three interlocking ideas drive this phase:
 
 ### Group C — Skills and Commands (after Group B tooling)
 
-- [ ] C1. Rewrite `.claude/commands/wiki-ingest.md` — orchestrator only
+- [x] C1. Rewrite `.claude/commands/wiki-ingest.md` — orchestrator only
   - The main skill now orchestrates layer sub-skills; it does NOT write pages directly
   - Steps: run decompose → determine layers touched → call sub-skills in order →
     update `wiki/index.md` (all sections) → append `wiki/log.md` → move file
   - Token budget note: orchestrator context ceiling 5 pages; sub-skills own their context
 
-- [ ] C2. Create `.claude/commands/wiki-ingest-knowledge.md` — knowledge layer ingest
+- [x] C2. Create `.claude/commands/wiki-ingest-knowledge.md` — knowledge layer ingest
   - Writes: `knowledge/sources/`, `knowledge/entities/`, `knowledge/concepts/`,
     `knowledge/rules/`, `knowledge/timeline/`, `knowledge/syntheses/`
   - Context: qmd `-c knowledge` only; ceiling 10 pages
@@ -176,7 +176,7 @@ Three interlocking ideas drive this phase:
   - Used by Gemini Jules for autonomous batch ingest
   - Merge rule: always update `sources:` field; append new facts only
 
-- [ ] C3. Create `.claude/commands/wiki-ingest-narrative.md` — narrative layer ingest
+- [x] C3. Create `.claude/commands/wiki-ingest-narrative.md` — narrative layer ingest
   - Writes: `narrative/characters/`, `narrative/locations/`, `narrative/conflicts/`,
     `narrative/themes/`, `narrative/arcs/`, `narrative/dramatica/`, `narrative/timeline/`
   - Context: qmd `-c narrative` + any known entity pages from decompose plan; ceiling 15 pages
@@ -184,13 +184,13 @@ Three interlocking ideas drive this phase:
   - Interactive preferred; autonomous only for well-structured sources
   - Merge rule: merge character profiles; never overwrite established traits without contradiction log entry
 
-- [ ] C4. Create `.claude/commands/wiki-ingest-reader.md` — reader state ingest
+- [x] C4. Create `.claude/commands/wiki-ingest-reader.md` — reader state ingest
   - Writes: `reader_state/reader-model/`, `reader_state/foreshadowing/`
   - Context: qmd `-c reader-state` + current chapter page; ceiling 5 pages
   - Triggered manually after chapter writing, not during document ingest
   - Monotonic-only: only add to `terminology_permitted`, never remove
 
-- [ ] C5. Create `.claude/commands/wiki-decompose.md` — per-file planning skill
+- [x] C5. Create `.claude/commands/wiki-decompose.md` — per-file planning skill
   - Trigger: "decompose raw/foo.md" or before any interactive ingest session
   - Runs `tools/decompose.py {file}` and presents the plan to the user
   - Plan shows: layers touched, known vs. new entities, qmd search commands to run
@@ -199,7 +199,7 @@ Three interlocking ideas drive this phase:
   - SPARK-influenced: asks "what in this file's framing could be wrong or misleading?"
   - Output: a validated per-file ingest plan, ready for `/wiki-ingest` execution
 
-- [ ] C6. Create `.claude/commands/wiki-consolidate.md` — continuous improvement skill
+- [x] C6. Create `.claude/commands/wiki-consolidate.md` — continuous improvement skill
   - Trigger: "consolidate session findings" or run periodically
   - Reads all `log/{branch}/*/findings.md` files since last consolidation
   - Uses `qmd search -c meta` to find related past decisions and protocols
@@ -207,7 +207,7 @@ Three interlocking ideas drive this phase:
   - Outputs a diff-style proposal; user approves before any file is written
   - Never writes wiki content — only improves instructions and navigation
 
-- [ ] C7. Update `CLAUDE.md` ingest workflow section to match orchestrator + sub-skill pattern
+- [x] C7. Update `CLAUDE.md` ingest workflow section to match orchestrator + sub-skill pattern
   - Reference `GEMINI.md` for autonomous variant (knowledge layer only via C2)
   - Add note: "Run `/wiki-decompose` before `/wiki-ingest` for any file > 2000 words"
 
@@ -217,24 +217,24 @@ Three interlocking ideas drive this phase:
 
 These tasks produce sections in `docs/adaptive-ingest.md` only.
 
-- [ ] D1. Define subagent patterns
+- [x] D1. Define subagent patterns
   - Which model handles which task (Haiku for entity extraction, Sonnet for synthesis,
     Opus/Claude for planning and contradiction resolution)
   - When to spawn a subagent vs. inline processing
   - How subagents receive context (qmd query output as stdin, not file reads)
 
-- [ ] D2. Define context ceilings per workflow
+- [x] D2. Define context ceilings per workflow
   - Ingest: max 20 pages in context; use qmd for additional lookups
   - Decompose: max 5 pages (the source file + 4 most relevant known entities)
   - Consolidate: reads log files only, never wiki content directly
 
-- [ ] D3. Define session log schema formally
+- [x] D3. Define session log schema formally
   - `plan.md`: what this session will do (generated by `/wiki-decompose` or manually)
   - `findings.md`: what actually happened (written during/after session)
   - `decisions.md`: architectural decisions made (feeds `/wiki-consolidate`)
   - Format for each, append-only rules, what triggers a new session folder
 
-- [ ] D4. Open question (decision gate — resolve before Phase 6 C tasks begin)
+- [x] D4. Open question (decision gate — resolve before Phase 6 C tasks begin)
   **Should basic-wiki ingest (source/entity/concept) be decoupled from novel-wiki ingest
   (character/location/theme/etc.)?**
   - Option X: Single ingest, both layers in one LLM call (current plan)
