@@ -23,9 +23,47 @@ Three interlocking ideas drive this phase:
 
 ## Groups
 
-### Group A — Foundation (start immediately, parallel with Phase 1)
+### Group A — Foundation (start immediately)
 
-These tasks have no dependencies on Phase 1 wiki content.
+> **A0 is the prerequisite for everything else in this phase.** Phase 1 was
+> completed with a flat `wiki/` structure. These migration tasks move existing
+> content into the 4-layer nested layout before any new tooling is built.
+
+- [ ] A0. Migrate flat wiki structure → 4-layer nested layout
+  ```sh
+  # Knowledge layer
+  git mv wiki/sources/      wiki/knowledge/sources/
+  git mv wiki/entities/     wiki/knowledge/entities/
+  git mv wiki/concepts/     wiki/knowledge/concepts/
+  git mv wiki/rules/        wiki/knowledge/rules/
+  git mv wiki/timeline/     wiki/knowledge/timeline/   # becomes research provenance
+  git mv wiki/syntheses/    wiki/knowledge/syntheses/  # if exists
+
+  # Narrative layer
+  git mv wiki/characters/   wiki/narrative/characters/
+  git mv wiki/chapters/     wiki/narrative/chapters/
+  git mv wiki/locations/    wiki/narrative/locations/
+  git mv wiki/conflicts/    wiki/narrative/conflicts/
+  git mv wiki/themes/       wiki/narrative/themes/
+  git mv wiki/arcs/         wiki/narrative/arcs/
+  git mv wiki/dramatica/    wiki/narrative/dramatica/
+  git mv wiki/beats/        wiki/narrative/beats/
+  git mv wiki/outlines/     wiki/narrative/outlines/
+  git mv wiki/manuscripts/  wiki/narrative/manuscripts/
+
+  # Reader state layer
+  git mv wiki/reader-model/   wiki/reader_state/reader-model/
+  git mv wiki/foreshadowing/  wiki/reader_state/foreshadowing/
+
+  # Meta layer
+  git mv wiki/archive/      wiki/meta/archive/
+  ```
+  - Create `wiki/narrative/timeline/` (empty + .gitkeep) for story-world chronology
+  - Create `wiki/knowledge/syntheses/` if not already present
+  - Create `wiki/meta/ingest/` for session logs
+  - After moves: update ALL internal wikilinks and frontmatter slug references in moved files
+  - Update `wiki/index.md` to use nested paths
+  - Update layer routing READMEs (already done in this branch)
 
 - [ ] A1. Split CLAUDE.md / GEMINI.md
   - Move all autonomous ingest instructions, Gemini-specific workflows, and the
