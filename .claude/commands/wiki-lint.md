@@ -4,7 +4,11 @@ Usage: /wiki-lint
 
 Follow the Lint Workflow defined in CLAUDE.md:
 
-Structural checks (use Grep and Glob tools):
+Always start by running deterministic lint (fast, no API):
+1. Execute `python3 tools/lint_deterministic.py`
+2. If deterministic errors are found, report them immediately and ask how to proceed.
+
+Then proceed with semantic checks (read and reason over page content):
 1. Orphan pages — wiki pages with no inbound [[wikilinks]] from other pages
 2. Broken links — [[WikiLinks]] pointing to pages that don't exist
 3. Missing entity pages — names referenced in 3+ pages but lacking their own page

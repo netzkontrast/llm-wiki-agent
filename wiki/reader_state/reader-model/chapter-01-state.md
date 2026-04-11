@@ -15,6 +15,8 @@ sources: []
 requires: []
 informs: []
 traits: {}
+valid_from: ""
+valid_until: ""
 last_updated: 2026-04-11
 ---
 

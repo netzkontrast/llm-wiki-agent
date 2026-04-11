@@ -95,7 +95,16 @@ def run_lint():
 
     print(f"Linting {len(pages)} wiki pages...")
 
-    # Deterministic checks
+    # Run lint_deterministic.py first
+    import subprocess
+    print("  running deterministic lint checks...")
+    result = subprocess.run([sys.executable, str(REPO_ROOT / "tools" / "lint_deterministic.py")], capture_output=True, text=True)
+    if result.returncode != 0:
+        print(result.stdout)
+        print(result.stderr)
+        return result.stdout
+
+    # Deterministic structural checks
     orphans = find_orphans(pages)
     broken = find_broken_links(pages)
     missing_entities = find_missing_entities(pages)

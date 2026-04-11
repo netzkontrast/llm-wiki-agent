@@ -142,6 +142,17 @@ def main():
         errs = check_refs(fm, p, all_slugs, "informs")
         for e in errs: errors.append(f"{p}: {e}")
 
+        errs = check_refs(fm, p, all_slugs, "beats")
+        for e in errs: errors.append(f"{p}: {e}")
+
+        # Check outline_ref and manuscript_ref
+        for ref_field in ("outline_ref", "manuscript_ref", "pov_voice_ref"):
+            ref_val = fm.get(ref_field)
+            if ref_val:
+                clean_ref = ref_val.split('/')[-1]
+                if clean_ref not in all_slugs:
+                    errors.append(f"{p}: {ref_field} '{ref_val}' (slug: {clean_ref}) not found in wiki")
+
         # Check valid_from / valid_until
         v_from = fm.get("valid_from")
         if v_from and v_from not in boundary_events:
@@ -160,6 +171,24 @@ def main():
         if "characters" in fm:
              errs = check_refs(fm, p, character_pages, "characters")
              for e in errs: errors.append(f"{p}: characters error - {e}")
+
+        # Check Oberschicht-Architektur constraints
+        layer = check_layer(p)
+        if not layer:
+            parts = p.relative_to(WIKI_DIR).parts
+            if len(parts) > 0:
+                current_layer = parts[0]
+                if current_layer == "knowledge":
+                    if "manuscript_status" in fm:
+                        errors.append(f"{p}: Knowledge-Layer pages must not have 'manuscript_status' field")
+                    if "beat_number" in fm:
+                        errors.append(f"{p}: Knowledge-Layer pages must not have 'beat_number' field")
+                elif current_layer == "narrative":
+                    # For chapters, outlines, beats, manuscripts - they must have chapter_ref
+                    ptype = fm.get("type", "")
+                    if ptype in ("chapter", "outline", "beat", "manuscript") or (len(parts) > 1 and parts[1] in ("chapters", "outlines", "beats", "manuscripts")):
+                        if "chapter_ref" not in fm:
+                            errors.append(f"{p}: Narrative-Layer pages of this type must have 'chapter_ref' field")
 
         # Check foreshadowing
         if fm.get("type") == "foreshadowing":

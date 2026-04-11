@@ -1,18 +1,8 @@
 # Beats
 
-Beat pages — atomic scene units within chapters. Each beat page describes a single scene: its purpose, emotional arc, characters present, and contribution to the chapter's pacing. Beat pages are created during the beat-detailing workflow (Phase 5). See `docs/writing-pipeline.md` for the full pipeline.
+This folder contains standalone beat pages representing atomic scene moments in the narrative.
 
-## Pages
-*(No pages yet — to be populated when beat-detailing workflow is active)*
-
-## Connections
-- Related to: `wiki/narrative/chapters/` — beats belong to chapters; chapter number is encoded in the filename
-- Related to: `wiki/narrative/outlines/` — outlines organise beats into scene sequences
-- Related to: `wiki/narrative/manuscripts/` — beats are the atomic units that manuscript drafting works from
-
-## Routing Layer
-Part of the **Narrative Layer** — see [`wiki/narrative/README.md`](../README.md) for loading rules and mutation constraints.
-
-## Conventions
-- Naming: `chapter-NN-beat-NN.md` (e.g., `chapter-01-beat-01.md`, `chapter-01-beat-03.md`)
-- Temporal: No
+## Format
+- Page type: `beat`
+- Naming convention: `chapter-NN-beat-MM.md`
+- Relationships: Informed by outlines, requires chapter specs and location/characters, informs manuscripts and reader-state

@@ -8,9 +8,9 @@
 | 1 | `phase-1-schema/` | `complete` | Wiki schema extension: page types, directories, frontmatter, seed templates, folder READMEs |
 | 2 | `phase-2-navigation/` | `complete` | Navigation, dependencies, temporal filtering, deterministic lint rules, staleness checks |
 | 3 | `phase-3-workflows/` | `complete` | Workflows, slash commands, discovery/validation hooks, SKILL.md migration |
-| 4 | `phase-4-integration/` | `active` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
-| 5 | `phase-5-writing-pipeline/` | `not-started` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
-| 6 | `phase-6-adaptive-ingest/` | `not-started` | Token-efficient ingest: qmd, decompose script, session logging, CLAUDE/GEMINI split, novel page types |
+| 4 | `phase-4-integration/` | `complete` | CLAUDE.md integration, graph extension, deterministic lint, ingest updates |
+| 5 | `phase-5-writing-pipeline/` | `complete` | Writing pipeline: beats, outlines, manuscripts, 4 new workflows |
+| 6 | `phase-6-adaptive-ingest/` | `active` | Token-efficient ingest: qmd, decompose script, session logging, CLAUDE/GEMINI split, novel page types |
 
 > **Phase 6 note:** Group A tasks (Foundation) can start immediately in parallel with Phase 1.
 > Groups B–D depend on Phase 1 wiki directories existing.
