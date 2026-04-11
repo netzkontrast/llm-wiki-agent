@@ -72,42 +72,63 @@ an agent runs one command and gets only what it needs.
 
 ### Setup (see `tools/install-qmd.sh`)
 
+One collection per layer — not one monolithic `wiki` collection. This is what enables
+per-sub-skill context isolation.
+
 ```sh
 npm install -g @tobilu/qmd
-qmd collection add wiki/ --name wiki
-qmd collection add raw/ --name raw
-qmd context add qmd://wiki "LLM Wiki: characters, locations, concepts, sources, rules, themes"
-qmd context add qmd://raw  "Source documents waiting for ingestion"
+
+# Per-layer collections
+qmd collection add wiki/knowledge/    --name knowledge
+qmd collection add wiki/narrative/    --name narrative
+qmd collection add wiki/reader_state/ --name reader-state
+qmd collection add wiki/meta/         --name meta
+qmd collection add raw/               --name raw
+
+# Context hints (shown in search results, improve relevance)
+qmd context add qmd://knowledge   "Static facts: sources, entities, concepts, rules, timelines, syntheses"
+qmd context add qmd://narrative   "Story structure: characters, locations, chapters, conflicts, themes, arcs, beats"
+qmd context add qmd://reader-state "Reader knowledge: foreshadowing, per-chapter terminology ratchet"
+qmd context add qmd://meta        "System: session logs, protocols, contradiction log, archive"
+qmd context add qmd://raw         "Source documents waiting for ingestion"
+
 qmd embed
 ```
 
 ### Usage patterns
 
 ```sh
-# Before ingest: find relevant known pages
-qmd query "character Kael" --files --min-score 0.4
+# knowledge sub-skill: look up existing concepts/rules
+qmd search "coherence theory" -c knowledge --files --min-score 0.4
 
-# Before writing: check if a page already exists
-qmd search "LogosPrime" --files -n 3
+# narrative sub-skill: look up existing characters/locations
+qmd search "Kael" -c narrative --files -n 3
+qmd query "LogosPrime setting" -c narrative --files --min-score 0.3
 
-# During synthesis: find conceptually related pages
-qmd query "time paradox coherence" --files --min-score 0.3
+# decompose step: classify entity before deciding which layer
+qmd search "AEGIS" --files --min-score 0.4   # searches all collections
+qmd search "AEGIS" -c narrative --files       # scoped to narrative
 
-# After ingest: refresh the index
+# consolidate skill: search past decisions and logs
+qmd search "qmd threshold" -c meta --files
+
+# After any ingest: refresh the index
 qmd embed
 ```
 
 ### Context ceiling rules
 
-| Workflow | Max pages in context | Additional lookups |
+| Workflow | qmd collections | Max pages in context |
 |---|---|---|
-| Decompose | 5 (source + 4 relevant known entities) | qmd search as needed |
-| Interactive ingest | 20 | qmd query for each unknown entity |
-| Autonomous ingest | 10 | qmd search only (no reranking) |
-| Consolidate | 0 (log files only) | none |
+| `/wiki-decompose` | all (scoped search) | 5 |
+| `wiki-ingest-knowledge` | `-c knowledge` only | 10 |
+| `wiki-ingest-narrative` | `-c narrative` only | 15 |
+| `wiki-ingest-reader` | `-c reader-state` only | 5 |
+| `/wiki-ingest` (orchestrator) | none (delegates) | 5 |
+| `/wiki-consolidate` | `-c meta` | 0 wiki pages (log files only) |
 
 Claude Code can also use qmd via MCP (`claude plugin marketplace add tobi/qmd`), which
-avoids shell calls and integrates directly into tool use.
+avoids shell calls and integrates directly into tool use. Gemini Jules uses CLI only.
 
 ---
 
@@ -119,25 +140,29 @@ avoids shell calls and integrates directly into tool use.
 ## Ingest Plan: {filename}
 
 ### Known entities (update — do NOT overwrite)
-- Kael → wiki/characters/Kael.md
-- AEGIS → wiki/characters/AEGIS.md
+- Kael → wiki/narrative/characters/Kael.md          [layer: narrative]
+- AEGIS → wiki/narrative/characters/AEGIS.md         [layer: narrative]
 
 ### New entities (create with full frontmatter)
-- LogosPrime-Station → wiki/locations/ (new)
-- CoherenceField → wiki/concepts/ (new)
+- LogosPrime-Station → wiki/narrative/locations/     [layer: narrative, new]
+- CoherenceField → wiki/knowledge/concepts/          [layer: knowledge, new]
 
-### Likely page types needed
-- [x] source, character, location, concept
-- [ ] conflict, theme, rule, timeline, foreshadowing
+### Layers touched
+- [x] knowledge  (source, concept)
+- [x] narrative  (character, location)
+- [ ] reader_state
+
+### Sub-skills to invoke
+- wiki-ingest-knowledge  (factual extraction)
+- wiki-ingest-narrative  (character/location updates — interactive review recommended)
 
 ### Potential contradictions to check before writing
-- "AEGIS destroyed in chapter 3" — verify against wiki/characters/AEGIS.md
-- Timeline marker "year 12" — check wiki/timeline/ boundary events
+- "AEGIS destroyed in chapter 3" — qmd search "AEGIS" -c narrative
+- Timeline marker "year 12" — qmd search "year 12" -c narrative
 
-### Suggested minimal context load
-- wiki/characters/Kael.md
-- wiki/characters/AEGIS.md
-- wiki/timeline/010-fragmentation-revealed.md
+### Suggested qmd commands (run before writing)
+qmd search "Kael" -c narrative --files
+qmd search "AEGIS" -c narrative --files
 ```
 
 This plan is:
@@ -179,22 +204,51 @@ the last consolidation and proposes concrete improvements.
 
 ---
 
+## Sub-Skill Architecture
+
+`/wiki-ingest` is an orchestrator — it does not write pages directly. It determines
+which layers a source file touches (from the decompose plan) and delegates:
+
+```
+/wiki-ingest (orchestrator)
+  ├── tools/decompose.py        → per-file plan (layers, known/new, qmd commands)
+  ├── /wiki-ingest-knowledge    → knowledge/sources, entities, concepts, rules, timeline
+  ├── /wiki-ingest-narrative    → narrative/characters, locations, conflicts, themes, arcs…
+  └── /wiki-ingest-reader       → reader_state/reader-model, foreshadowing (manual only)
+  
+  After all sub-skills complete:
+  ├── Update wiki/index.md (all affected sections)
+  ├── Append wiki/log.md
+  └── mv raw/{file} processed/{file}
+```
+
+**Gemini Jules runs only `wiki-ingest-knowledge`** — factual extraction with Haiku,
+predictable schema, no relationship complexity. This is the autonomous batch path.
+
+**Claude Code runs `wiki-ingest-narrative`** interactively after reviewing the decompose
+plan, since narrative updates require merge judgment and contradiction awareness.
+
+**`wiki-ingest-reader` is never run during document ingest** — only triggered manually
+after a chapter-writing session updates reader state.
+
+---
+
 ## Subagent Orchestration
 
 When to delegate and to what:
 
-| Task | Model | Context |
-|---|---|---|
-| Entity name extraction from raw file | Haiku | File header only (500 tokens) |
-| Known/new classification | qmd CLI | No LLM needed |
-| Per-file plan generation | Sonnet | Decompose output + qmd results |
-| Writing source + entity + concept pages | Sonnet | Plan + 10 pages max |
-| Writing novel page types (character, location, etc.) | Sonnet | Plan + known entity pages |
-| Contradiction resolution | Claude (main) | Conflicting pages + rule pages |
-| Session consolidation | Claude (main) | Log files only |
+| Task | Model | qmd collection | Context ceiling |
+|---|---|---|---|
+| Entity name extraction | Haiku | — | File header only (~500 tokens) |
+| Known/new classification | qmd CLI | all | No LLM |
+| Per-file plan generation | Sonnet | all | Decompose output + qmd results |
+| `wiki-ingest-knowledge` | Haiku | `-c knowledge` | 10 pages |
+| `wiki-ingest-narrative` | Sonnet | `-c narrative` | 15 pages |
+| `wiki-ingest-reader` | Sonnet | `-c reader-state` | 5 pages |
+| Contradiction resolution | Claude (main) | `-c narrative` + `-c knowledge` | Conflicting pages + rules |
+| Session consolidation | Claude (main) | `-c meta` | Log files only |
 
-The main orchestrator session stays lean: it reads the plan, calls subagents for
-writing tasks, and logs findings. It does NOT load all wiki pages into its own context.
+The orchestrator session stays at ≤5 pages. Sub-skills own their context entirely.
 
 ---
 
