@@ -60,3 +60,4 @@ Kael.md valid_until Sequence: 10
 Test Passed: Kael.md is valid for Chapter 1 context
 Kael-post-frag.md valid_from Sequence: 10
 Test Passed: Kael-post-frag.md is correctly invalid for Chapter 1 context
+## [2026-04-11] ingest | Umfassendes Lokalitäten-Konzept
