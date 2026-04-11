@@ -3,7 +3,7 @@ title: "AEGIS Analyse-Hub"
 type: location
 tags: [aegis, overworld, guardian]
 sources: ["umfassendes-lokalitaten-konzept.md"]
-requires: ["PsychologicalLandscapes.md"]
+requires: ["PsychologicalLandscapes"]
 informs: []
 valid_from: ""
 valid_until: ""

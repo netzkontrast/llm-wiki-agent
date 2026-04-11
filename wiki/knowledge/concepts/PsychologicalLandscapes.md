@@ -4,7 +4,7 @@ type: concept
 tags: [worldbuilding, did, internal-world]
 sources: ["umfassendes-lokalitaten-konzept.md"]
 requires: []
-informs: ["Kw1KaelsInitialeWohneinheit.md", "Kw2VergessenerSchrein.md", "AegisAnalyseHub.md"]
+informs: ["Kw1KaelsInitialeWohneinheit", "Kw2VergessenerSchrein", "AegisAnalyseHub"]
 valid_from: ""
 valid_until: ""
 last_updated: 2026-04-11

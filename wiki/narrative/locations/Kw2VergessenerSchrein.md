@@ -3,7 +3,7 @@ title: "KW2 Vergessener Schrein (Kern-Trauma-Lokus)"
 type: location
 tags: [kw2, mnemosyne, trauma, memory]
 sources: ["umfassendes-lokalitaten-konzept.md"]
-requires: ["PsychologicalLandscapes.md"]
+requires: ["PsychologicalLandscapes"]
 informs: []
 valid_from: ""
 valid_until: ""

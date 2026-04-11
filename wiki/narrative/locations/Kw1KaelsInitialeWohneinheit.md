@@ -3,7 +3,7 @@ title: "KW1 Kaels Initiale Wohneinheit"
 type: location
 tags: [kw1, logos, start-location]
 sources: ["umfassendes-lokalitaten-konzept.md"]
-requires: ["PsychologicalLandscapes.md"]
+requires: ["PsychologicalLandscapes"]
 informs: []
 valid_from: ""
 valid_until: ""
