@@ -12,6 +12,10 @@ The words "representative sample", "test run", "defer", "skip for now" are FORBI
 
 When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file (e.g., append new tags, relationships, or traits) instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
 
+## RELATIONSHIPS & CONTRADICTIONS
+Ensure all sub-skills capture relationships in the YAML frontmatter (`relationships` or `related_entities`) and inline wiki-links.
+Ensure any contradictions are formally logged to `wiki/meta/ingest/registers/contradictions.md`.
+
 ## Steps
 
 1. **Chunk**: Run `python3 tools/chunk.py raw/{file}` to generate semantic chunks.

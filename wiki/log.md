@@ -65,3 +65,4 @@ Test Passed: Kael-post-frag.md is correctly invalid for Chapter 1 context
 - [2024-04-12] Ingested `40ChapterPlotModule.md` and added rules to knowledge layer.
 - [2024-04-12] Ingested `AegisAnalyseUndPromptOptimierung.md` and added principles and concepts. Kept merge mandate in mind while appending to existing files.
 - [2024-04-12] Ingested `AegisEmergenzAusDerLeere.md` maintaining the merge mandate correctly.
+- [2024-04-12] Updated ingest commands (`wiki-decompose`, `wiki-ingest-knowledge`, `wiki-ingest-narrative`, `wiki-ingest`) to explicitly capture relationships in frontmatter and inline wiki-links, and to explicitly log contradictions to `wiki/meta/ingest/registers/contradictions.md`.
