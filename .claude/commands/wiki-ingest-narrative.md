@@ -12,6 +12,10 @@ If the plan lists N > 6 entities of the same type, process them 6 at a time. Run
 ## ALTER/PERSONA DETECTION
 Named alters in DID character descriptions (e.g., Limina, Echo, Index, Nox) are characters and require their own character pages.
 
+## MERGE MANDATE
+
+When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file (e.g., append new tags, relationships, or traits) instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
+
 ## Steps
 1. Read the compiled context. You receive a pre-compiled context. Do NOT read wiki/index.md yourself.
 2. Draft or update the pages specified in the plan for the narrative layer.

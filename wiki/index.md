@@ -8,6 +8,7 @@ This file is maintained by the LLM. Updated on every ingest.
 ## Knowledge Layer
 
 ### Sources
+- [40ChapterPlotModule.md](knowledge/sources/40-chapter-plot-module.md) <!-- type:source slug:40-chapter-plot-module -->
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
 - [test-kael-konflikt.md](knowledge/sources/test-kael-konflikt.md) — Kael at Konstrukt-Stadt <!-- type:source slug:test-kael-konflikt -->
 
@@ -27,6 +28,7 @@ This file is maintained by the LLM. Updated on every ingest.
 ### Syntheses
 
 ### Rules
+- [40-Chapter Plot Module](knowledge/rules/40ChapterPlotModule.md) — 40 scene structure <!-- type:rule slug:40ChapterPlotModule -->
 - [CoherenceTheoryOfTruth](knowledge/rules/CoherenceTheoryOfTruth.md) — world, logic <!-- type:rule slug:CoherenceTheoryOfTruth -->
 - [MaxOneNewConceptPerScene](knowledge/rules/MaxOneNewConceptPerScene.md) — narrative, psychology <!-- type:rule slug:MaxOneNewConceptPerScene -->
 
