@@ -25,8 +25,6 @@ import webbrowser
 from pathlib import Path
 from datetime import date
 
-import anthropic
-
 try:
     import networkx as nx
     from networkx.algorithms import community as nx_community
@@ -231,88 +229,6 @@ def build_extracted_edges(pages: list[Path]) -> list[dict]:
     return edges
 
 
-def build_inferred_edges(pages: list[Path], existing_edges: list[dict], cache: dict) -> list[dict]:
-    """Pass 2: Claude-inferred semantic relationships."""
-    client = anthropic.Anthropic()
-    new_edges = []
-
-    # Only process pages that changed since last run
-    changed_pages = []
-    for p in pages:
-        content = read_file(p)
-        h = sha256(content)
-        if cache.get(str(p)) != h:
-            changed_pages.append(p)
-            cache[str(p)] = h
-
-    if not changed_pages:
-        print("  no changed pages — skipping semantic inference")
-        return []
-
-    print(f"  inferring relationships for {len(changed_pages)} changed pages...")
-
-    # Build a summary of existing nodes for context
-    node_list = "\n".join(f"- {page_id(p)} ({extract_frontmatter_type(read_file(p))})" for p in pages)
-    existing_edge_summary = "\n".join(
-        f"- {e['from']} → {e['to']} (EXTRACTED)" for e in existing_edges[:30]
-    )
-
-    for p in changed_pages:
-        content = read_file(p)[:2000]  # truncate for context efficiency
-        src = page_id(p)
-
-        response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=1024,
-            messages=[{
-                "role": "user",
-                "content": f"""Analyze this wiki page and identify implicit semantic relationships to other pages in the wiki.
-
-Source page: {src}
-Content:
-{content}
-
-All available pages:
-{node_list}
-
-Already-extracted edges from this page:
-{existing_edge_summary}
-
-Return ONLY a JSON array of NEW relationships not already captured by explicit wikilinks:
-[
-  {{"to": "page-id", "relationship": "one-line description", "confidence": 0.0-1.0, "type": "INFERRED or AMBIGUOUS"}}
-]
-
-Rules:
-- Only include pages from the available list above
-- Confidence >= 0.7 → INFERRED, < 0.7 → AMBIGUOUS
-- Do not repeat edges already in the extracted list
-- Return empty array [] if no new relationships found
-"""
-            }]
-        )
-
-        raw = response.content[0].text.strip()
-        raw = re.sub(r"^```(?:json)?\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw)
-
-        try:
-            inferred = json.loads(raw)
-            for rel in inferred:
-                if isinstance(rel, dict) and "to" in rel:
-                    new_edges.append({
-                        "from": src,
-                        "to": rel["to"],
-                        "type": rel.get("type", "INFERRED"),
-                        "label": rel.get("relationship", ""),
-                        "color": EDGE_COLORS.get(rel.get("type", "INFERRED"), EDGE_COLORS["INFERRED"]),
-                        "confidence": rel.get("confidence", 0.7),
-                    })
-        except (json.JSONDecodeError, TypeError):
-            pass
-
-    return new_edges
-
 
 def detect_communities(nodes: list[dict], edges: list[dict]) -> dict[str, int]:
     """Assign community IDs to nodes using Louvain algorithm."""
@@ -470,13 +386,9 @@ def build_graph(infer: bool = True, open_browser: bool = False):
     edges = build_extracted_edges(pages)
     print(f"  → {len(edges)} extracted edges")
 
-    # Pass 2: inferred edges
+    # Pass 2: inferred edges (now disabled or handled differently)
     if infer:
-        print("  Pass 2: inferring semantic relationships...")
-        inferred = build_inferred_edges(pages, edges, cache)
-        edges.extend(inferred)
-        print(f"  → {len(inferred)} inferred edges")
-        save_cache(cache)
+        print("  Pass 2: semantic inference requires LLM agent. Skipping pure-python inference.")
 
     # Layer clustering
     print("  Assigning nodes to layer clusters...")
@@ -514,7 +426,7 @@ def build_graph(infer: bool = True, open_browser: bool = False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build LLM Wiki knowledge graph")
-    parser.add_argument("--no-infer", action="store_true", help="Skip semantic inference (faster)")
+    parser.add_argument("--infer", action="store_true", help="Run semantic inference (requires agent)")
     parser.add_argument("--open", action="store_true", help="Open graph.html in browser")
     args = parser.parse_args()
-    build_graph(infer=not args.no_infer, open_browser=args.open)
+    build_graph(infer=args.infer, open_browser=args.open)

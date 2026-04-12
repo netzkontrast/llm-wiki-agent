@@ -130,16 +130,15 @@ Use `[[PageName]]` wikilinks to link to other wiki pages.
 
 Triggered by: *"ingest <file>"* or `/wiki-ingest`
 
-**Note:** Run `/wiki-decompose` before `/wiki-ingest` for any file > 2000 words.
-Autonomous variant is available for basic knowledge layers (see `GEMINI.md`).
+This workflow runs the LLM-First Chunk Loop. It replaces the old monolithic ingest Python scripts.
 
-This skill is an orchestrator and delegates to sub-skills.
-Steps:
-1. Run `/wiki-decompose` to determine layers touched
-2. Call sub-skills in order
-3. Update `wiki/index.md` (all sections)
-4. Append `wiki/log.md`
-5. Move file from `raw/` to `processed/`
+Steps (handled by `.claude/commands/wiki-ingest.md`):
+1. **Chunk**: Run `python3 tools/chunk.py raw/<file>` to chunk the file semantically.
+2. **Compile & Decompose**: For each chunk, run `compile_context.py` to build the prompt, then call `/wiki-decompose` to generate a plan.
+3. **Layer Passes**: Call `/wiki-ingest-knowledge`, `/wiki-ingest-narrative`, and `/wiki-ingest-reader` iteratively for each chunk, using compiled contexts.
+4. **Merge Check**: Use `index_manager.py` to prevent duplicate schemas.
+5. **Validation Loop**: Each sub-skill validates its output using `validate.py` and retries on failure (up to 3x).
+6. **Cleanup**: Append to `log.md` and move file from `raw/` to `processed/`.
 
 ### Source Page Format
 
@@ -332,6 +331,13 @@ See `Concept.md` for the overall vision and architecture overview. See `handover
 | `docs/reader-model.md` | Reader progressive disclosure, terminology ratchet, foreshadowing |
 | `docs/dramatica-integration.md` | Dramatica Theory mapping to wiki pages |
 | `docs/writing-pipeline.md` | Beats, outlines, manuscripts — the 4-stage writing pipeline |
+
+### Validation Loop
+All agent skills that modify wiki content must employ a validation loop:
+1. Agent writes markdown to disk.
+2. Agent runs `python3 tools/validate.py --recent-minutes 5`
+3. If the tool reports `FAIL` (exit code 1) and lists errors, the agent MUST retry the write operation to fix the reported schema, type, or index consistency issues.
+4. The agent may retry up to 3 times per chunk or task.
 
 ### Writing Pipeline
 

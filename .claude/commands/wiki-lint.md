@@ -1,23 +1,26 @@
-Health-check the LLM Wiki for issues.
+---
+name: wiki-lint
+description: validates schema and identifies semantic inconsistencies
+---
 
-Usage: /wiki-lint
+## Steps
 
-Follow the Lint Workflow defined in CLAUDE.md:
+1. Run `python3 tools/validate.py --format json`
+   - If there are errors, stop and report them. Do not proceed to semantic checks.
 
-Always start by running deterministic lint (fast, no API):
-1. Execute `python3 tools/lint_deterministic.py`
-2. If deterministic errors are found, report them immediately and ask how to proceed.
+2. Run `python3 tools/compile_context.py --task lint` to gather the wiki context.
+   - Use the output from `compile_context.py` to perform the following semantic checks:
+     - Identify contradictions between pages (claims that conflict)
+     - Identify stale content (summaries that newer sources have superseded)
+     - Identify data gaps (important questions the wiki can't answer — suggest specific sources to find)
+     - Identify concepts mentioned but lacking depth
 
-Then proceed with semantic checks (read and reason over page content):
-1. Orphan pages — wiki pages with no inbound [[wikilinks]] from other pages
-2. Broken links — [[WikiLinks]] pointing to pages that don't exist
-3. Missing entity pages — names referenced in 3+ pages but lacking their own page
+3. Return a markdown lint report with these sections:
+   ## Contradictions
+   ## Stale Content
+   ## Data Gaps & Suggested Sources
+   ## Concepts Needing More Depth
 
-Semantic checks (read and reason over page content):
-4. Contradictions — claims that conflict between pages
-5. Stale summaries — pages not updated after newer sources changed the picture
-6. Data gaps — important questions the wiki can't answer; suggest specific sources to find
+Be specific — name the exact pages and claims involved.
 
-Output a structured markdown lint report. At the end, ask if the user wants it saved to wiki/lint-report.md.
-
-Append to wiki/log.md: ## [today's date] lint | Wiki health check
+You receive a pre-compiled context. Do NOT read wiki/index.md yourself.

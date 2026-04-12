@@ -1,33 +1,27 @@
 ---
 name: wiki-ingest
-description: Orchestrates ingest sub-skills. Guarantees complete extraction.
+description: Orchestrates chunk-loop ingest sub-skills. Guarantees complete extraction.
 ---
 
 ## COMPLETENESS MANDATE
 
 ALL entities in a source document MUST be extracted — no deferral, no sampling, no "test runs".
-If a source file contains 31 locations, create 31 location pages.
 The words "representative sample", "test run", "defer", "skip for now" are FORBIDDEN in plan files.
 
 ## Steps
 
-1. **Decompose**: Run `/wiki-decompose {file}`. Read the FULL output including all counts from `log/{branch}/{session}/plan.md`. If TOTAL entities > 10, note batch mode required.
+1. **Chunk**: Run `python3 tools/chunk.py raw/{file}` to generate semantic chunks.
 
-2. **Determine layers** from the generated plan.
+2. **Loop Over Chunks**: For each chunk in `chunks/{slug}/`:
+   A. **Plan**: Run `python3 tools/compile_context.py --task plan --chunk {chunk_path}`. Then run `/wiki-decompose` to generate `wiki/meta/ingest/{slug}-plan.md`.
+   B. **Knowledge Layer** (if touched): Run `python3 tools/compile_context.py --task ingest-knowledge --chunk {chunk_path}`. Call `/wiki-ingest-knowledge`.
+   C. **Narrative Layer** (if touched): Run `python3 tools/compile_context.py --task ingest-narrative --chunk {chunk_path}`. Call `/wiki-ingest-narrative`.
+   D. **Reader State Layer** (if touched): Run `python3 tools/compile_context.py --task ingest-reader --chunk {chunk_path}`. Call `/wiki-ingest-reader`.
 
-3. **Knowledge layer** (if touched): Call `/wiki-ingest-knowledge` with FULL entity list from plan.
-   - For entity types with N > 10: call in batches of 6, iterating until all extracted.
+3. **Merge/Dedup Check**: Run `python3 tools/index_manager.py check-duplicate {slug} {type}` on any newly identified complex entities to ensure we haven't created conflicting type representations.
 
-4. **Narrative layer** (if touched): Call `/wiki-ingest-narrative` with FULL entity list from plan.
-   - For entity types with N > 10: call in batches of 6, iterating until all extracted.
-   - LOOP until decompose inventory is exhausted.
+4. **Final Validation**: Run `python3 tools/validate.py --index-only`. If this fails, resolve the structural/index errors before proceeding.
 
-5. **Reader state layer** (if touched): Call `/wiki-ingest-reader`.
+5. **Log**: Append a success entry to `wiki/log.md`.
 
-6. **Audit**: Run `python3 tools/audit_completeness.py log/{branch}/{session}/plan.md`.
-   - If `total_missing > 0`: run cleanup passes for each missing type, then re-audit.
-   - Do NOT move file to `processed/` until audit passes with `total_missing == 0`.
-
-7. **Index + Log**: Update `wiki/index.md` (all sections). Append `wiki/log.md`.
-
-8. **Move**: `mv raw/{file} processed/{file}` — only after audit confirms completeness.
+6. **Cleanup**: Move `raw/{file}` to `processed/{file}`. Remove the `chunks/{slug}/` directory using `rm -rf`.

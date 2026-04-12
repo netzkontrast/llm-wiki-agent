@@ -1,13 +1,14 @@
 # Tools
 
-Optional standalone Python scripts for maintaining the wiki. These tools require `ANTHROPIC_API_KEY` for full functionality (semantic steps), but deterministic steps run locally.
+Standalone deterministic Python scripts for maintaining the wiki. These tools do not make external API calls.
 
 ## Scripts
-- `audit_completeness.py <source-file>` — Deterministic script that runs after ingest to find missing entities.
-- `build_graph.py` — Builds the knowledge graph. Run with `--open` to open in browser. Run with `--no-infer` to skip semantic edge inference.
-- `lint.py` — Runs a health check on the wiki. Calls `lint_deterministic.py` first, then performs semantic contradiction checks via Claude API.
+- `chunk.py <source-file>` — Semantically chunks raw source files for the ingest chunk loop.
+- `compile_context.py --task <task>` — Compiles structured markdown contexts for agent LLM invocations.
+- `validate.py` — Wraps `lint_deterministic.py` to add schema validation logic.
+- `index_manager.py <command>` — Machine-readable CLI for manipulating `wiki/index.md`.
+- `build_graph.py` — Builds the knowledge graph. Run with `--open` to open in browser. Use `--infer` to activate agent semantic edge inference.
 - `lint_deterministic.py` — Enforces structural and schema rules offline.
 - `check_staleness.py` — Utility script.
-- `query.py` — Legacy query script.
 - `install-qmd.sh` — Installs qmd and sets up the wiki collections and contexts.
 - `session_init.py` — Initializes a logging session folder for adaptive ingest.

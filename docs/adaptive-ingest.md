@@ -134,7 +134,7 @@ avoids shell calls and integrates directly into tool use. Gemini Jules uses CLI 
 
 ## Per-File Ingest Plan (Decompose Step)
 
-`tools/decompose.py {source-file}` produces a structured plan:
+`/wiki-decompose` on compiled context chunks produces a structured plan:
 
 ```markdown
 ## Ingest Plan: {filename}
@@ -206,20 +206,22 @@ the last consolidation and proposes concrete improvements.
 
 ## Sub-Skill Architecture
 
-`/wiki-ingest` is an orchestrator — it does not write pages directly. It determines
-which layers a source file touches (from the decompose plan) and delegates:
+`/wiki-ingest` is a chunk-loop orchestrator — it does not write pages directly. It splits source files into chunks using `tools/chunk.py`, compiles contexts using `tools/compile_context.py`, and iterates over layers:
 
 ```
 /wiki-ingest (orchestrator)
-  ├── tools/decompose.py        → per-file plan (layers, known/new, qmd commands)
-  ├── /wiki-ingest-knowledge    → knowledge/sources, entities, concepts, rules, timeline
-  ├── /wiki-ingest-narrative    → narrative/characters, locations, conflicts, themes, arcs…
-  └── /wiki-ingest-reader       → reader_state/reader-model, foreshadowing (manual only)
+  ├── tools/chunk.py raw/{file}        → generates semantic chunks
+  ├── For each chunk:
+       ├── compile_context.py & /wiki-decompose        → per-chunk plan
+       ├── compile_context.py & /wiki-ingest-knowledge    → knowledge layer
+       ├── compile_context.py & /wiki-ingest-narrative    → narrative layer
+       └── compile_context.py & /wiki-ingest-reader       → reader_state layer
   
-  After all sub-skills complete:
-  ├── Update wiki/index.md (all affected sections)
+  After chunks complete:
+  ├── tools/index_manager.py check-duplicate
+  ├── tools/validate.py --index-only
   ├── Append wiki/log.md
-  └── mv raw/{file} processed/{file}
+  └── mv raw/{file} processed/{file} and rm -rf chunks/
 ```
 
 **Gemini Jules runs only `wiki-ingest-knowledge`** — factual extraction with Haiku,
