@@ -63,3 +63,4 @@ Test Passed: Kael-post-frag.md is correctly invalid for Chapter 1 context
 ## [2026-04-11] ingest | Umfassendes Lokalitäten-Konzept
 - [2024-04-12] Ingested `test-kael-konflikt.md` and added instructions to prevent overwrite errors in ingest skills.
 - [2024-04-12] Ingested `40ChapterPlotModule.md` and added rules to knowledge layer.
+- [2024-04-12] Ingested `AegisAnalyseUndPromptOptimierung.md` and added principles and concepts. Kept merge mandate in mind while appending to existing files.

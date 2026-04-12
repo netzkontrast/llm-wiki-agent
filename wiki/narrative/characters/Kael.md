@@ -9,7 +9,7 @@ arc: "kael-integration-arc"
 relationships: ["AEGIS", "Lex", "Juna", "DrXylophon"]
 chapter_appearances: [1]
 tags: ["character", "alters", "protagonist"]
-sources: ["sources/test-kael-konflikt"]
+sources: ["aegis-analyse-und-prompt-optimierung", "sources/test-kael-konflikt"]
 requires: ["locations/LogosPrime"]
 informs: ["chapters/chapter-01", "arcs/kael-integration-arc"]
 valid_from: ""
@@ -43,3 +43,6 @@ Pre-fragmentation: Kael functions as a coherent narrator. This page covers the p
 
 ## Notes
 This page describes Kael's state before the fragmentation event. A post-fragmentation page should be created when that arc stage is written, with `valid_from: "010-fragmentation-revealed"`.
+
+## Analytical Notes
+Analytical documents confirm that the Kohärenz Protokoll is deeply rooted in his psychological structure (DID).

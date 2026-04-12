@@ -4,7 +4,7 @@ type: character
 role: "Missing Person/Connection"
 aliases: []
 tags: ["character", "missing", "kael"]
-sources: ["test-kael-konflikt"]
+sources: ["aegis-analyse-und-prompt-optimierung", "test-kael-konflikt"]
 requires: []
 informs: []
 valid_from: ""
@@ -25,3 +25,6 @@ Has gone missing, causing the connection with Kael to be severed.
 
 ## Notes
 Her disappearance corresponds with the severing of the K-J Verbindung.
+
+## System Status
+Described as a "particular challenge or anomaly" within the AEGIS system in analytical texts.
