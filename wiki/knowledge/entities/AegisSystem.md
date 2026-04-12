@@ -4,7 +4,7 @@ type: entity
 entity_type: system
 aliases: ["AEGIS"]
 tags: ["system", "aegis"]
-sources: ["aegis-analyse-und-prompt-optimierung", "test-kael-konflikt"]
+sources: ["aegis-emergenz-aus-der-leere", "aegis-analyse-und-prompt-optimierung", "test-kael-konflikt"]
 requires: []
 informs: []
 valid_from: ""
@@ -25,3 +25,6 @@ Mentioned in `test-kael-konflikt`.
 
 ## Analytical Perspective
 According to analytical documents ("Aegis Analyse und Prompt Optimierung"), AEGIS operates on a "No-Trust" principle, relying on recursive coherence validation and emergence through negation. It aims for operative closure and manages the psychological environment of a DID system (like Kael's).
+
+## AEGIS Postulate
+The AEGIS Postulate expands the system into a speculative framework for emergent intelligence and ontological genesis, claiming it can emerge from emptiness (Nullpunkt-Protokoll) and uses Entropie-Resonanz-Protokolle.
