@@ -9,6 +9,11 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Sources
 - [40ChapterPlotModule.md](knowledge/sources/40-chapter-plot-module.md) <!-- type:source slug:40-chapter-plot-module -->
+- [AegisGenesisKrise20prosaAuftrag20formulieren.md](knowledge/sources/aegis-genesis-krise20prosa-auftrag20formulieren.md) <!-- type:source slug:aegis-genesis-krise20prosa-auftrag20formulieren -->
+- [AegisPhilosophieUndManifestEntwicklung.md](knowledge/sources/aegis-philosophie-und-manifest-entwicklung.md) <!-- type:source slug:aegis-philosophie-und-manifest-entwicklung -->
+- [AegisPhilosophieUndSystemtheorie.md](knowledge/sources/aegis-philosophie-und-systemtheorie.md) <!-- type:source slug:aegis-philosophie-und-systemtheorie -->
+- [AegisPhilosophischeUndSystemtheoretischeAnalyse.md](knowledge/sources/aegis-philosophische-und-systemtheoretische-analyse.md) <!-- type:source slug:aegis-philosophische-und-systemtheoretische-analyse -->
+- [AegisProtokolleKritischeEvaluationNeukonzeption.md](knowledge/sources/aegis-protokolle-kritische-evaluation-neukonzeption.md) <!-- type:source slug:aegis-protokolle-kritische-evaluation-neukonzeption -->
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
 - [aegis-analyse-und-prompt-optimierung.md](knowledge/sources/aegis-analyse-und-prompt-optimierung.md) — Analysis of AEGIS <!-- type:source slug:aegis-analyse-und-prompt-optimierung -->
 - [aegis-emergenz-aus-der-leere.md](knowledge/sources/aegis-emergenz-aus-der-leere.md) — Source on AEGIS Postulate <!-- type:source slug:aegis-emergenz-aus-der-leere -->
