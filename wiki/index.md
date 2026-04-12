@@ -21,6 +21,7 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Concepts
 - [AEGIS-Postulat](knowledge/concepts/AegisPostulat.md) — Theoretical framework <!-- type:concept slug:AegisPostulat -->
+- [Aegis Paradox](knowledge/concepts/AegisParadox.md) <!-- type:concept slug:AegisParadox -->
 - [BPoF](knowledge/concepts/Bpof.md) — AEGIS protocol <!-- type:concept slug:Bpof -->
 - [Dissipative Strukturen](knowledge/concepts/DissipativeStrukturen.md) — Physics concept of order from chaos <!-- type:concept slug:DissipativeStrukturen -->
 - [EIC](knowledge/concepts/Eic.md) — AEGIS protocol <!-- type:concept slug:Eic -->
