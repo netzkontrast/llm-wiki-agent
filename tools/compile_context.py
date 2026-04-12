@@ -220,6 +220,13 @@ def build_context(task_type: str, chunk_path: Path = None, batch_threshold: int 
                     context.append(f"\n### {p['path']}")
                     context.append(p['content'])
 
+
+    # Merge Mandate Injection
+    if task_type in ["plan", "ingest-knowledge", "ingest-narrative"]:
+        context.append("\n## MERGE MANDATE & CONFLICT RESOLUTION")
+        context.append("- **MERGE MANDATE:** You MUST append new information to existing pages. DO NOT overwrite existing frontmatter (e.g., tags, roles, traits) or existing content sections. Only use file overwrites if creating a brand new page.")
+        context.append("- **CONTRADICTION HIERARCHY:** rule > source > character > chapter > synthesis. If you encounter a contradiction, preserve the higher-ranked truth and quarantine the conflict in `wiki/meta/ingest/registers/contradictions.md`.")
+
     # Schema Reminder (Skip for query, lint usually doesn't need full schema reminder but keep it consistent, query can use it)
     if SCHEMA_FILE.exists() and task_type != "lint":
         schema_content = SCHEMA_FILE.read_text(encoding="utf-8")
