@@ -125,7 +125,7 @@ def check_schema_and_consistency(recent_minutes=None):
                     # Clean ref
                     clean_ref = ref.split("/")[-1].replace(".md", "")
                     # Check if the page exists in all_wiki_pages
-                    if not any(page.stem == clean_ref for page in pages):
+                    if not any(page.stem == clean_ref for page in all_wiki_pages()):
                         errors.append({"file": str(p), "error": f"sources ref '{ref}' (slug: {clean_ref}) not found in wiki"})
 
         # Index consistency warning rather than hard failure for legacy pages
