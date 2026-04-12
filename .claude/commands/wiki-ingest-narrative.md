@@ -15,6 +15,7 @@ Named alters in DID character descriptions (e.g., Limina, Echo, Index, Nox) are 
 ## Steps
 1. Read the compiled context. You receive a pre-compiled context. Do NOT read wiki/index.md yourself.
 2. Draft or update the pages specified in the plan for the narrative layer.
+   - **Cascade of Checks:** Establish precise relationships for each narrative element. Correctly populate the `requires:` and `informs:` arrays in the frontmatter. An updated character or location might require you to cascade updates to connected conflicts or themes.
 3. Validate your output against the Schema Reminder in the compiled context before writing to disk.
 4. Run `python3 tools/validate.py --recent-minutes 5`
    - If validation fails, retry up to 3 times to fix the errors.
