@@ -9,11 +9,20 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Sources
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
+- [test-kael-konflikt.md](knowledge/sources/test-kael-konflikt.md) — Kael at Konstrukt-Stadt <!-- type:source slug:test-kael-konflikt -->
 
 ### Entities
+- [AEGIS-System](knowledge/entities/AegisSystem.md) — Observing system <!-- type:entity slug:AegisSystem -->
+- [Integrity Guardian](knowledge/entities/IntegrityGuardian.md) — Record keeping organization <!-- type:entity slug:IntegrityGuardian -->
 
 ### Concepts
+- [Genesis-Krise](knowledge/concepts/GenesisKrise.md) — Historical crisis <!-- type:concept slug:GenesisKrise -->
+- [Holographisches Prinzip](knowledge/concepts/HolographischesPrinzip.md) — Broken principle <!-- type:concept slug:HolographischesPrinzip -->
+- [K-J Verbindung](knowledge/concepts/KjVerbindung.md) — Severed connection with Juna <!-- type:concept slug:KjVerbindung -->
+- [Kohärenz-Kernel](knowledge/concepts/KoharenzKernel.md) — Operational kernel felt by Kael <!-- type:concept slug:KoharenzKernel -->
+- [Primal Directive](knowledge/concepts/PrimalDirective.md) — Unrelenting directive <!-- type:concept slug:PrimalDirective -->
 - [Psychological Landscapes](knowledge/concepts/PsychologicalLandscapes.md) <!-- type:concept slug:PsychologicalLandscapes -->
+- [Riss-Mandat](knowledge/concepts/RissMandat.md) — Mind-splitting event <!-- type:concept slug:RissMandat -->
 
 ### Syntheses
 
@@ -30,8 +39,11 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Characters
 - [AEGIS](narrative/characters/AEGIS.md) — antagonist, coherence-enforcement system <!-- type:character slug:AEGIS -->
+- [Dr. Xylophon](narrative/characters/DrXylophon.md) — Met Kael at the Nexus <!-- type:character slug:DrXylophon -->
+- [Juna](narrative/characters/Juna.md) — Missing connection of Kael <!-- type:character slug:Juna -->
 - [Kael](narrative/characters/Kael.md) — protagonist, ANP host, pre-fragmentation <!-- type:character slug:Kael -->
 - [Kael (Post-Fragmentation)](narrative/characters/Kael-post-frag.md) <!-- type:character slug:Kael-post-frag -->
+- [Lex](narrative/characters/Lex.md) — Kael's primary alter <!-- type:character slug:Lex -->
 
 ### Chapters
 - [Chapter 1: The Sterile Beginning](narrative/chapters/chapter-01.md) — pov: Kael, setup <!-- type:chapter slug:chapter-01 -->
@@ -40,7 +52,9 @@ This file is maintained by the LLM. Updated on every ingest.
 - [AEGIS Analyse-Hub](narrative/locations/AegisAnalyseHub.md) <!-- type:location slug:AegisAnalyseHub -->
 - [KW1 Kaels Initiale Wohneinheit](narrative/locations/Kw1KaelsInitialeWohneinheit.md) <!-- type:location slug:Kw1KaelsInitialeWohneinheit -->
 - [KW2 Vergessener Schrein (Kern-Trauma-Lokus)](narrative/locations/Kw2VergessenerSchrein.md) <!-- type:location slug:Kw2VergessenerSchrein -->
+- [Konstrukt-Stadt](narrative/locations/KonstruktStadt.md) — Edge location where Kael is observed <!-- type:location slug:KonstruktStadt -->
 - [LogosPrime](narrative/locations/LogosPrime.md) — KW1, rigid control / suppressed chaos <!-- type:location slug:LogosPrime -->
+- [Nexus](narrative/locations/Nexus.md) — Meeting place of Kael and Dr. Xylophon <!-- type:location slug:Nexus -->
 
 ### Conflicts
 - [KaelVsAegis](narrative/conflicts/KaelVsAegis.md) — external, self-referential, open <!-- type:conflict slug:KaelVsAegis -->
