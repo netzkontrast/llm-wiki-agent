@@ -1,14 +1,15 @@
-Query the LLM Wiki and synthesize an answer.
+---
+name: wiki-query
+description: Queries the wiki and synthesizes an answer
+---
 
-Usage: /wiki-query $ARGUMENTS
+## Steps
 
-$ARGUMENTS is the question to answer, e.g. `What are the main themes across all sources?`
+1. Run `python3 tools/compile_context.py --task query --query "<question>"` to gather the wiki context relevant to the user's query.
+2. Using the compiled context, synthesize a thorough answer to the user's question.
+3. Cite sources using `[[PageName]]` wikilink syntax.
+4. Write a well-structured markdown answer with headers, bullets, and `[[wikilink]]` citations.
+5. At the end, add a `## Sources` section listing the pages you drew from.
+6. If the user requests to save the answer, write it to `wiki/syntheses/<slug>.md` and append it to `wiki/index.md` using the required tagged format: `- [Title](path) — description <!-- type:synthesis slug:slug -->`
 
-Follow the Query Workflow defined in CLAUDE.md:
-1. Read wiki/index.md to identify the most relevant pages
-2. Read those pages (up to ~10 most relevant)
-3. Synthesize a thorough markdown answer with [[PageName]] wikilink citations
-4. Include a ## Sources section at the end listing pages you drew from
-5. Ask the user if they want the answer saved as wiki/syntheses/<slug>.md
-
-If the wiki is empty, say so and suggest running /wiki-ingest first.
+You receive a pre-compiled context. Do NOT read wiki/index.md yourself.
