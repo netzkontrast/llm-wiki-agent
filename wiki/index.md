@@ -9,6 +9,7 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Sources
 - [40ChapterPlotModule.md](knowledge/sources/40-chapter-plot-module.md) <!-- type:source slug:40-chapter-plot-module -->
+- [Aegis Genesis Krise Prosa Auftrag Formulieren](knowledge/sources/aegis-genesis-krise-prosa-auftrag-formulieren.md) <!-- type:source slug:aegis-genesis-krise-prosa-auftrag-formulieren -->
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
 - [aegis-analyse-und-prompt-optimierung.md](knowledge/sources/aegis-analyse-und-prompt-optimierung.md) — Analysis of AEGIS <!-- type:source slug:aegis-analyse-und-prompt-optimierung -->
 - [aegis-emergenz-aus-der-leere.md](knowledge/sources/aegis-emergenz-aus-der-leere.md) — Source on AEGIS Postulate <!-- type:source slug:aegis-emergenz-aus-der-leere -->
@@ -76,6 +77,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Konstrukt-Stadt](narrative/locations/KonstruktStadt.md) — Edge location where Kael is observed <!-- type:location slug:KonstruktStadt -->
 - [LogosPrime](narrative/locations/LogosPrime.md) — KW1, rigid control / suppressed chaos <!-- type:location slug:LogosPrime -->
 - [Nexus](narrative/locations/Nexus.md) — Meeting place of Kael and Dr. Xylophon <!-- type:location slug:Nexus -->
+- [The Void](narrative/locations/TheVoid.md) <!-- type:location slug:TheVoid -->
 
 ### Conflicts
 - [KaelVsAegis](narrative/conflicts/KaelVsAegis.md) — external, self-referential, open <!-- type:conflict slug:KaelVsAegis -->

@@ -46,3 +46,6 @@ This page describes Kael's state before the fragmentation event. A post-fragment
 
 ## Analytical Notes
 Analytical documents confirm that the Kohärenz Protokoll is deeply rooted in his psychological structure (DID).
+
+## Genesis Crisis
+Kael is involved in the Genesis Crisis, acting as the protagonist attempting to navigate the events documented in `aegis-genesis-krise-prosa-auftrag-formulieren.md`.

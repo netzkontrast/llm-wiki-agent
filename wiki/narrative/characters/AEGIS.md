@@ -38,3 +38,6 @@ AEGIS does not have a character arc in the traditional sense — it has an escal
 
 ## Notes
 AEGIS is timeless — valid across the full story. It is an entity, not a character with a psychological interior, which is part of what makes it effective as an antagonist: it cannot be reasoned with because it cannot reason about itself.
+
+## Genesis Crisis
+AEGIS struggles to handle the Genesis Crisis due to its rigid focus on coherence, as shown in the source `aegis-genesis-krise-prosa-auftrag-formulieren.md`.
