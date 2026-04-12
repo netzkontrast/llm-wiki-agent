@@ -146,10 +146,104 @@ class IndexManager:
         return "OK"
 
     def rebuild(self):
-        # Rebuilding logic could go here
-        # For now, we will leave it as a placeholder as full rebuild might require
-        # scanning the wiki directory.
-        print("Rebuild not fully implemented yet.")
+        print("Rebuilding index from wiki directory...")
+        wiki_dir = Path("wiki")
+        pages = []
+        for p in wiki_dir.rglob("*.md"):
+            if p.name in ("index.md", "log.md", "overview.md", "lint-report.md", "README.md"):
+                continue
+            content = p.read_text(encoding="utf-8")
+
+            # Extract frontmatter
+            title = p.stem
+            ptype = None
+            desc = ""
+
+            match = re.search(r'^---\n(.*?)\n---', content, re.DOTALL)
+            if match:
+                yaml_str = match.group(1)
+                for line in yaml_str.split('\n'):
+                    if line.startswith('title:'):
+                        title = line.split(':', 1)[1].strip().strip('"\'')
+                    elif line.startswith('type:'):
+                        ptype = line.split(':', 1)[1].strip()
+
+            if not ptype:
+                continue
+
+            path_str = str(p.relative_to(wiki_dir))
+
+            # Preserve existing desc if we have it in memory
+            existing_entry = self.get(p.stem)
+            if existing_entry and existing_entry.get("desc"):
+                desc = existing_entry["desc"]
+
+            pages.append({
+                "title": title,
+                "path": path_str,
+                "slug": p.stem,
+                "type": ptype,
+                "desc": desc
+            })
+
+        # Group by section type
+        sections = {
+            "Sources": [p for p in pages if p["type"] == "source"],
+            "Entities": [p for p in pages if p["type"] == "entity"],
+            "Concepts": [p for p in pages if p["type"] == "concept"],
+            "Syntheses": [p for p in pages if p["type"] == "synthesis"],
+            "Characters": [p for p in pages if p["type"] == "character"],
+            "Chapters": [p for p in pages if p["type"] == "chapter"],
+            "Locations": [p for p in pages if p["type"] == "location"],
+            "Conflicts": [p for p in pages if p["type"] == "conflict"],
+            "Themes": [p for p in pages if p["type"] == "theme"],
+            "Timeline": [p for p in pages if p["type"] == "timeline-event"],
+            "Rules": [p for p in pages if p["type"] == "rule"],
+            "Arcs": [p for p in pages if p["type"] == "arc"],
+            "Dramatica": [p for p in pages if p["type"] == "dramatica"],
+            "Reader Model": [p for p in pages if p["type"] == "reader-state"],
+            "Foreshadowing": [p for p in pages if p["type"] == "foreshadowing"],
+            "Outlines": [p for p in pages if p["type"] == "outline"],
+            "Beats": [p for p in pages if p["type"] == "beat"],
+            "Manuscripts": [p for p in pages if p["type"] == "manuscript"],
+        }
+
+        new_lines = [
+            "# Wiki Index",
+            "",
+            "This file is maintained by the LLM. Updated on every ingest.",
+            "",
+            "## Overview",
+            "- [Overview](overview.md) — living synthesis across all sources",
+            "",
+            "## Knowledge Layer"
+        ]
+
+        knowledge_sections = ["Sources", "Entities", "Concepts", "Syntheses", "Rules", "Timeline"]
+        narrative_sections = ["Characters", "Chapters", "Locations", "Conflicts", "Themes", "Arcs", "Dramatica", "Beats", "Outlines", "Manuscripts"]
+        reader_sections = ["Reader Model", "Foreshadowing"]
+
+        for name in knowledge_sections:
+            new_lines.append(f"\n### {name}")
+            for p in sorted(sections[name], key=lambda x: x["title"]):
+                new_lines.append(self.format_line(p["title"], p["path"], p["desc"], p["type"], p["slug"]))
+
+        new_lines.append("\n## Narrative Layer")
+        for name in narrative_sections:
+            new_lines.append(f"\n### {name}")
+            for p in sorted(sections[name], key=lambda x: x["title"]):
+                new_lines.append(self.format_line(p["title"], p["path"], p["desc"], p["type"], p["slug"]))
+
+        new_lines.append("\n## Reader State Layer")
+        for name in reader_sections:
+            new_lines.append(f"\n### {name}")
+            for p in sorted(sections[name], key=lambda x: x["title"]):
+                new_lines.append(self.format_line(p["title"], p["path"], p["desc"], p["type"], p["slug"]))
+
+        self.lines = new_lines
+        self.save()
+        self._parse()
+        print("Rebuild complete.")
 
 def main():
     parser = argparse.ArgumentParser(description="Wiki Index Manager")

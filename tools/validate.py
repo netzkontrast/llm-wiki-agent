@@ -96,6 +96,38 @@ def check_schema_and_consistency(recent_minutes=None):
                 if req_field not in fm:
                     errors.append({"file": str(p), "error": f"Missing required field '{req_field}' for type '{ptype}'"})
 
+            # Check naming conventions
+            stem = p.stem
+            if ptype in ["entity", "concept", "character", "location", "conflict", "theme", "rule", "dramatica"]:
+                # TitleCase
+                if not re.match(r'^[A-Z][a-zA-Z0-9]*$', stem) and not stem.replace("-", "").isalnum(): # Relaxing slightly for legacy
+                    pass # We will enforce strict later, or warn. Let's do a loose check: it shouldn't be all lowercase unless it's a special slug
+                    if '-' in stem and stem.islower():
+                        errors.append({"file": str(p), "error": f"Naming convention error: '{ptype}' should be TitleCase, found '{stem}'"})
+            elif ptype in ["source", "arc", "foreshadowing"]:
+                # kebab-case
+                if not re.match(r'^[a-z0-9\-]+$', stem):
+                    errors.append({"file": str(p), "error": f"Naming convention error: '{ptype}' should be kebab-case, found '{stem}'"})
+            elif ptype == "chapter":
+                if not re.match(r'^chapter-\d+$', stem):
+                    errors.append({"file": str(p), "error": f"Naming convention error: 'chapter' should be chapter-NN, found '{stem}'"})
+            elif ptype == "timeline-event":
+                if not re.match(r'^\d{3}-', stem):
+                    errors.append({"file": str(p), "error": f"Naming convention error: 'timeline-event' should start with NNN-, found '{stem}'"})
+
+        # Check 'sources:' resolution explicitly if field exists
+        sources_val = fm.get("sources", "")
+        if sources_val and sources_val != "[]":
+            # parse list
+            if sources_val.startswith("[") and sources_val.endswith("]"):
+                refs = [x.strip().strip("'\"") for x in sources_val[1:-1].split(",") if x.strip()]
+                for ref in refs:
+                    # Clean ref
+                    clean_ref = ref.split("/")[-1].replace(".md", "")
+                    # Check if the page exists in all_wiki_pages
+                    if not any(page.stem == clean_ref for page in pages):
+                        errors.append({"file": str(p), "error": f"sources ref '{ref}' (slug: {clean_ref}) not found in wiki"})
+
         # Index consistency warning rather than hard failure for legacy pages
         if p.stem not in indexed_slugs and parts[0] != "meta":
             pass # Relaxing this for the initial phase before full migration
@@ -113,7 +145,7 @@ def main():
 
     if not args.index_only and not args.recent_minutes:
         try:
-            res = subprocess.run(["python3", "tools/lint_deterministic.py"], capture_output=True, text=True, check=True)
+            res = subprocess.run([sys.executable, str(REPO_ROOT / "tools" / "lint_deterministic.py")], capture_output=True, text=True, check=True)
         except subprocess.CalledProcessError as e:
             for line in e.stdout.splitlines():
                 if line.startswith(" - "):
