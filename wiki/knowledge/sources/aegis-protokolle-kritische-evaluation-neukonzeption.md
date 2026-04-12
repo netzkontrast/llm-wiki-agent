@@ -1,18 +1,18 @@
 ---
 title: "AegisProtokolleKritischeEvaluationNeukonzeption.md"
 type: source
-tags: ["raw", "aegis"]
+tags: ["aegis", "protocols", "evaluation"]
 sources: []
 requires: []
-informs: ["AegisSystem"]
+informs: ["AegisSystem", "NoTrustPrinzip", "RekursiveKoharenzvalidierung"]
 valid_from: ""
 valid_until: ""
 traits: {}
 last_updated: 2026-04-12
 ---
-
 ## Summary
-Analysis of AegisProtokolleKritischeEvaluationNeukonzeption.md.
-
+A critical evaluation of specific AEGIS operational protocols, focusing on their effectiveness and necessary reconceptualization in the face of evolving, complex threats.
 ## Key Facts
-- Document discusses AEGIS system and philosophy.
+- Reviews the implementation of the "No-Trust" principle at the protocol level.
+- Analyzes failures in early validation protocols and the necessary shift towards Continuous Recursive Validation (RCV).
+- Evaluates how the system handles borderline cases of structural incompatibility before total rejection.

@@ -1,17 +1,16 @@
 ---
-title: "Rekursive Kohärenzvalidierung"
+title: "RekursiveKoharenzvalidierung"
 type: concept
-domain: "system"
-related_entities: ["AegisSystem"]
-tags: ["principle", "aegis", "validation"]
-sources: ["aegis-analyse-und-prompt-optimierung"]
+tags: ["aegis", "protocol"]
+sources: []
 requires: []
-informs: []
+informs: ["AegisSystem"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2024-04-12
+last_updated: 2026-04-12
 ---
-
 ## Definition
-A core principle of AEGIS where the system continuously and recursively validates its own coherence.
+The operational mechanism (P5) by which AEGIS constantly, recursively checks its own internal states and the states of any connecting entity for absolute structural consistency.
+## Function
+This is the engine of the "No-Trust" principle. It ensures that any element attempting to integrate with AEGIS must mathematically prove its compatibility before being accepted, preventing systemic contamination.

@@ -9,7 +9,7 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Sources
 - [40ChapterPlotModule.md](knowledge/sources/40-chapter-plot-module.md) <!-- type:source slug:40-chapter-plot-module -->
-- [AegisGenesisKrise20prosaAuftrag20formulieren.md](knowledge/sources/aegis-genesis-krise20prosa-auftrag20formulieren.md) <!-- type:source slug:aegis-genesis-krise20prosa-auftrag20formulieren -->
+- [AegisGenesisKrise20prosaAuftrag20formulieren.md](knowledge/sources/aegis-genesis-krise20-prosa-auftrag20-formulieren.md) <!-- type:source slug:aegis-genesis-krise20-prosa-auftrag20-formulieren -->
 - [AegisPhilosophieUndManifestEntwicklung.md](knowledge/sources/aegis-philosophie-und-manifest-entwicklung.md) <!-- type:source slug:aegis-philosophie-und-manifest-entwicklung -->
 - [AegisPhilosophieUndSystemtheorie.md](knowledge/sources/aegis-philosophie-und-systemtheorie.md) <!-- type:source slug:aegis-philosophie-und-systemtheorie -->
 - [AegisPhilosophischeUndSystemtheoretischeAnalyse.md](knowledge/sources/aegis-philosophische-und-systemtheoretische-analyse.md) <!-- type:source slug:aegis-philosophische-und-systemtheoretische-analyse -->
@@ -29,22 +29,24 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Dissipative Strukturen](knowledge/concepts/DissipativeStrukturen.md) — Physics concept of order from chaos <!-- type:concept slug:DissipativeStrukturen -->
 - [EIC](knowledge/concepts/Eic.md) — AEGIS protocol <!-- type:concept slug:Eic -->
 - [Emergenz aus der Leere](knowledge/concepts/EmergenzAusDerLeere.md) — AEGIS principle <!-- type:concept slug:EmergenzAusDerLeere -->
-- [Emergenz durch Negation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
+- [EmergenzDurchNegation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
 - [Entropic Management](knowledge/concepts/EntropicManagement.md) — AEGIS protocol <!-- type:concept slug:EntropicManagement -->
 - [Entropie-Resonanz-Protokolle](knowledge/concepts/EntropieResonanzProtokolle.md) — AEGIS reality generation <!-- type:concept slug:EntropieResonanzProtokolle -->
+- [EntropieAlsInkoharenz](knowledge/concepts/EntropieAlsInkoharenz.md) <!-- type:concept slug:EntropieAlsInkoharenz -->
 - [Genesis-Krise](knowledge/concepts/GenesisKrise.md) — Historical crisis <!-- type:concept slug:GenesisKrise -->
 - [Holographisches Prinzip](knowledge/concepts/HolographischesPrinzip.md) — Broken principle <!-- type:concept slug:HolographischesPrinzip -->
 - [Integrity Validation](knowledge/concepts/IntegrityValidation.md) — AEGIS protocol <!-- type:concept slug:IntegrityValidation -->
 - [K-J Verbindung](knowledge/concepts/KjVerbindung.md) — Severed connection with Juna <!-- type:concept slug:KjVerbindung -->
+- [KoharenzAlsExistenz](knowledge/concepts/KoharenzAlsExistenz.md) <!-- type:concept slug:KoharenzAlsExistenz -->
 - [Kohärenz Protokoll](knowledge/concepts/KoharenzProtokoll.md) — The main narrative framework <!-- type:concept slug:KoharenzProtokoll -->
 - [Kohärenz-Kernel](knowledge/concepts/KoharenzKernel.md) — Operational kernel felt by Kael <!-- type:concept slug:KoharenzKernel -->
 - [No-Trust Prinzip](knowledge/concepts/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:concept slug:NoTrustPrinzip -->
 - [Nullpunkt-Protokoll](knowledge/concepts/NullpunktProtokoll.md) — AEGIS initialization protocol <!-- type:concept slug:NullpunktProtokoll -->
-- [Operative Geschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
+- [OperativeGeschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
 - [Primal Directive](knowledge/concepts/PrimalDirective.md) — Unrelenting directive <!-- type:concept slug:PrimalDirective -->
 - [Psychological Landscapes](knowledge/concepts/PsychologicalLandscapes.md) <!-- type:concept slug:PsychologicalLandscapes -->
 - [RTSV](knowledge/concepts/Rtsv.md) — AEGIS protocol <!-- type:concept slug:Rtsv -->
-- [Rekursive Kohärenzvalidierung](knowledge/concepts/RekursiveKoharenzvalidierung.md) — Principle of AEGIS <!-- type:concept slug:RekursiveKoharenzvalidierung -->
+- [RekursiveKoharenzvalidierung](knowledge/concepts/RekursiveKoharenzvalidierung.md) — Principle of AEGIS <!-- type:concept slug:RekursiveKoharenzvalidierung -->
 - [Riss-Mandat](knowledge/concepts/RissMandat.md) — Mind-splitting event <!-- type:concept slug:RissMandat -->
 - [SIS](knowledge/concepts/Sis.md) — AEGIS protocol <!-- type:concept slug:Sis -->
 - [ZTEM](knowledge/concepts/Ztem.md) — AEGIS protocol <!-- type:concept slug:Ztem -->
@@ -55,6 +57,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [40-Chapter Plot Module](knowledge/rules/40ChapterPlotModule.md) — 40 scene structure <!-- type:rule slug:40ChapterPlotModule -->
 - [CoherenceTheoryOfTruth](knowledge/rules/CoherenceTheoryOfTruth.md) — world, logic <!-- type:rule slug:CoherenceTheoryOfTruth -->
 - [MaxOneNewConceptPerScene](knowledge/rules/MaxOneNewConceptPerScene.md) — narrative, psychology <!-- type:rule slug:MaxOneNewConceptPerScene -->
+- [NoTrustPrinzip](knowledge/rules/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:rule slug:NoTrustPrinzip -->
 
 ### Timeline
 - [Fragmentation Revealed](narrative/timeline/010-fragmentation-revealed.md) — Day 10, crisis point <!-- type:timeline-event slug:010-fragmentation-revealed -->
