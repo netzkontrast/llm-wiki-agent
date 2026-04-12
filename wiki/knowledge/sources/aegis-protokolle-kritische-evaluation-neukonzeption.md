@@ -8,7 +8,7 @@ informs: ["AegisSystem", "NoTrustPrinzip", "RekursiveKoharenzvalidierung"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Summary
 A critical evaluation of specific AEGIS operational protocols, focusing on their effectiveness and necessary reconceptualization in the face of evolving, complex threats.

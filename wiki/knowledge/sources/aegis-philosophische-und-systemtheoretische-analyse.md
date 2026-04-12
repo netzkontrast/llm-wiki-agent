@@ -4,11 +4,11 @@ type: source
 tags: ["aegis", "analysis", "ontology"]
 sources: []
 requires: []
-informs: ["AegisSystem", "KoharenzAlsExistenz"]
+informs: ["AegisSystem", "KoharenzAlsExistenz", "Wahrheitsdualitat"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Summary
 A highly rigorous structural analysis breaking down the ontological and epistemological claims of the AEGIS framework. It interrogates the logical consistency of a system that defines its own reality.

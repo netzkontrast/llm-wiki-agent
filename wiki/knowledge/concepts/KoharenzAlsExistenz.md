@@ -8,7 +8,7 @@ informs: ["AegisSystem"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Definition
 The philosophical principle (P2) that internal structural consistency (coherence) replaces objective "truth" as the sole criterion for validity and existence within the AEGIS framework.

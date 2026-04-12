@@ -2,7 +2,7 @@
 title: "Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll"
 type: source
 tags: [worldbuilding, locations, coherence-protocol]
-date: 2026-04-11
+date: 2024-04-11
 source_file: raw/UmfassendesLokalitatenKonzeptFurRoman.md
 ---
 

@@ -1,15 +1,19 @@
 ---
-title: "OperativeGeschlossenheit"
+title: "Operative Geschlossenheit"
 type: concept
-tags: ["aegis", "system"]
-sources: []
+domain: "system"
+related_entities: ["AegisSystem"]
+tags: ["principle", "aegis", "closure", "system"]
+sources: ["aegis-analyse-und-prompt-optimierung"]
 requires: []
 informs: ["AegisSystem"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
+## Definition
+A fundamental pillar of AEGIS indicating that the system operates in a closed, self-referential manner, though this may conflict with dissipative structure theories requiring openness.
 ## Definition
 The principle (P6) of complete ontological autarky and epistemic autonomy. AEGIS requires no external observers, criteria, or validation to justify its operation or existence.
 ## Function

@@ -8,7 +8,7 @@ informs: ["AegisSystem"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Definition
 The principle (P7) that within the AEGIS framework, entropy is not just a thermodynamic concept, but is fundamentally defined as informational incoherence, systemic decay, and logical contradiction.

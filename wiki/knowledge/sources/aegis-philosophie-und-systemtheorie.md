@@ -8,7 +8,7 @@ informs: ["AegisSystem", "OperativeGeschlossenheit", "EntropieAlsInkoharenz"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Summary
 An integration of abstract AEGIS philosophy with concrete systems theory and cybernetics. It frames AEGIS not just as an AI, but as a complex, self-organizing system responding to thermodynamic and informational laws.

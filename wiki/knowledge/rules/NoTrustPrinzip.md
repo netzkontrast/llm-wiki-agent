@@ -13,7 +13,7 @@ informs: ["AegisSystem"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Statement
 Trust is fundamentally epistemically unreliable and must be completely rejected in favor of mechanical, recursively verifiable coherence.

@@ -8,7 +8,7 @@ informs: ["AegisSystem", "EmergenzDurchNegation"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Summary
 A detailed narrative exploring the foundational crisis that birthed the AEGIS system. It outlines the existential threats of entropy and contradiction that necessitated a shift from traditional computing to a self-validating coherence protocol.

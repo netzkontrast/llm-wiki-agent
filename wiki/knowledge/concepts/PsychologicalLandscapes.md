@@ -7,7 +7,7 @@ requires: []
 informs: ["Kw1KaelsInitialeWohneinheit", "Kw2VergessenerSchrein", "AegisAnalyseHub"]
 valid_from: ""
 valid_until: ""
-last_updated: 2026-04-11
+last_updated: 2024-04-11
 ---
 
 ## Definition

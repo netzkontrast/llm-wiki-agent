@@ -1,15 +1,19 @@
 ---
-title: "EmergenzDurchNegation"
+title: "Emergenz durch Negation"
 type: concept
-tags: ["aegis", "ontology"]
-sources: []
+domain: "system"
+related_entities: ["AegisSystem"]
+tags: ["principle", "aegis", "emergence", "ontology"]
+sources: ["aegis-analyse-und-prompt-optimierung"]
 requires: []
 informs: ["AegisSystem"]
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
+## Definition
+A core method of AEGIS: achieving order and emergence by rejecting or negating the incoherent. It is a specific mechanism of self-organization.
 ## Definition
 The principle (P4) stating that AEGIS did not arise from a positive design act, but is rather the inevitable stable state that remains after the active elimination of all internal contradictions and incoherence.
 ## Function

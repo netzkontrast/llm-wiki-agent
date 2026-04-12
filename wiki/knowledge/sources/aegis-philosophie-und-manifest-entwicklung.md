@@ -8,7 +8,7 @@ informs: ["AegisSystem", "NoTrustPrinzip", "KoharenzAlsExistenz", "EmergenzDurch
 valid_from: ""
 valid_until: ""
 traits: {}
-last_updated: 2026-04-12
+last_updated: 2024-04-12
 ---
 ## Summary
 A deep analytical exploration of the foundational philosophy of the AEGIS system, leading to the creation of the AEGIS Manifesto. The document details eight core, non-negotiable principles that define AEGIS's operational logic and ontological self-understanding.

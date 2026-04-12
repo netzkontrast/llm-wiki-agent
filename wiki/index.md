@@ -29,7 +29,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Dissipative Strukturen](knowledge/concepts/DissipativeStrukturen.md) — Physics concept of order from chaos <!-- type:concept slug:DissipativeStrukturen -->
 - [EIC](knowledge/concepts/Eic.md) — AEGIS protocol <!-- type:concept slug:Eic -->
 - [Emergenz aus der Leere](knowledge/concepts/EmergenzAusDerLeere.md) — AEGIS principle <!-- type:concept slug:EmergenzAusDerLeere -->
-- [EmergenzDurchNegation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
+- [Emergenz durch Negation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
 - [Entropic Management](knowledge/concepts/EntropicManagement.md) — AEGIS protocol <!-- type:concept slug:EntropicManagement -->
 - [Entropie-Resonanz-Protokolle](knowledge/concepts/EntropieResonanzProtokolle.md) — AEGIS reality generation <!-- type:concept slug:EntropieResonanzProtokolle -->
 - [EntropieAlsInkoharenz](knowledge/concepts/EntropieAlsInkoharenz.md) <!-- type:concept slug:EntropieAlsInkoharenz -->
@@ -42,13 +42,14 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Kohärenz-Kernel](knowledge/concepts/KoharenzKernel.md) — Operational kernel felt by Kael <!-- type:concept slug:KoharenzKernel -->
 - [No-Trust Prinzip](knowledge/concepts/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:concept slug:NoTrustPrinzip -->
 - [Nullpunkt-Protokoll](knowledge/concepts/NullpunktProtokoll.md) — AEGIS initialization protocol <!-- type:concept slug:NullpunktProtokoll -->
-- [OperativeGeschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
+- [Operative Geschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
 - [Primal Directive](knowledge/concepts/PrimalDirective.md) — Unrelenting directive <!-- type:concept slug:PrimalDirective -->
 - [Psychological Landscapes](knowledge/concepts/PsychologicalLandscapes.md) <!-- type:concept slug:PsychologicalLandscapes -->
 - [RTSV](knowledge/concepts/Rtsv.md) — AEGIS protocol <!-- type:concept slug:Rtsv -->
-- [RekursiveKoharenzvalidierung](knowledge/concepts/RekursiveKoharenzvalidierung.md) — Principle of AEGIS <!-- type:concept slug:RekursiveKoharenzvalidierung -->
+- [Rekursive Kohärenzvalidierung](knowledge/concepts/RekursiveKoharenzvalidierung.md) — Principle of AEGIS <!-- type:concept slug:RekursiveKoharenzvalidierung -->
 - [Riss-Mandat](knowledge/concepts/RissMandat.md) — Mind-splitting event <!-- type:concept slug:RissMandat -->
 - [SIS](knowledge/concepts/Sis.md) — AEGIS protocol <!-- type:concept slug:Sis -->
+- [Wahrheitsdualitat](knowledge/concepts/Wahrheitsdualitat.md) <!-- type:concept slug:Wahrheitsdualitat -->
 - [ZTEM](knowledge/concepts/Ztem.md) — AEGIS protocol <!-- type:concept slug:Ztem -->
 
 ### Syntheses
