@@ -28,12 +28,14 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Emergenz durch Negation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
 - [Entropic Management](knowledge/concepts/EntropicManagement.md) — AEGIS protocol <!-- type:concept slug:EntropicManagement -->
 - [Entropie-Resonanz-Protokolle](knowledge/concepts/EntropieResonanzProtokolle.md) — AEGIS reality generation <!-- type:concept slug:EntropieResonanzProtokolle -->
+- [Genesis Crisis](knowledge/concepts/GenesisCrisis.md) <!-- type:concept slug:GenesisCrisis -->
 - [Genesis-Krise](knowledge/concepts/GenesisKrise.md) — Historical crisis <!-- type:concept slug:GenesisKrise -->
 - [Holographisches Prinzip](knowledge/concepts/HolographischesPrinzip.md) — Broken principle <!-- type:concept slug:HolographischesPrinzip -->
 - [Integrity Validation](knowledge/concepts/IntegrityValidation.md) — AEGIS protocol <!-- type:concept slug:IntegrityValidation -->
 - [K-J Verbindung](knowledge/concepts/KjVerbindung.md) — Severed connection with Juna <!-- type:concept slug:KjVerbindung -->
 - [Kohärenz Protokoll](knowledge/concepts/KoharenzProtokoll.md) — The main narrative framework <!-- type:concept slug:KoharenzProtokoll -->
 - [Kohärenz-Kernel](knowledge/concepts/KoharenzKernel.md) — Operational kernel felt by Kael <!-- type:concept slug:KoharenzKernel -->
+- [Misaligned Coherence](knowledge/concepts/MisalignedCoherence.md) <!-- type:concept slug:MisalignedCoherence -->
 - [No-Trust Prinzip](knowledge/concepts/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:concept slug:NoTrustPrinzip -->
 - [Nullpunkt-Protokoll](knowledge/concepts/NullpunktProtokoll.md) — AEGIS initialization protocol <!-- type:concept slug:NullpunktProtokoll -->
 - [Operative Geschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->

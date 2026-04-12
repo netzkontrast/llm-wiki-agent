@@ -2,9 +2,9 @@
 title: "Genesis-Krise"
 type: concept
 domain: "history"
-related_entities: ["Kael", "Aegis"]
-tags: ["crisis", "history", "aegis"]
-sources: ["test-kael-konflikt", "aegis-genesis-krise-prosa-auftrag-formulieren"]
+related_entities: ["Kael"]
+tags: ["crisis", "history"]
+sources: ["test-kael-konflikt"]
 requires: []
 informs: []
 valid_from: ""
@@ -21,6 +21,3 @@ An event that generated significant archival records involving Kael.
 
 ## Notes
 Kael is a prominent figure in its archives.
-
-## Context
-Extracted from source `aegis-genesis-krise-prosa-auftrag-formulieren.md`.

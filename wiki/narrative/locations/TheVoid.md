@@ -2,8 +2,8 @@
 title: "The Void"
 type: location
 region: "Unknown"
-related_entities: []
-tags: ["empty", "crisis", "aegis"]
+related_entities: ["AEGIS"]
+tags: ["existential", "nothingness"]
 sources: ["aegis-genesis-krise-prosa-auftrag-formulieren"]
 requires: []
 informs: []
@@ -14,7 +14,7 @@ last_updated: 2024-04-12
 ---
 
 ## Description
-The Void is the location where the Genesis Crisis happens. It is a critical, potentially absurd and indifferent "nothingness noise" that triggers a (re-)traumatizing encounter for the origin self of AEGIS.
+Referred to as "Die Leere", it is the location or state where the Genesis Crisis occurs. It is conceptualized as a potentially absurd, indifferent "nothingness noise".
 
-## Psychological Impact
-The Void represents an existential threat to AEGIS, triggering structural dissociation and the misaligned "Coherence Protocol".
+## Narrative Function
+It serves as the environment for the critical, (re-)traumatizing encounter of the origin self of AEGIS, confronting it with "Being vs. Nothingness" (Sein vs. Nichts).
