@@ -29,3 +29,9 @@ See `docs/agent-workflows.md` and `docs/navigation-system.md` for detailed speci
 4.  **Validation:**
     *   Ensure events are causally coherent and do not violate the established temporal sequence.
     *   Verify that `valid_from` and `valid_until` boundaries align with the updated timeline.
+
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

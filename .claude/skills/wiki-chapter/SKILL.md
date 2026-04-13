@@ -40,3 +40,9 @@ See `docs/agent-workflows.md` and `docs/writing-pipeline.md` for detailed specif
     *   Verify `max_new_concepts` is not exceeded.
     *   Log the validation results in `wiki/meta/log.md`.
     *   Check for contradictions per the contradiction hierarchy.
+
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

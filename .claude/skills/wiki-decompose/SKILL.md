@@ -28,3 +28,8 @@ Generate the approved plan and save it to `wiki/meta/ingest/"[slug]"-plan.md` in
 If `compile_context.py` injected a Batch Processing Instruction, honor it.
 SPARK-influenced: asks "what in this file's framing could be wrong or misleading?"
 Output: a validated per-chunk ingest plan, ready for `/wiki-ingest` execution.
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

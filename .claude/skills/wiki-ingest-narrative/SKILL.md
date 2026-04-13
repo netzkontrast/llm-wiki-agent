@@ -32,3 +32,8 @@ When ingesting characters, locations, or concepts that already exist in the wiki
 
 Writes: `narrative/characters/`, `narrative/locations/`, `narrative/conflicts/`, `narrative/themes/`, `narrative/arcs/`, `narrative/dramatica/`, `narrative/timeline/`
 Merge rule: merge character profiles; never overwrite established traits without contradiction log entry.
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

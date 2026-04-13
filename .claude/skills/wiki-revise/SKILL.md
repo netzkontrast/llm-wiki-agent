@@ -35,3 +35,9 @@ See `docs/agent-workflows.md` for detailed specifications.
     *   Rule compliance: ensure chapters do not violate world or structural rules.
     *   Foreshadowing status: planted strands must have `intermediate_refs` or a resolution within the expected range.
     *   Reader-state consistency: ensure `terminology_permitted` is monotonically increasing.
+
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

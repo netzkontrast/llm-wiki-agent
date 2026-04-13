@@ -15,3 +15,8 @@ description: Executes the following: reader_state layer ingest. Use when the use
 
 Writes: `reader_state/reader-model/`, `reader_state/foreshadowing/`
 Merge rule: terminology_permitted is a one-way ratchet. Never remove previously permitted terminology.
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

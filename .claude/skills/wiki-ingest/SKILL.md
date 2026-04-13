@@ -60,3 +60,8 @@ If the source document contains conflicting data with an existing L2 page, then 
 - NEVER move the original file to `processed/`
 - NEVER overwrite existing L2 data if there is a contradiction. Use the `[!contradiction]` block.
 - NEVER hallucinate wikilinks to pages that do not exist.
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

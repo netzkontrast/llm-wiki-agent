@@ -23,6 +23,32 @@ def main():
     link_targets = set()
     page_contents = {p.name: p.read_text(encoding="utf-8") for p in pages}
 
+
+    reader_states = {}
+    max_chapter = 0
+    boundary_events = set()
+
+    # First pass: collect metadata for deep checks
+    for page in pages:
+        c = page_contents[page.name]
+        match = re.search(r'^type:\s*(.*?)$', c, re.MULTILINE)
+        ptype = match.group(1).strip().strip('"\'') if match else ""
+
+        if ptype == "timeline-event":
+            if re.search(r'^is_boundary:\s*true', c, re.MULTILINE | re.IGNORECASE):
+                boundary_events.add(page.stem)
+
+        if ptype == "reader-state":
+            cmatch = re.search(r'^chapter_ref:\s*(\d+)', c, re.MULTILINE)
+            if cmatch:
+                ch_ref = int(cmatch.group(1))
+                max_chapter = max(max_chapter, ch_ref)
+
+                tmatch = re.search(r'^terminology_permitted:\s*\[(.*?)\]', c, re.MULTILINE)
+                if tmatch:
+                    terms_str = tmatch.group(1)
+                    terms = {t.strip().strip('"\'') for t in terms_str.split(',') if t.strip()}
+                    reader_states[ch_ref] = terms
     for page in pages:
         content = page_contents[page.name]
 
@@ -36,7 +62,7 @@ def main():
                 reqs_str = match.group(1)
                 reqs = [r.strip().strip('"\'') for r in reqs_str.split(',') if r.strip()]
                 for req in reqs:
-                    if req not in all_slugs:
+                    if req and req not in all_slugs:
                         missing_required_pages.append((page.name, req))
 
             # Check informs
@@ -45,8 +71,35 @@ def main():
                 reqs_str = match.group(1)
                 reqs = [r.strip().strip('"\'') for r in reqs_str.split(',') if r.strip()]
                 for req in reqs:
-                    if req not in all_slugs:
+                    if req and req not in all_slugs:
                         missing_required_pages.append((page.name, req))
+
+
+        match = re.search(r'^type:\s*(.*?)$', content, re.MULTILINE)
+        ptype = match.group(1).strip().strip('"\'') if match else ""
+
+        # chapter_ref requirement for Narrative Layer
+        if ptype in ("chapter", "outline", "beat", "manuscript"):
+            if not re.search(r'^chapter_ref:', content, re.MULTILINE):
+                incomplete_metadata.append(page.name + " (Missing chapter_ref)")
+
+        # Knowledge layer must not have manuscript_status or beat_number
+        if "knowledge" in page.parts:
+            if re.search(r'^(manuscript_status|beat_number):', content, re.MULTILINE):
+                incomplete_metadata.append(page.name + " (Knowledge layer shouldn't have narrative metadata)")
+
+        # valid_from / valid_until must point to boundary events
+        vmatch = re.search(r'^valid_from:\s*(.*?)$', content, re.MULTILINE)
+        if vmatch:
+            v_from = vmatch.group(1).strip().strip('"\'')
+            if v_from and v_from not in boundary_events:
+                dead_links.append((page.name, v_from + " (Invalid boundary event)"))
+
+        vmatch = re.search(r'^valid_until:\s*(.*?)$', content, re.MULTILINE)
+        if vmatch:
+            v_until = vmatch.group(1).strip().strip('"\'')
+            if v_until and v_until not in boundary_events:
+                dead_links.append((page.name, v_until + " (Invalid boundary event)"))
 
         # Dead links check
         links = re.findall(r'\[\[(.*?)\]\]', content)
@@ -108,6 +161,16 @@ def main():
     print(f"\nIncomplete Metadata: {len(incomplete_metadata)}")
     for p in incomplete_metadata:
         print(f"  - {p}")
+
+
+    print(f"\nTerminology Ratchet Checks:")
+    sorted_chapters = sorted(reader_states.keys())
+    for i in range(1, len(sorted_chapters)):
+        prev_ch = sorted_chapters[i-1]
+        curr_ch = sorted_chapters[i]
+        if not reader_states[prev_ch].issubset(reader_states[curr_ch]):
+            missing = reader_states[prev_ch] - reader_states[curr_ch]
+            print(f"  - Error: Chapter {curr_ch} does not include terms {missing} from chapter {prev_ch}")
 
     print("\nChecks completed.")
 

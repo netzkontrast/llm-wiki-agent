@@ -51,3 +51,8 @@ Whenever you complete a logical "Phase" of the wrapped command (e.g., Decompose,
 Once the wrapped command is completely finished:
 1. Append a final `THOUGHT` entry reflecting on the overall success of the session.
 2. Ensure all changes are committed.
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.

@@ -32,3 +32,9 @@ See `docs/agent-workflows.md` for detailed specifications.
     *   Ensure new rules do not contradict existing rules in the same domain.
     *   Ensure locations are internally consistent with their `world` grouping.
     *   Log any changes that affect existing chapter content.
+
+
+## Gotchas
+- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
+- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
+- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.
