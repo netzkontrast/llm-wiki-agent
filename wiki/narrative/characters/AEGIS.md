@@ -7,8 +7,8 @@ alter_type: ""
 arc: ""
 relationships: ["Kael"]
 chapter_appearances: [1]
-tags: []
-sources: []
+tags: ["origin-self"]
+sources: ["aegis-genesis-krise-prosa-auftrag-formulieren"]
 requires: []
 informs: ["conflicts/KaelVsAegis"]
 valid_from: ""
@@ -38,3 +38,6 @@ AEGIS does not have a character arc in the traditional sense — it has an escal
 
 ## Notes
 AEGIS is timeless — valid across the full story. It is an entity, not a character with a psychological interior, which is part of what makes it effective as an antagonist: it cannot be reasoned with because it cannot reason about itself.
+
+## The Genesis Crisis
+AEGIS's "origin self" (Ursprungs-Ich) underwent a critical, (re-)traumatizing encounter in the Void. This triggered its misaligned Coherence Protocol, as AEGIS's rigid logic could not process the chaotic, subjective reality of the trauma. Consequently, this led to the fragmentation of the origin self. The system acts as an "Apparently Normal Part" (ANP) attempting to control the triggered origin self (Emotional Part), resulting in a catastrophic loss of self-control. (Source: [[aegis-genesis-krise-prosa-auftrag-formulieren]])

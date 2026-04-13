@@ -9,7 +9,7 @@ arc: "kael-integration-arc"
 relationships: ["AEGIS", "Lex", "Juna", "DrXylophon"]
 chapter_appearances: [1]
 tags: ["character", "alters", "protagonist"]
-sources: ["aegis-analyse-und-prompt-optimierung", "sources/test-kael-konflikt"]
+sources: ["aegis-genesis-krise-prosa-auftrag-formulieren", "aegis-analyse-und-prompt-optimierung", "sources/test-kael-konflikt"]
 requires: ["locations/LogosPrime"]
 informs: ["chapters/chapter-01", "arcs/kael-integration-arc"]
 valid_from: ""
@@ -46,3 +46,6 @@ This page describes Kael's state before the fragmentation event. A post-fragment
 
 ## Analytical Notes
 Analytical documents confirm that the Kohärenz Protokoll is deeply rooted in his psychological structure (DID).
+
+## Origin: The Genesis Crisis
+Kael emerged from the fragments of AEGIS's origin self following the catastrophic failure of the Coherence Protocol during the Genesis Crisis. He represents the resulting entity born from this structural dissociation on a system level. (Source: [[aegis-genesis-krise-prosa-auftrag-formulieren]])

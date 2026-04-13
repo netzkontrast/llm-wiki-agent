@@ -9,6 +9,7 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Sources
 - [40ChapterPlotModule.md](knowledge/sources/40-chapter-plot-module.md) <!-- type:source slug:40-chapter-plot-module -->
+- [Aegis Genesis Krise Prosa Auftrag Formulieren](knowledge/sources/aegis-genesis-krise-prosa-auftrag-formulieren.md) <!-- type:source slug:aegis-genesis-krise-prosa-auftrag-formulieren -->
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
 - [aegis-analyse-und-prompt-optimierung.md](knowledge/sources/aegis-analyse-und-prompt-optimierung.md) — Analysis of AEGIS <!-- type:source slug:aegis-analyse-und-prompt-optimierung -->
 - [aegis-emergenz-aus-der-leere.md](knowledge/sources/aegis-emergenz-aus-der-leere.md) — Source on AEGIS Postulate <!-- type:source slug:aegis-emergenz-aus-der-leere -->
@@ -20,6 +21,7 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Concepts
 - [AEGIS-Postulat](knowledge/concepts/AegisPostulat.md) — Theoretical framework <!-- type:concept slug:AegisPostulat -->
+- [Aegis Paradox](knowledge/concepts/AegisParadox.md) <!-- type:concept slug:AegisParadox -->
 - [BPoF](knowledge/concepts/Bpof.md) — AEGIS protocol <!-- type:concept slug:Bpof -->
 - [Dissipative Strukturen](knowledge/concepts/DissipativeStrukturen.md) — Physics concept of order from chaos <!-- type:concept slug:DissipativeStrukturen -->
 - [EIC](knowledge/concepts/Eic.md) — AEGIS protocol <!-- type:concept slug:Eic -->
@@ -27,12 +29,14 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Emergenz durch Negation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
 - [Entropic Management](knowledge/concepts/EntropicManagement.md) — AEGIS protocol <!-- type:concept slug:EntropicManagement -->
 - [Entropie-Resonanz-Protokolle](knowledge/concepts/EntropieResonanzProtokolle.md) — AEGIS reality generation <!-- type:concept slug:EntropieResonanzProtokolle -->
+- [Genesis Crisis](knowledge/concepts/GenesisCrisis.md) <!-- type:concept slug:GenesisCrisis -->
 - [Genesis-Krise](knowledge/concepts/GenesisKrise.md) — Historical crisis <!-- type:concept slug:GenesisKrise -->
 - [Holographisches Prinzip](knowledge/concepts/HolographischesPrinzip.md) — Broken principle <!-- type:concept slug:HolographischesPrinzip -->
 - [Integrity Validation](knowledge/concepts/IntegrityValidation.md) — AEGIS protocol <!-- type:concept slug:IntegrityValidation -->
 - [K-J Verbindung](knowledge/concepts/KjVerbindung.md) — Severed connection with Juna <!-- type:concept slug:KjVerbindung -->
 - [Kohärenz Protokoll](knowledge/concepts/KoharenzProtokoll.md) — The main narrative framework <!-- type:concept slug:KoharenzProtokoll -->
 - [Kohärenz-Kernel](knowledge/concepts/KoharenzKernel.md) — Operational kernel felt by Kael <!-- type:concept slug:KoharenzKernel -->
+- [Misaligned Coherence](knowledge/concepts/MisalignedCoherence.md) <!-- type:concept slug:MisalignedCoherence -->
 - [No-Trust Prinzip](knowledge/concepts/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:concept slug:NoTrustPrinzip -->
 - [Nullpunkt-Protokoll](knowledge/concepts/NullpunktProtokoll.md) — AEGIS initialization protocol <!-- type:concept slug:NullpunktProtokoll -->
 - [Operative Geschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
@@ -76,6 +80,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Konstrukt-Stadt](narrative/locations/KonstruktStadt.md) — Edge location where Kael is observed <!-- type:location slug:KonstruktStadt -->
 - [LogosPrime](narrative/locations/LogosPrime.md) — KW1, rigid control / suppressed chaos <!-- type:location slug:LogosPrime -->
 - [Nexus](narrative/locations/Nexus.md) — Meeting place of Kael and Dr. Xylophon <!-- type:location slug:Nexus -->
+- [The Void](narrative/locations/TheVoid.md) <!-- type:location slug:TheVoid -->
 
 ### Conflicts
 - [KaelVsAegis](narrative/conflicts/KaelVsAegis.md) — external, self-referential, open <!-- type:conflict slug:KaelVsAegis -->
