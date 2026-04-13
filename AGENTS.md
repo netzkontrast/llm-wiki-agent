@@ -15,15 +15,6 @@ Or use shorthand triggers:
 - `query: <question>` → runs the Query Workflow
 - `lint` → runs the Lint Workflow
 - `build graph` → runs the Graph Workflow
-- `wiki-chapter` → runs the Chapter Writing Workflow
-- `wiki-character` → runs the Character Dev Workflow
-- `wiki-worldbuild` → runs the Worldbuilding Workflow
-- `wiki-timeline` → runs the Timeline Workflow
-- `wiki-conflict` → runs the Conflict Resolution Workflow
-- `wiki-reader-model` → runs the Reader Model Workflow
-- `wiki-revise` → runs the Revision Workflow
-- `wiki-lector` → runs the Lectoring Workflow
-- `wiki-brainstorm` → runs the Brainstorming Workflow
 
 ---
 
@@ -32,7 +23,9 @@ Or use shorthand triggers:
 ```
 raw/          # Immutable source documents — waiting for ingestion
 processed/    # Source documents that have been ingested — moved from raw/
-wiki/         # Agent owns this layer entirely
+memory/L0_facts/    # Immutable, high-fidelity extractions directly from raw sources
+memory/L1_episodes/ # Chronological provenance and temporal connections between ingested files
+wiki/         # Agent owns this layer entirely (L2 Synthesized Concepts)
   index.md    # Catalog of all pages — update on every ingest
   log.md      # Append-only chronological record
   overview.md # Living synthesis across all sources
@@ -46,46 +39,18 @@ tools/        # Optional standalone Python scripts (require ANTHROPIC_API_KEY)
 
 ---
 
-## Ingestion Queue
+## Setup & Commands
+Activate virtual environment: `uv venv && source .venv/bin/activate`
+Install dependencies: `uv sync`
 
-The ingestion queue is managed by file location, not by checklist:
+## Testing Protocol
+Run file-scoped tests first: `uv run pytest tests/unit/`. Run full suite ONLY when explicitly requested.
 
-- `raw/` — files waiting to be ingested (queue)
-- `processed/` — files that have been successfully ingested (done)
+## Code Style
+Python: PEP 8. Formatting: Ruff. Use functional patterns where possible.
 
-**After every successful ingest**, move the source file:
-```bash
-mv raw/<filename> processed/<filename>
-```
-
-To see what's left to ingest:
-```bash
-ls raw/*.md | wc -l    # count remaining
-ls raw/*.md             # list remaining
-```
-
-To see what's been processed:
-```bash
-ls processed/*.md | wc -l
-```
-
----
-
-## Page Format
-
-Every wiki page uses this frontmatter:
-
-```yaml
----
-title: "Page Title"
-type: source | entity | concept | synthesis | character | chapter | location | conflict | theme | timeline-event | rule | arc | dramatica | reader-state | foreshadowing
-tags: []
-sources: []       # list of source slugs that inform this page
-last_updated: YYYY-MM-DD
----
-```
-
-Use `[[PageName]]` wikilinks to link to other wiki pages.
+## Security & Guardrails
+NEVER commit .env files. Store secrets in environment variables.
 
 ---
 
@@ -94,120 +59,10 @@ Use `[[PageName]]` wikilinks to link to other wiki pages.
 Triggered by: *"ingest <file>"*
 
 Steps (in order):
-1. Read the source document fully
-2. Read `wiki/index.md` and `wiki/overview.md` for current wiki context
-3. Write `wiki/sources/<slug>.md` — use the source page format below
-4. Update `wiki/index.md` — add entry under Sources section
-5. Update `wiki/overview.md` — revise synthesis if warranted
-6. Update/create entity pages for key people, companies, projects mentioned
-7. Update/create concept pages for key ideas and frameworks discussed
-8. Flag any contradictions with existing wiki content
-9. Append to `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`
-10. Move the source file from `raw/` to `processed/`: `mv raw/<filename> processed/<filename>`
-
-### Source Page Format
-
-```markdown
----
-title: "Source Title"
-type: source
-tags: []
-date: YYYY-MM-DD
-source_file: raw/...
----
-
-## Summary
-2–4 sentence summary.
-
-## Key Claims
-- Claim 1
-- Claim 2
-
-## Key Quotes
-> "Quote here" — context
-
-## Connections
-- [[EntityName]] — how they relate
-- [[ConceptName]] — how it connects
-
-## Contradictions
-- Contradicts [[OtherPage]] on: ...
-```
-
----
+1. Execute `python3 .claude/skills/wiki-ingest/scripts/ingest_router.py <file>` to route to L0 and L1.
+2. Read the source document fully.
+3. Read `wiki/index.md` and `wiki/overview.md` for current wiki context.
+4. Synthesize L2 concepts. DO NOT overwrite pages if they contradict, use `[!contradiction]` block instead.
 
 ## Query Workflow
-
-Triggered by: *"query: <question>"*
-
-Steps:
-1. Read `wiki/index.md` to identify relevant pages
-2. Read those pages
-3. Synthesize an answer with inline citations as `[[PageName]]` wikilinks
-4. Ask the user if they want the answer filed as `wiki/syntheses/<slug>.md`
-
----
-
-## Lint Workflow
-
-Triggered by: *"lint"*
-
-Check for:
-- **Orphan pages** — wiki pages with no inbound `[[links]]` from other pages
-- **Broken links** — `[[WikiLinks]]` pointing to pages that don't exist
-- **Contradictions** — claims that conflict across pages
-- **Stale summaries** — pages not updated after newer sources
-- **Missing entity pages** — entities mentioned in 3+ pages but lacking their own page
-- **Data gaps** — questions the wiki can't answer; suggest new sources
-
-Output a lint report and ask if the user wants it saved to `wiki/lint-report.md`.
-
----
-
-## Graph Workflow
-
-Triggered by: *"build graph"*
-
-First try: `python tools/build_graph.py --open`
-
-If Python/deps unavailable, build manually:
-1. Search for all `[[wikilinks]]` across wiki pages
-2. Build nodes (one per page) and edges (one per link)
-3. Infer implicit relationships not captured by wikilinks — tag `INFERRED` with confidence score; low confidence → `AMBIGUOUS`
-4. Write `graph/graph.json` with `{nodes, edges, built: date}`
-5. Write `graph/graph.html` as a self-contained vis.js visualization
-
----
-
-## Naming Conventions
-
-- Source slugs: `kebab-case` matching source filename
-- Entity pages: `TitleCase.md` (e.g. `OpenAI.md`, `SamAltman.md`)
-- Concept pages: `TitleCase.md` (e.g. `ReinforcementLearning.md`, `RAG.md`)
-
-## Index Format
-
-```markdown
-# Wiki Index
-
-## Overview
-- [Overview](overview.md) — living synthesis
-
-## Sources
-- [Source Title](sources/slug.md) — one-line summary
-
-## Entities
-- [Entity Name](entities/EntityName.md) — one-line description
-
-## Concepts
-- [Concept Name](concepts/ConceptName.md) — one-line description
-
-## Syntheses
-- [Analysis Title](syntheses/slug.md) — what question it answers
-```
-
-## Log Format
-
-`## [YYYY-MM-DD] <operation> | <title>`
-
-Operations: `ingest`, `query`, `lint`, `graph`
+...
