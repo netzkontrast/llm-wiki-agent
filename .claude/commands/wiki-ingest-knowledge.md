@@ -7,8 +7,16 @@ description: knowledge layer ingest
 Extract EVERY entity (persons, systems, organizations), concept, rule. No entity may be deferred.
 Create entity pages in `knowledge/entities/` for ALL named persons, AI systems, organizations, or world-structural systems encountered — not just prominent ones.
 
-## MERGE MANDATE
-When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file (e.g., append new tags, relationships, or traits) instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
+## MERGE MANDATE & AUTOMATION (DOs and DONTs)
+When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
+
+**DOs:**
+- Perform **Semantic Synthesis**: When updating the body of an existing file (e.g., the `## Description`), you must rewrite the section to smoothly and logically integrate the new facts.
+- Safely update YAML frontmatter: Merge arrays by appending new unique items to the existing lists.
+
+**DONTs:**
+- Do NOT naively append `## Update [Date]` blocks to the end of the file. This leads to fragmentation and readability issues.
+- Do NOT delete or omit previously established facts when synthesizing the new description.
 
 ## RELATIONSHIPS & CONTRADICTIONS
 1. **Relationships**: Always populate the `related_entities` field in the frontmatter. Use inline wiki-links (e.g., `[[Entity]]`) in the content body when an entity interacts with or references another.
@@ -16,11 +24,11 @@ When ingesting characters, locations, or concepts that already exist in the wiki
 
 ## Steps
 1. Read the compiled context. You receive a pre-compiled context. Do NOT read wiki/index.md yourself.
-2. Draft or update the pages specified in the plan for the knowledge layer. Ensure `related_entities` and contradiction logging are handled.
+2. Draft or update the pages specified in the plan for the knowledge layer. Ensure `related_entities` and contradiction logging are handled. Use python scripts to do semantic merging if files exist.
 3. Validate your output against the Schema Reminder in the compiled context before writing to disk.
 4. Run `python3 tools/validate.py --recent-minutes 5`
    - If validation fails, retry up to 3 times to fix the errors.
 5. Append new pages to `wiki/index.md` using the required tagged format: `- [Title](path) — description <!-- type:TYPE slug:SLUG -->`. Do NOT add updates to the index.
 
 Writes: `knowledge/sources/`, `knowledge/entities/`, `knowledge/concepts/`, `knowledge/rules/`, `knowledge/timeline/`, `knowledge/syntheses/`
-Merge rule: always update `sources:` field; never overwrite established content without contradiction log entry, only append new facts.
+Merge rule: always update `sources:` field; never overwrite established content without contradiction log entry, synthesize new facts smoothly.

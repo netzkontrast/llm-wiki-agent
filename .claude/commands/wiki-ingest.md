@@ -8,10 +8,18 @@ description: Orchestrates chunk-loop ingest sub-skills. Guarantees complete extr
 ALL entities in a source document MUST be extracted — no deferral, no sampling, no "test runs".
 The words "representative sample", "test run", "defer", "skip for now" are FORBIDDEN in plan files.
 
-## MERGE MANDATE & AUTOMATION
+## MERGE MANDATE & AUTOMATION (DOs and DONTs)
 
-When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file (e.g., append new tags, relationships, sources, or traits) instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
-It is highly recommended to write a Python script that uses regex or a YAML parser to safely extract, update, and write back the YAML frontmatter and markdown body when updating existing files.
+When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
+
+**DOs:**
+- Perform **Semantic Synthesis**: When updating the body of an existing file (e.g., the `## Description`), you must rewrite the section to smoothly and logically integrate the new facts.
+- Safely update YAML frontmatter: Merge arrays (like `tags`, `sources`, `related_entities`) by appending new unique items to the existing lists.
+- Write Python scripts to safely parse existing YAML and markdown body, synthesize the text, and write it back.
+
+**DONTs:**
+- Do NOT naively append `## Update [Date]` blocks to the end of the file. This leads to fragmentation and readability issues.
+- Do NOT delete or omit previously established facts when synthesizing the new description.
 
 ## LANGUAGE RULES
 All generated wiki content (summaries, concept names, entity names, syntheses) MUST be written entirely in English, regardless of the raw source file's language. However, source page slugs must remain the kebab-case version of the original raw filename to maintain a direct mapping.
