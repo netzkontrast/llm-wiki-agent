@@ -18,12 +18,35 @@ def main():
     unlinked_mentions = []
     incomplete_metadata = []
     empty_sections = []
+    missing_required_pages = []
 
     link_targets = set()
     page_contents = {p.name: p.read_text(encoding="utf-8") for p in pages}
 
     for page in pages:
         content = page_contents[page.name]
+
+        # Missing Metadata
+        if not content.startswith('---'):
+            incomplete_metadata.append(page.name)
+        else:
+            # Check requires
+            match = re.search(r'^requires:\s*\[(.*?)\]', content, re.MULTILINE)
+            if match:
+                reqs_str = match.group(1)
+                reqs = [r.strip().strip('"\'') for r in reqs_str.split(',') if r.strip()]
+                for req in reqs:
+                    if req not in all_slugs:
+                        missing_required_pages.append((page.name, req))
+
+            # Check informs
+            match = re.search(r'^informs:\s*\[(.*?)\]', content, re.MULTILINE)
+            if match:
+                reqs_str = match.group(1)
+                reqs = [r.strip().strip('"\'') for r in reqs_str.split(',') if r.strip()]
+                for req in reqs:
+                    if req not in all_slugs:
+                        missing_required_pages.append((page.name, req))
 
         # Dead links check
         links = re.findall(r'\[\[(.*?)\]\]', content)
@@ -34,15 +57,16 @@ def main():
                 dead_links.append((page.name, target))
 
         # Empty sections check
-        sections = re.findall(r'^(##+)\s+(.*?)\n\s*(?:(?=##)|\Z)', content, re.MULTILINE | re.DOTALL)
-        for level, title in sections:
-            # Check if section text is practically empty
-            if not title.strip() or len(title.strip()) < 5:  # Simplified
-                pass
-
-        # Missing Metadata
-        if not content.startswith('---'):
-            incomplete_metadata.append(page.name)
+        sections_raw = re.split(r'^(##+)\s+(.*?)$', content, flags=re.MULTILINE)
+        i = 1
+        while i < len(sections_raw):
+            heading_level = sections_raw[i]
+            heading_title = sections_raw[i+1].strip()
+            body_content = sections_raw[i+2] if (i+2) < len(sections_raw) else ""
+            body_content = body_content.strip()
+            if len(body_content) < 5:
+                empty_sections.append((page.name, heading_title))
+            i += 3
 
     # Orphan pages check
     for page in pages:
@@ -50,13 +74,10 @@ def main():
             orphan_pages.append(page.name)
 
     # Unlinked mentions
-    # Very basic heuristic: check if another page's slug appears in text without [[ ]]
     for page in pages:
         content = page_contents[page.name]
         for other_slug in all_slugs:
             if other_slug != page.stem and len(other_slug) > 4:
-                # check if it exists as a word but not in a link
-                # this is a very simplified check
                 if re.search(r'(?<!\[\[)\b' + re.escape(other_slug) + r'\b(?!\]\])', content):
                     unlinked_mentions.append((page.name, other_slug))
 
@@ -70,8 +91,16 @@ def main():
     for page, target in dead_links:
         print(f"  - In {page}, dead link to [[{target}]]")
 
+    print(f"\nMissing Required Pages: {len(missing_required_pages)}")
+    for page, target in missing_required_pages:
+        print(f"  - In {page}, missing required/informs page {target}")
+
+    print(f"\nEmpty Sections: {len(empty_sections)}")
+    for page, section in empty_sections:
+        print(f"  - In {page}, section '{section}' is empty.")
+
     print(f"\nUnlinked Mentions (Potential): {len(unlinked_mentions)}")
-    for page, target in unlinked_mentions[:10]: # Limit output
+    for page, target in unlinked_mentions[:10]:
         print(f"  - In {page}, potential unlinked mention of {target}")
     if len(unlinked_mentions) > 10:
         print(f"  ... and {len(unlinked_mentions) - 10} more.")

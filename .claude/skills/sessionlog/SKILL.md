@@ -9,7 +9,7 @@ description: Executes the following: Wraps another command in ultra-verbose exte
 
 **Purpose:** Executes any standard command (like `/wiki-ingest`) but wraps its entire execution in an ultra-verbose, append-only debug trace to allow deep analysis of the agent's behavior.
 
-**Usage:** `/sessionlog <command> [arguments]`
+**Usage:** `/sessionlog "[command]" [arguments]`
 Example: `/sessionlog wiki-ingest raw/UmfassendesLokalitatenKonzeptFurRoman.md`
 
 ## Instructions for the Agent
@@ -44,7 +44,7 @@ Use the bash command `echo -e "..." >> log/.../trace.md` (or write to it via sta
 ### Step 3: Granular Committing
 Whenever you complete a logical "Phase" of the wrapped command (e.g., Decompose, Plan, Write, Wrap-up for an ingest), you must:
 1. `git add .`
-2. `git commit -m "chore(sessionlog): complete <phase name> phase"`
+2. `git commit -m "chore(sessionlog): complete "[phase name]" phase"`
 3. Append a `COMMIT` action type entry to `trace.md` noting the phase that was saved.
 
 ### Step 4: Finalization
