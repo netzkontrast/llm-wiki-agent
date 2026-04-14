@@ -88,6 +88,9 @@ tools/                  # Python tools for linting, parsing, graphing, and queri
 
 ## Core Systems & Concepts
 
+### Adaptive Chunk-Loop Ingestion
+Document ingestion is handled by the `wiki-ingest-workflow`. Instead of naive monolithic passes, files are chunked semantically. For each chunk, the agent generates an extraction plan (`wiki-decompose`) and iteratively performs passes for the Knowledge, Narrative, and Reader State layers. This ensures deep, token-efficient extraction that comprehensively prepares world elements, characters, and rules for downstream writing workflows without dropping context.
+
 ### Dependency-Driven Navigation
 Every wiki page declares `requires:` (what to load for context) and `informs:` (what to update after changes) in its YAML frontmatter. Reading uses bounded traversal (max-depth 2) to protect the context window. Writing uses **unbounded propagation** — when a page changes, the agent follows the full `informs:` chain until every downstream page is updated or confirmed current.
 
