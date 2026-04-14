@@ -13,6 +13,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Aegis Philosophie Und Manifest Entwicklung](knowledge/sources/aegis-philosophie-und-manifest-entwicklung.md) — Dokument zur Tiefenanalyse der AEGIS-Ursprungsphil... <!-- type:source slug:aegis-philosophie-und-manifest-entwicklung -->
 - [Aegis Philosophie Und Systemtheorie](knowledge/sources/aegis-philosophie-und-systemtheorie.md) — Dokument, das die philosophischen und systemtheore... <!-- type:source slug:aegis-philosophie-und-systemtheorie -->
 - [Aegis Philosophische Und Systemtheoretische Analyse](knowledge/sources/aegis-philosophische-und-systemtheoretische-analyse.md) — Dokument, das die philosophischen und systemtheore... <!-- type:source slug:aegis-philosophische-und-systemtheoretische-analyse -->
+- [Koharenz Protokoll Meta Foreshadowing Beobachter Logik](knowledge/sources/koharenz-protokoll-meta-foreshadowing-beobachter-logik.md) <!-- type:source slug:koharenz-protokoll-meta-foreshadowing-beobachter-logik -->
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
 - [aegis-analyse-und-prompt-optimierung.md](knowledge/sources/aegis-analyse-und-prompt-optimierung.md) — Analysis of AEGIS <!-- type:source slug:aegis-analyse-und-prompt-optimierung -->
 - [aegis-emergenz-aus-der-leere.md](knowledge/sources/aegis-emergenz-aus-der-leere.md) — Source on AEGIS Postulate <!-- type:source slug:aegis-emergenz-aus-der-leere -->
@@ -31,6 +32,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Agentenbasierte Modellierung](knowledge/concepts/AgentenbasierteModellierung.md) — Simuliert Systemverhalten durch interagierende aut... <!-- type:concept slug:AgentenbasierteModellierung -->
 - [Autopoiesis](knowledge/concepts/Autopoiesis.md) — Systeme, die ihre Komponenten und Organisation sel... <!-- type:concept slug:Autopoiesis -->
 - [BPoF](knowledge/concepts/Bpof.md) — AEGIS protocol <!-- type:concept slug:Bpof -->
+- [Beobachter Logik](knowledge/concepts/BeobachterLogik.md) — A logical system describing the dynamics of the observer effect within the Koharenz framework. <!-- type:concept slug:BeobachterLogik -->
 - [Beobachterproblem](knowledge/concepts/Beobachterproblem.md) — Das Problem, dass die Beobachtung das System beein... <!-- type:concept slug:Beobachterproblem -->
 - [Creatio Ex Nihilo](knowledge/concepts/CreatioExNihilo.md) — Theologische Doktrin der Schöpfung aus dem Nichts.... <!-- type:concept slug:CreatioExNihilo -->
 - [Das Nichts](knowledge/concepts/DasNichts.md) — Philosophisches Konzept, in AEGIS relevant zur Def... <!-- type:concept slug:DasNichts -->
@@ -60,6 +62,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Komplexes Adaptives System](knowledge/concepts/KomplexesAdaptivesSystem.md) — Spezielle Klasse von Systemen (CAS), die sich anpa... <!-- type:concept slug:KomplexesAdaptivesSystem -->
 - [Leerheit](knowledge/concepts/Leerheit.md) — Buddhistisches Konzept (Sunyata): Abwesenheit inhä... <!-- type:concept slug:Leerheit -->
 - [Logische Evolution](knowledge/concepts/LogischeEvolution.md) — Durch das Prinzip 'Dynamik statt Dogma' können sic... <!-- type:concept slug:LogischeEvolution -->
+- [Meta Foreshadowing](knowledge/concepts/MetaForeshadowing.md) — A narrative technique where the story hints at its own structural or metatextual elements. <!-- type:concept slug:MetaForeshadowing -->
 - [Misaligned Coherence](knowledge/concepts/MisalignedCoherence.md) <!-- type:concept slug:MisalignedCoherence -->
 - [No-Trust Prinzip](knowledge/concepts/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:concept slug:NoTrustPrinzip -->
 - [Nullpunkt-Protokoll](knowledge/concepts/NullpunktProtokoll.md) — AEGIS initialization protocol <!-- type:concept slug:NullpunktProtokoll -->
