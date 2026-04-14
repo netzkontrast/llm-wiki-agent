@@ -9,6 +9,7 @@ This file is maintained by the LLM. Updated on every ingest.
 
 ### Sources
 - [40ChapterPlotModule.md](knowledge/sources/40-chapter-plot-module.md) <!-- type:source slug:40-chapter-plot-module -->
+- [AEGIS Protokolle: Kritische Evaluation und Neukonzeption](knowledge/sources/aegis-protokolle-kritische-evaluation-neukonzeption.md) <!-- type:source slug:aegis-protokolle-kritische-evaluation-neukonzeption -->
 - [Aegis Genesis Krise Prosa Auftrag Formulieren](knowledge/sources/aegis-genesis-krise-prosa-auftrag-formulieren.md) <!-- type:source slug:aegis-genesis-krise-prosa-auftrag-formulieren -->
 - [Aegis Philosophie Und Manifest Entwicklung](knowledge/sources/aegis-philosophie-und-manifest-entwicklung.md) — Dokument zur Tiefenanalyse der AEGIS-Ursprungsphil... <!-- type:source slug:aegis-philosophie-und-manifest-entwicklung -->
 - [Aegis Philosophie Und Systemtheorie](knowledge/sources/aegis-philosophie-und-systemtheorie.md) — Dokument, das die philosophischen und systemtheore... <!-- type:source slug:aegis-philosophie-und-systemtheorie -->
@@ -69,7 +70,10 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Operationale Ontologie](knowledge/concepts/OperationaleOntologie.md) — Ontologischer Ansatz von AEGIS: Sein ist gleichbed... <!-- type:concept slug:OperationaleOntologie -->
 - [Operationale Schließung](knowledge/concepts/OperationaleSchliessung.md) — Der Schlüssel für AEGIS' Funktionieren ohne extern... <!-- type:concept slug:OperationaleSchliessung -->
 - [Operative Geschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
+- [P-ENTROPY (Internes Entropie-Management)](knowledge/concepts/P-ENTROPY.md) — Internes Entropie-Management ohne externe Senken <!-- type:concept slug:P-ENTROPY -->
+- [P-INIT (Bootstrapping aus Negation)](knowledge/concepts/P-INIT.md) — Emergenz des ersten kohärenten Zustands ex nihilo <!-- type:concept slug:P-INIT -->
 - [Primal Directive](knowledge/concepts/PrimalDirective.md) — Unrelenting directive <!-- type:concept slug:PrimalDirective -->
+- [Prozess](knowledge/concepts/Prozess.md) — Dynamische Rekonfiguration kohärenter Zustände <!-- type:concept slug:Prozess -->
 - [Prozessphilosophie](knowledge/concepts/Prozessphilosophie.md) — Realität als dynamischer Prozess des Werdens. AEGI... <!-- type:concept slug:Prozessphilosophie -->
 - [Psychological Landscapes](knowledge/concepts/PsychologicalLandscapes.md) <!-- type:concept slug:PsychologicalLandscapes -->
 - [RTSV](knowledge/concepts/Rtsv.md) — AEGIS protocol <!-- type:concept slug:Rtsv -->
@@ -86,6 +90,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Wirkung Paradoxie](knowledge/concepts/WirkungParadoxie.md) — Wenn Existenz = Wirkung + Selbstbezug ist, aber da... <!-- type:concept slug:WirkungParadoxie -->
 - [ZTEM](knowledge/concepts/Ztem.md) — AEGIS protocol <!-- type:concept slug:Ztem -->
 - [Zero-Trust-Architektur](knowledge/concepts/ZeroTrustArchitektur.md) — Sicherheitsmodell (ZTA), das auf 'Never trust, alw... <!-- type:concept slug:ZeroTrustArchitektur -->
+- [Zustand](knowledge/concepts/Zustand.md) — Temporäre, durch Kohärenz definierte Konfiguration <!-- type:concept slug:Zustand -->
 
 ### Syntheses
 
@@ -108,6 +113,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Kael](narrative/characters/Kael.md) — protagonist, ANP host, pre-fragmentation <!-- type:character slug:Kael -->
 - [Kael (Post-Fragmentation)](narrative/characters/Kael-post-frag.md) <!-- type:character slug:Kael-post-frag -->
 - [Lex](narrative/characters/Lex.md) — Kael's primary alter <!-- type:character slug:Lex -->
+- [Maxwell](narrative/characters/Maxwell.md) — Historischer Bezugspunkt für thermodynamische Überlegungen <!-- type:character slug:Maxwell -->
 
 ### Chapters
 - [Chapter 1: The Sterile Beginning](narrative/chapters/chapter-01.md) — pov: Kael, setup <!-- type:chapter slug:chapter-01 -->
