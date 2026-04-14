@@ -17,13 +17,15 @@ The words "representative sample", "test run", "defer", "skip for now" are FORBI
 When ingesting characters, locations, or concepts that already exist in the wiki, you MUST merge the new information into the existing file instead of overwriting it completely. Never use file overwrites unless explicitly creating a new file.
 
 **DOs:**
-- Perform **Semantic Synthesis**: When updating the body of an existing file (e.g., the `## Description`), you must rewrite the section to smoothly and logically integrate the new facts.
-- Safely update YAML frontmatter: Merge arrays (like `tags`, `sources`, `related_entities`) by appending new unique items to the existing lists.
-- Write Python scripts to safely parse existing YAML and markdown body, synthesize the text, and write it back.
+- Always check if an entity page exists using `grep` or `ls` before writing.
+- Perform **Semantic Synthesis**: When updating the body of an existing file (e.g., the `## Description`), read the existing file completely. Identify where the new information fits, rewrite that section logically, and write back the entire updated file.
+- **Safely update YAML frontmatter arrays**: When updating `tags`, `sources`, `related_entities`, or `relationships` on existing pages, parse the existing array, add your new items uniquely, and write the array back. Do NOT overwrite the entire list with only your new items.
+- Write a short python script in your step to safely parse, append, and rewrite the file if needed.
 
 **DONTs:**
-- Do NOT naively append `## Update [Date]` blocks to the end of the file. This leads to fragmentation and readability issues.
+- Do NOT naively append `## Update [Date]` blocks to the end of the file. This leads to fragmentation.
 - Do NOT delete or omit previously established facts when synthesizing the new description.
+- Do NOT overwrite a YAML array completely; append to it.
 
 ## LANGUAGE RULES
 All generated wiki content (summaries, concept names, entity names, syntheses) MUST be written entirely in English, regardless of the raw source file's language. However, source page slugs must remain the kebab-case version of the original raw filename to maintain a direct mapping.
@@ -60,8 +62,4 @@ If the source document contains conflicting data with an existing L2 page, then 
 - NEVER move the original file to `processed/`
 - NEVER overwrite existing L2 data if there is a contradiction. Use the `[!contradiction]` block.
 - NEVER hallucinate wikilinks to pages that do not exist.
-
-## Gotchas
-- When performing semantic synthesis, ensure you do not drop critical nuance or factual quotes from the L0 node.
-- If data contradicts between the current L0 node and an existing L2 concept page, NEVER overwrite the L2 page silently. Always use `[!contradiction]` blocks.
-- Ensure any file created strictly conforms to its respective page type layout in `docs/wiki-schema.md`.
+- ALWAYS read existing files completely before updating them.

@@ -72,3 +72,4 @@ Test Passed: Kael-post-frag.md is correctly invalid for Chapter 1 context
 - 2026-04-13T05:12:23Z [SUCCESS] Ingested AegisPhilosophieUndManifestEntwicklung.md
 - 2026-04-13T05:18:10Z [SUCCESS] Ingested AegisPhilosophieUndSystemtheorie.md
 - 2026-04-13T05:22:04Z [SUCCESS] Ingested AegisPhilosophischeUndSystemtheoretischeAnalyse.md
+- 2026-04-14: Processed KoharenzProtokollMetaForeshadowingBeobachterLogik via wiki-ingest-workflow

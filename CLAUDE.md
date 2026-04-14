@@ -130,15 +130,16 @@ Use `[[PageName]]` wikilinks to link to other wiki pages.
 
 Triggered by: *"ingest <file>"* or `/wiki-ingest`
 
-This workflow runs the LLM-First Chunk Loop. It replaces the old monolithic ingest Python scripts.
+This workflow runs the LLM-First Chunk Loop using the unified `wiki-ingest-workflow`. It replaces the old monolithic ingest Python scripts.
 
-Steps (handled by `.claude/commands/wiki-ingest.md`):
-1. **Chunk**: Run `python3 tools/chunk.py raw/<file>` to chunk the file semantically.
-2. **Compile & Decompose**: For each chunk, run `compile_context.py` to build the prompt, then call `/wiki-decompose` to generate a plan.
-3. **Layer Passes**: Call `/wiki-ingest-knowledge`, `/wiki-ingest-narrative`, and `/wiki-ingest-reader` iteratively for each chunk, using compiled contexts.
-4. **Merge Check**: Use `index_manager.py` to prevent duplicate schemas.
-5. **Validation Loop**: Each sub-skill validates its output using `validate.py` and retries on failure (up to 3x).
-6. **Cleanup**: Append to `log.md` and move file from `raw/` to `processed/`.
+Steps (orchestrated by `.claude/skills/wiki-ingest-workflow/SKILL.md`):
+1. **Route**: Execute `ingest_router.py` to route to L0 (immutable fact node) and L1 (episode node).
+2. **Chunk**: Run `python3 tools/chunk.py memory/L0_facts/<file>` to chunk the file semantically.
+3. **Compile & Decompose**: For each chunk, run `compile_context.py` to build the prompt, then call `wiki-decompose` to generate a comprehensive plan.
+4. **Layer Passes**: Call `wiki-ingest-knowledge`, `wiki-ingest-narrative`, and `wiki-ingest-reader` iteratively for each chunk based on the generated plan.
+5. **Merge Check**: Use `index_manager.py` to check for duplicates and prevent schema conflicts.
+6. **Validation Loop**: Each pass validates its output using `validate.py` and retries on failure (up to 3x).
+7. **Cleanup**: Rebuild index, append to `log.md`, and clean up temporary chunks. NEVER move or delete from `raw/`.
 
 ### Source Page Format
 
