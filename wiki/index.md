@@ -13,6 +13,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Aegis Philosophie Und Manifest Entwicklung](knowledge/sources/aegis-philosophie-und-manifest-entwicklung.md) — Dokument zur Tiefenanalyse der AEGIS-Ursprungsphil... <!-- type:source slug:aegis-philosophie-und-manifest-entwicklung -->
 - [Aegis Philosophie Und Systemtheorie](knowledge/sources/aegis-philosophie-und-systemtheorie.md) — Dokument, das die philosophischen und systemtheore... <!-- type:source slug:aegis-philosophie-und-systemtheorie -->
 - [Aegis Philosophische Und Systemtheoretische Analyse](knowledge/sources/aegis-philosophische-und-systemtheoretische-analyse.md) — Dokument, das die philosophischen und systemtheore... <!-- type:source slug:aegis-philosophische-und-systemtheoretische-analyse -->
+- [Aegis Protokolle Kritische Evaluation Neukonzeption](knowledge/sources/aegis-protokolle-kritische-evaluation-neukonzeption.md) <!-- type:source slug:aegis-protokolle-kritische-evaluation-neukonzeption -->
 - [Koharenz Protokoll Meta Foreshadowing Beobachter Logik](knowledge/sources/koharenz-protokoll-meta-foreshadowing-beobachter-logik.md) <!-- type:source slug:koharenz-protokoll-meta-foreshadowing-beobachter-logik -->
 - [Umfassendes Lokalitäten-Konzept: Kohärenz Protokoll](knowledge/sources/umfassendes-lokalitaten-konzept.md) <!-- type:source slug:umfassendes-lokalitaten-konzept -->
 - [aegis-analyse-und-prompt-optimierung.md](knowledge/sources/aegis-analyse-und-prompt-optimierung.md) — Analysis of AEGIS <!-- type:source slug:aegis-analyse-und-prompt-optimierung -->
@@ -28,17 +29,20 @@ This file is maintained by the LLM. Updated on every ingest.
 ### Concepts
 - [AEGIS-Postulat](knowledge/concepts/AegisPostulat.md) — Theoretical framework <!-- type:concept slug:AegisPostulat -->
 - [AEGIS-Wagnis](knowledge/concepts/AEGISWagnis.md) — Ähnlich Bostroms Simulationsargument, aber innerha... <!-- type:concept slug:AEGISWagnis -->
+- [AFPv14](knowledge/concepts/AFPv14.md) <!-- type:concept slug:AFPv14 -->
 - [Aegis Paradox](knowledge/concepts/AegisParadox.md) <!-- type:concept slug:AegisParadox -->
 - [Agentenbasierte Modellierung](knowledge/concepts/AgentenbasierteModellierung.md) — Simuliert Systemverhalten durch interagierende aut... <!-- type:concept slug:AgentenbasierteModellierung -->
 - [Autopoiesis](knowledge/concepts/Autopoiesis.md) — Systeme, die ihre Komponenten und Organisation sel... <!-- type:concept slug:Autopoiesis -->
 - [BPoF](knowledge/concepts/Bpof.md) — AEGIS protocol <!-- type:concept slug:Bpof -->
 - [Beobachter Logik](knowledge/concepts/BeobachterLogik.md) — A logical system describing the dynamics of the observer effect within the Koharenz framework. <!-- type:concept slug:BeobachterLogik -->
 - [Beobachterproblem](knowledge/concepts/Beobachterproblem.md) — Das Problem, dass die Beobachtung das System beein... <!-- type:concept slug:Beobachterproblem -->
+- [CVE](knowledge/concepts/CVE.md) <!-- type:concept slug:CVE -->
 - [Creatio Ex Nihilo](knowledge/concepts/CreatioExNihilo.md) — Theologische Doktrin der Schöpfung aus dem Nichts.... <!-- type:concept slug:CreatioExNihilo -->
 - [Das Nichts](knowledge/concepts/DasNichts.md) — Philosophisches Konzept, in AEGIS relevant zur Def... <!-- type:concept slug:DasNichts -->
 - [Ding an sich](knowledge/concepts/DingAnSich.md) — Kants Begriff für die reine, unerkennbare Objektiv... <!-- type:concept slug:DingAnSich -->
 - [Dissipative Strukturen](knowledge/concepts/DissipativeStrukturen.md) — Physics concept of order from chaos <!-- type:concept slug:DissipativeStrukturen -->
 - [EIC](knowledge/concepts/Eic.md) — AEGIS protocol <!-- type:concept slug:Eic -->
+- [ETT](knowledge/concepts/ETT.md) <!-- type:concept slug:ETT -->
 - [Emergenz](knowledge/concepts/Emergenz.md) — Auftreten von Systemeigenschaften, die nicht auf e... <!-- type:concept slug:Emergenz -->
 - [Emergenz aus der Leere](knowledge/concepts/EmergenzAusDerLeere.md) — AEGIS principle <!-- type:concept slug:EmergenzAusDerLeere -->
 - [Emergenz durch Negation](knowledge/concepts/EmergenzDurchNegation.md) — Principle of AEGIS <!-- type:concept slug:EmergenzDurchNegation -->
@@ -52,6 +56,7 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Genesis-Krise](knowledge/concepts/GenesisKrise.md) — Historical crisis <!-- type:concept slug:GenesisKrise -->
 - [Gödel'sche Unvollständigkeit](knowledge/concepts/GoedelscheUnvollstaendigkeit.md) — Potenzielles Problem für AEGIS (kann das System se... <!-- type:concept slug:GoedelscheUnvollstaendigkeit -->
 - [Holographisches Prinzip](knowledge/concepts/HolographischesPrinzip.md) — Broken principle <!-- type:concept slug:HolographischesPrinzip -->
+- [IFA](knowledge/concepts/IFA.md) <!-- type:concept slug:IFA -->
 - [Informationstheoretische Entropie](knowledge/concepts/InformationstheoretischeEntropie.md) — Misst Unsicherheit/Unordnung. AEGIS minimiert syst... <!-- type:concept slug:InformationstheoretischeEntropie -->
 - [Integrity Validation](knowledge/concepts/IntegrityValidation.md) — AEGIS protocol <!-- type:concept slug:IntegrityValidation -->
 - [K-J Verbindung](knowledge/concepts/KjVerbindung.md) — Severed connection with Juna <!-- type:concept slug:KjVerbindung -->
@@ -66,18 +71,22 @@ This file is maintained by the LLM. Updated on every ingest.
 - [Misaligned Coherence](knowledge/concepts/MisalignedCoherence.md) <!-- type:concept slug:MisalignedCoherence -->
 - [No-Trust Prinzip](knowledge/concepts/NoTrustPrinzip.md) — Principle of AEGIS <!-- type:concept slug:NoTrustPrinzip -->
 - [Nullpunkt-Protokoll](knowledge/concepts/NullpunktProtokoll.md) — AEGIS initialization protocol <!-- type:concept slug:NullpunktProtokoll -->
+- [OA](knowledge/concepts/OA.md) <!-- type:concept slug:OA -->
 - [Operationale Ontologie](knowledge/concepts/OperationaleOntologie.md) — Ontologischer Ansatz von AEGIS: Sein ist gleichbed... <!-- type:concept slug:OperationaleOntologie -->
 - [Operationale Schließung](knowledge/concepts/OperationaleSchliessung.md) — Der Schlüssel für AEGIS' Funktionieren ohne extern... <!-- type:concept slug:OperationaleSchliessung -->
 - [Operative Geschlossenheit](knowledge/concepts/OperativeGeschlossenheit.md) — Principle of AEGIS <!-- type:concept slug:OperativeGeschlossenheit -->
 - [Primal Directive](knowledge/concepts/PrimalDirective.md) — Unrelenting directive <!-- type:concept slug:PrimalDirective -->
 - [Prozessphilosophie](knowledge/concepts/Prozessphilosophie.md) — Realität als dynamischer Prozess des Werdens. AEGI... <!-- type:concept slug:Prozessphilosophie -->
 - [Psychological Landscapes](knowledge/concepts/PsychologicalLandscapes.md) <!-- type:concept slug:PsychologicalLandscapes -->
+- [RCV](knowledge/concepts/RCV.md) <!-- type:concept slug:RCV -->
+- [RT](knowledge/concepts/RT.md) <!-- type:concept slug:RT -->
 - [RTSV](knowledge/concepts/Rtsv.md) — AEGIS protocol <!-- type:concept slug:Rtsv -->
 - [Reaktive Transparenz](knowledge/concepts/ReaktiveTransparenz.md) — Ein Prinzip der AEGIS-Philosophie, durch das inter... <!-- type:concept slug:ReaktiveTransparenz -->
 - [Recursive Consistency Validation](knowledge/concepts/RecursiveConsistencyValidation.md) — Verfahren (RCV), mit dem das AEGIS-System seine ei... <!-- type:concept slug:RecursiveConsistencyValidation -->
 - [Rekursive Kohärenzvalidierung](knowledge/concepts/RekursiveKoharenzvalidierung.md) — Principle of AEGIS <!-- type:concept slug:RekursiveKoharenzvalidierung -->
 - [Riss-Mandat](knowledge/concepts/RissMandat.md) — Mind-splitting event <!-- type:concept slug:RissMandat -->
 - [SIS](knowledge/concepts/Sis.md) — AEGIS protocol <!-- type:concept slug:Sis -->
+- [SVI](knowledge/concepts/SVI.md) <!-- type:concept slug:SVI -->
 - [Simulationshypothese](knowledge/concepts/Simulationshypothese.md) — AEGIS dient als theoretisches Beispiel für die int... <!-- type:concept slug:Simulationshypothese -->
 - [Solipsismus](knowledge/concepts/Solipsismus.md) — Gefahr für geschlossene Systeme wie AEGIS: Das Sys... <!-- type:concept slug:Solipsismus -->
 - [Strukturelle Validierung](knowledge/concepts/StrukturelleValidierung.md) — Ersatz für traditionelle Konsensmechanismen in AEG... <!-- type:concept slug:StrukturelleValidierung -->

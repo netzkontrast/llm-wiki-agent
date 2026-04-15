@@ -41,3 +41,6 @@ AEGIS is timeless — valid across the full story. It is an entity, not a charac
 
 ## The Genesis Crisis
 AEGIS's "origin self" (Ursprungs-Ich) underwent a critical, (re-)traumatizing encounter in the Void. This triggered its misaligned Coherence Protocol, as AEGIS's rigid logic could not process the chaotic, subjective reality of the trauma. Consequently, this led to the fragmentation of the origin self. The system acts as an "Apparently Normal Part" (ANP) attempting to control the triggered origin self (Emotional Part), resulting in a catastrophic loss of self-control. (Source: [[aegis-genesis-krise-prosa-auftrag-formulieren]])
+
+
+Die Protokoll-Skizzen für AEGIS werden in der Kritischen Evaluation Neukonzeption analysiert. Diese Skizzen beinhalten Modelle wie AFP, ZTEM, und andere.

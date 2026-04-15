@@ -80,14 +80,15 @@ tools/        # Python scripts (require qmd + ANTHROPIC_API_KEY)
 
 ## Ingestion Queue
 
-The ingestion queue is managed by file location, not by checklist:
+The ingestion queue is managed by file location, and visualized in `queue.md`:
 
 - `raw/` — files waiting to be ingested (queue)
 - `processed/` — files that have been successfully ingested (done)
 
-**After every successful ingest**, move the source file:
+**After every successful ingest**, move the source file and update `queue.md`:
 ```bash
 mv raw/<filename> processed/<filename>
+~/self_created_tools/update_queue.sh
 ```
 
 To see what's left to ingest:
