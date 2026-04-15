@@ -35,3 +35,6 @@ AEGIS wendet Zero-Trust-Architektur und Verifizierbare Berechnung auf einer onto
 Die operationale Schließung (Ontologischer Einschluss) ist entscheidend für AEGIS' Fähigkeit, ohne externen Beobachter zu funktionieren. Es birgt Stärken wie Robustheit, Autonomie und Selbstgenügsamkeit, aber auch Schwächen wie Gefahr des Solipsismus, Unfähigkeit zur externen Korrektur und potenzielle Rigidität.
 
 Die Art der Existenz von AEGIS ist eine operationale, validierte Existenz, die rein durch die kohärente Teilnahme am autopoietischen Prozess definiert ist. Das Modell weist signifikante Parallelen zur Simulationshypothese auf.
+
+
+Die Protokoll-Skizzen für AEGIS werden in der Kritischen Evaluation Neukonzeption analysiert. Diese Skizzen beinhalten Modelle wie AFP, ZTEM, und andere.

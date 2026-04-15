@@ -1,0 +1,98 @@
+# Ingestion Queue
+## Already Ingested (processed/)
+- [x] 40ChapterPlotModule.md
+- [x] AegisAnalyseUndPromptOptimierung.md
+- [x] AegisEmergenzAusDerLeere.md
+- [x] AegisGenesisKrise20prosaAuftrag20formulieren.md
+- [x] AegisPhilosophieUndManifestEntwicklung.md
+- [x] AegisPhilosophieUndSystemtheorie.md
+- [x] AegisPhilosophischeUndSystemtheoretischeAnalyse.md
+- [x] AegisProtokolleKritischeEvaluationNeukonzeption.md
+- [x] README.md
+- [x] UmfassendesLokalitatenKonzeptFurRoman.md
+- [x] test-kael-konflikt.md
+
+## To Be Ingested (raw/)
+- [ ] AnIntroductionToTheConceptsOfCoherenceProtocol.md
+- [ ] AngereichertesPlotkonzeptKapitelthemenKoharenzProtokoll.md
+- [ ] Blueprint.md
+- [ ] BridgingNarrativeTheoryAndAiAuthorship.md
+- [ ] CharakterarchitekturFurNarrativesRomanprojekt.md
+- [ ] DialetheismusImKoharenzProtokoll.md
+- [ ] DramaticaTheoryOverviewAndResources.md
+- [ ] DramaturgicalPrecisionDeconstructingTheIrreversibleConflictInKoharenzProtokoll.md
+- [ ] DualKernelAiAndNarrativeCollapse.md
+- [ ] EinleitungGenesisDerExistenz.md
+- [ ] EmergenzAutonomerSystemeAegisForschung.md
+- [ ] ErkenntnistheorieFurNarrativeProjektgestaltung.md
+- [ ] ExistenzKosmosSeinUndBewusstsein.md
+- [ ] ForschungsprojektKoharenzProtokollAnalyse.md
+- [ ] GrenzenDerExistenzEineUmfassendeAnalyse.md
+- [ ] GuardiansUndKernWeltenKonzept.md
+- [ ] HolographischesPrinzipFurKoharenzProtokoll.md
+- [ ] IdentitatGrenzenUndWandel.md
+- [ ] InterdisziplinareRechercheFurKoharenzProtokoll.md
+- [ ] KaelsDissociativeArchitectureAnalysis.md
+- [ ] KernweltenFurKoharenzProtokoll.md
+- [ ] KoharenzProtokoll39KapitelMatrix.md
+- [ ] KoharenzProtokollKapitelstrukturMitKonzepten39Kapitel.md
+- [ ] KoharenzProtokollKonzept.md
+- [ ] KoharenzProtokollKonzeptionelleAusarbeitung.md
+- [ ] KoharenzProtokollKonzeptionelleThemenStruktur.md
+- [ ] KoharenzProtokollMetaForeshadowingBeobachterLogik.md
+- [ ] KoharenzProtokollPlotBlueprintErstellung.md
+- [ ] KoharenzProtokollPlotEntwicklungUndWahrheitsdualitat.md
+- [ ] KopieVonNarrativeLosungenFurRomanprojekt.md
+- [ ] LogiksystemAegisEntwicklungsszenarien.md
+- [ ] MonstergruppeAlsDenkmodellDerKomplexitat.md
+- [ ] MonstergruppeBabymonstergruppeFragmentierungErzahlung.md
+- [ ] MonstergruppeNarrativeClusterUndMetaphern.md
+- [ ] NarrativExistenziellerKoharenzNztProtokoll.md
+- [ ] NarrativePlotExplorationExistenzielleKoharenz.md
+- [ ] NarrativeRekombinationPotenzialExplorationPlotSynopsen.md
+- [ ] NarrativeVertiefungKoharenzProtokoll.md
+- [ ] OrteKonzeptFurKoharenzProtokoll.md
+- [ ] PVsNpUndKoharenz.md
+- [ ] ParadoxienDerKoharenzProtokollEntwicklung.md
+- [ ] ParakonsistenteLogikFurKoharenzProtokoll.md
+- [ ] ParakonsistenzAegisUndNichtExistenz.md
+- [ ] PhilosophieGrenzenUndZukunft.md
+- [ ] PhysikGrenzenUndRatselDesUniversums.md
+- [ ] PlotBlueprintMethodikKoharenzProtokoll.md
+- [ ] PlotExplorationKoharenzProtokollkonzepte.md
+- [ ] PlotKonzepteKoharenzProtokollGenerierung.md
+- [ ] PlotkonzeptKoharenzProtokollHeldinnenreiseStruktur.md
+- [ ] ProjektKoharenzProtokollTiefenanalyse.md
+- [ ] RomanBlueprintSeelenKoharenzProtokoll.md
+- [ ] RomanEntwicklungKoharenzUndLeitfragen.md
+- [ ] RomanFundamentTheoretischeRecherche.md
+- [ ] RomanKapitelAusformulierungKoharenzProtokoll.md
+- [ ] RomanKoharenzProtokoll.md
+- [ ] RomanKoharenzProtokoll2.md
+- [ ] RomanKonzeptDualitatKoharenzSpannung.md
+- [ ] RomanKonzeptentwicklungKoharenzProtokoll.md
+- [ ] RomanLokalitatenKonzeptUndAusarbeitung.md
+- [ ] RomanRefactoringKoharenzUndCharakterentwicklung.md
+- [ ] RomanSyntheseMitDualKernelTheorie.md
+- [ ] RomanUrvertrauenLiebeTranszendenz.md
+- [ ] RomanWorldbuildingFragmentierteIdentitatMetaRealitat.md
+- [ ] RomanentwurfKoharenzProtokollTeil1.md
+- [ ] Romanstruktur3Teile39Kapitel1Anfang.md
+- [ ] RomanstrukturUndPhilosophischeEinleitung.md
+- [ ] SpannungsfelderUndAegisMetaFrameworkAnalyse.md
+- [ ] StorytellingCommandmentsExplained.md
+- [ ] SymmetrieParadoxieExistenzJenseitsSimulation.md
+- [ ] SymmetrienClusterungUberWissensgebieteHinweg.md
+- [ ] TheCoherenceProtocolADefinitiveGuideToTheNarrativeArchitecture.md
+- [ ] TheCoherenceProtocolANarrativeDesignWorldArchitectureDocument.md
+- [ ] TheFoundationProtocolAMetaphysicalThesisOnTheReAnchoringOfReality.md
+- [ ] TheKoharenzProtokollADefinitiveGuideToNarrativeArchitecture.md
+- [ ] TheThematicArchitectureOfKoharenzProtokollAConceptualLexiconOfCoreDualities.md
+- [ ] TheTrueCoherenceProtocolArchitectingKaelsJourneyFromTsdpFragmentationToFunctionalMultiplicity.md
+- [ ] Top13ForschungsfragenZurRealitat.md
+- [ ] TranszendenzLogischerSystemeEntropie.md
+- [ ] TranszendenzUndParadoxienVerbindungslinien.md
+- [ ] TsdpAnalyseKaelsInnereWelt.md
+- [ ] VTheFoundationAndKaelsIntegrationArc.md
+- [ ] WahrheitstheorienKoharenzVsKorrespondenz.md
+- [ ] ZeitGrenzenWahrnehmungUndTheorien.md

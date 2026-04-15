@@ -15,3 +15,8 @@ last_updated: 2024-04-12
 
 ## Definition
 One of the specific defined protocols used by AEGIS.
+
+## Description
+BPoF ist eine der hypothetischen Protokoll-Skizzen für das AEGIS-System, die im Dokument "Kritische Evaluation Neukonzeption" analysiert wird.
+
+## Notes
